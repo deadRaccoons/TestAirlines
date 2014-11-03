@@ -5,7 +5,7 @@ los constraint son por si queremos modificar una llave primaria
 o si queremos que haya (aparte de la llave primaria) una tupla que no se repita
 */
 
--- create database mameline;
+create database mameline;
 
 --tabla avion
 create table avion(
@@ -96,12 +96,14 @@ values ('strin@hotmail.com', 'trin', 'n');
 
 --tabla acciones que puede realizar el usuario
 CREATE TABLE accion(
-  tipoAccion text not null primary key
+  idaccion integer primary key,
+  tipoAccion text not null,
+  unique (tipoAccion)
 );
 
 --acciones realizadas por el usuario
-CREATE TABLE accionesusuario(
-  tipoAccion text not null references accion(tipoAccion),
+CREATE TABLE historialusuario(
+  idaccion integer not null references accion(idaccion),
   correo text not null references login(correo),
   fecha date not null
 );
