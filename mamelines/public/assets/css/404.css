@@ -1,0 +1,47 @@
+.left {
+	position: relative;
+	float: left;
+	left: 0px;
+	background-image: url("../images/m1.jpg");
+}
+
+.rigth {
+	position: relative;
+	float: right;
+	right: 0px;
+	background-image: url("../images/m2.jpg");
+
+}
+
+.sexy {
+	
+height: 100%;
+width: 25%;
+background-size: cover;
+position: absolute;
+top: 0;
+}
+
+.message {
+	position: relative;
+	vertical-align: middle;
+	width: 500px;
+	height: 90%;
+	top: 2em;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 4.5em;
+}
+
+body {
+	 font-family: 'RobotoDraft';
+	 font-size: 1em;
+}
+
+a {
+	text-decoration: none;
+	color: dodgerblue;
+}
+a:hover {
+	text-decoration: underline;
+}
