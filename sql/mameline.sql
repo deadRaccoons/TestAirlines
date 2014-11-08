@@ -1,10 +1,4 @@
-﻿/*Esto es un comentario*/
---esto tambien
-/*
-los constraint son por si queremos modificar una llave primaria
-o si queremos que haya (aparte de la llave primaria) una tupla que no se repita
-*/
-
+﻿
 create database mameline;
 
 --tabla avion
@@ -17,9 +11,7 @@ create table avion(
   disponible char(1) check(disponible in ('y', 'n'))
 );
 
---como insertar en la tabla avion
-insert into avion(modelo, marca, capacidadPrimera, capacidadTurista, disponible)
-values (/* 'string' */, /* 'string' */, /*int*/, /*int*/, /*'char'*/);
+
 
 /*
 insert into avion(modelo, marca, capacidadPrimera, capacidadTurista, disponible)
@@ -43,9 +35,6 @@ alter table ciudad
 add constraint ciudadc
 primary key (nombre);
 
---como insertar en la tabla ciudad
-insert into ciudad
-values (/* 'string' */, /* 'string' */, /*float*/, /*int*/);
 
 /*
 insert into ciudad
@@ -67,9 +56,7 @@ alter table login
 add constraint loginc
 primary key (correo);
 
---como insertar en la tabla login
-insert into login
-values (/*'string'*/, /*'string'*/, /*'char'*/);
+
 
 /*
 insert into login
@@ -108,9 +95,7 @@ CREATE TABLE historialusuario(
   fecha date not null
 );
 
---como insertar en accionusuario
-insert into usuario
-values (/*'string'*/, /*'string'*/, /*'dd-MM-yyyy'*/)
+
 
 
 --tabla usuario
@@ -128,9 +113,6 @@ ALTER TABLE usuario
 ADD CONSTRAINT usuarioc
 PRIMARY KEY (dni);
 
---forma en como se insertaran los usuarios
-insert into usuario
-values (/*'string'*/, /*(select max(dni) from usuario) + 1*/, /*'string'*/, /*'string'*/, /*'string'*/, /*'string'*/, /*'char'*/);
 
 
 --tarjetas que posee el usuario
@@ -139,9 +121,6 @@ CREATE TABLE tarjetas(
   dni serial not null references usuario(dni)
 );
 
---como insertar en tarjetas
-insert into tarjetas
-values (/*'string'*/, /*int*/);
 
 
 --tabla promocion
@@ -156,9 +135,7 @@ alter table promocion
 add constraint proomocionc
 primary key (idPromocion);
 
---como insertar en la tabla promocion
-insert into promocion
-values (/*(select max(idPromocion) from promocion) + 1*/, /*'string'*/, /*double*/, /*'dd-MM-yyyy'*/, /*'dd-MM-yyyy'*/);
+
 
 --tabla viaje
 CREATE TABLE viaje(
@@ -176,9 +153,6 @@ alter table viaje
 add constraint viajec
 primary key (idViaje);
 
---como insertar en la tabla viaje
-insert into viaje
-values (/*(select max(idViaje) from viaje) + 1*/, /*'string'*/, /*'string'*/, /*'dd-MM-yyyy'*/, /*'string'*/, /*'string'*/, /*int*/, /*double*/);
 
 /*
 --tabla asignado
@@ -211,6 +185,3 @@ alter table pasajero
 add constraint pasajeroc1
 unique (idViaje, clase, asiento);
 
---como insertar en pasajero
-insert into pasajero
-values (/*int*/, /*int*/, /*'string'*/, /*int*/);
