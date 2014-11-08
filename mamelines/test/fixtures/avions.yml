@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idavion: 1
+  modelo: MyString
+  marca: MyText
+  capacidadprimera: 1
+  capacidadturista: 1
+  disponible: MyString
+
+two:
+  idavion: 1
+  modelo: MyString
+  marca: MyText
+  capacidadprimera: 1
+  capacidadturista: 1
+  disponible: MyString

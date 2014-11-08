@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :avion2s
+
   resources :avions
 
   resources :welcome
