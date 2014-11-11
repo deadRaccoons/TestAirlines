@@ -80,20 +80,18 @@ $( document ).ready(function() {
 
   <div id="main_wrapper">
     <section>
-      <h1>Listing avions</h1>
+      <h1>Conoce nuestros aviones </h1>
 
   <ul id="avions">
     <% @avions.each do |avion| %>
       <li>
-        <td><%= avion.idavion %></td>
-        <td><%= avion.modelo %></td>
-        <td><%= avion.marca %></td>
-        <td><%= avion.capacidadprimera %></td>
-        <td><%= avion.capacidadturista %></td>
-        <td><%= avion.disponible %></td>
-        <td><%= link_to 'Show', avion %></td>
-        <td><%= link_to 'Edit', edit_avion_path(avion) %></td>
-        <td><%= link_to 'Destroy', avion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= image_tag("/assets/aviones/" + avion.modelo + ".jpg") -%>
+        <div class="info_avion">
+          <strong>marca: </strong><span><%= avion.marca %> </span><br/>        
+          <strong>modelo: </strong><span><%= avion.modelo %> </span><br/> 
+          <strong>capacidad: </strong><span><%= avion.capacidadprimera + avion.capacidadturista %> </span><br/> 
+
+        </div>
       </li>
     <% end %>
 </ul>

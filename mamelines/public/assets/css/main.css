@@ -123,7 +123,7 @@ footer {
 }
 
 #avions li {
-	width:200px;
+	width:31%;
 	height: 300px;
 	background-color: #FFF;
 	color: #333;
@@ -132,4 +132,21 @@ footer {
 	float: left; 
 	margin: 1%;
 
+}
+#avions li strong {
+	font-size: 0.8em;
+color: rgba(51, 51, 51, 0.61);
+
+} 
+#avions li img {
+	width: 100%;
+	height: 200px;
+}
+
+section h1 {
+	font-size: 30px;
+}
+
+.info_avion {
+	padding: 2%;
 }
