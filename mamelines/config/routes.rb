@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :promocions
+
+  resources :tarjeta
+
+  resources :usuarios
+
+  resources :logins
+
   resources :avions
 
   resources :welcome

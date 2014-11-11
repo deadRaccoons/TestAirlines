@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notarjeta: MyString
+  idusuario: 1
+  valor: 1
+  saldo: 
+  saldo: 
+
+two:
+  notarjeta: MyString
+  idusuario: 1
+  valor: 1
+  saldo: 
+  saldo: 

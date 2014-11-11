@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/assets/css/font.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"/>
+    <script type="text/javascript">
+      
+      $( document ).ready(function() {
+      var size = 256;
+      var min_size = 64;
+      $(window).scroll(function() {
+      var $myDiv = $('#head');
+      var $mark = $("#mark");
+      var st = $(this).scrollTop();
+      var init = $myDiv.height();
+      
+
+      if(size - st >= min_size) {
+      $myDiv.removeClass("hover");
+      $mark.css({top:150-st})
+      $myDiv.height(size- st);
+      $mark.removeClass("m_title");
+      $("#clouds").show();
+      
+      $("#page_nav").hide();
+      
+      }
+      
+      else {
+      $mark.css({top:0})
+      $myDiv.height(min_size);
+      $myDiv.addClass("hover");
+      $mark.addClass("m_title")
+      $("#clouds").hide();
+      $("#page_nav").show();
+      }
+      
+      }).scroll();
+      });
+    </script>
+  </head>
+  <body>
+    <header class="header" id="head">
+      <div id="clouds"> </div>
+      
+      <div id="mark" class="header_title">
+	<span  class="main_title">Mamelines</span>
+	<div class="login">
+	  <img></div>
+      </div>
+    </div>
+
+    
+
+    <nav id ="page_nav">
+      <ul>
+        <li>
+          <a href="/404.html">Error 404</a>
+        </li>
+        <li>
+          <a href="/vuelos">Vuelos</a>
+        </li>
+        <li>
+          <a href="/vuelos">Vuelos</a>
+        </li>
+        <li>
+          <a href="/vuelos">Vuelos</a>
+        </li>
+
+      </ul>
+    </nav>
+    
+
+  </header>
+
+  <div>
+  </div>
+  </body>
+</html>

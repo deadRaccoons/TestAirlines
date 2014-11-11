@@ -12,8 +12,8 @@ create table avions(
   idAvion int primary key,
   modelo varchar(6) NOT NULL,
   marca text not null,
-  capacidadPrimera int NOT NULL,
-  capacidadTurista int NOT NULL,
+  capacidadPrimera int NOT NULL check(capacidadPrimera > 0),
+  capacidadTurista int NOT NULL check(capacidadTurista > 0),
   disponible varchar(1) check(disponible in ('y', 'n'))
 );
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idpromocion: 1
+  codigoPromocion: MyString
+  porcentaje: 
+  fechaentrada: 2014-11-09
+  vigencia: 2014-11-09
+
+two:
+  idpromocion: 1
+  codigoPromocion: MyString
+  porcentaje: 
+  fechaentrada: 2014-11-09
+  vigencia: 2014-11-09

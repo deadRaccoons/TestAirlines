@@ -11,9 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109022725) do
+ActiveRecord::Schema.define(version: 20141109205812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "avions", primary_key: "idavion", force: true do |t|
+    t.string  "modelo",           limit: 6, null: false
+    t.text    "marca",                      null: false
+    t.integer "capacidadprimera",           null: false
+    t.integer "capacidadturista",           null: false
+    t.string  "disponible",       limit: 1
+  end
+
+  create_table "ciudads", primary_key: "nombre", force: true do |t|
+    t.text    "pais",                                 null: false
+    t.integer "distancia",                            null: false
+    t.decimal "costo",       precision: 10, scale: 2, null: false
+    t.integer "tiempoviaje",                          null: false
+    t.text    "descripcion",                          null: false
+  end
+
+  create_table "logins", primary_key: "correo", force: true do |t|
+    t.string "contraseña", limit: 18, null: false
+    t.string "activo",     limit: 1,  null: false
+  end
+
+  create_table "promocions", primary_key: "idpromocion", force: true do |t|
+    t.string "codigopromocion", limit: 10, null: false
+    t.float  "porcentaje",                 null: false
+    t.date   "fechaentrada",               null: false
+    t.date   "vigencia",                   null: false
+  end
+
+  create_table "tarjeta", primary_key: "notarjeta", force: true do |t|
+    t.integer "idusuario",                          null: false
+    t.integer "valor"
+    t.decimal "saldo",     precision: 10, scale: 2
+  end
+
+  create_table "usuarios", primary_key: "idusuario", force: true do |t|
+    t.text   "correo",                    null: false
+    t.text   "nombres",                   null: false
+    t.text   "apellidopaterno",           null: false
+    t.text   "apellidomaterno",           null: false
+    t.text   "nacionalidad",              null: false
+    t.string "genero",          limit: 1, null: false
+    t.date   "fechanacimiento",           null: false
+    t.text   "url_imagen"
+  end
 
 end
