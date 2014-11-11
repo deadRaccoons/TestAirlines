@@ -16,23 +16,6 @@ ActiveRecord::Schema.define(version: 20141109205812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-=======
-  create_table "accion", primary_key: "idaccion", force: true do |t|
-    t.text "tipoaccion", null: false
-  end
-
-  add_index "accion", ["tipoaccion"], name: "accion_tipoaccion_key", unique: true, using: :btree
-
-  create_table "avion", primary_key: "idavion", force: true do |t|
-    t.string  "modelo",           limit: 6, null: false
-    t.text    "marca",                      null: false
-    t.integer "capacidadprimera",           null: false
-    t.integer "capacidadturista",           null: false
-    t.string  "disponible",       limit: 1
-  end
-
->>>>>>> 8ca03f47fded2872fb14633b33ceed862ae3eead
   create_table "avions", primary_key: "idavion", force: true do |t|
     t.string  "modelo",           limit: 6, null: false
     t.text    "marca",                      null: false
@@ -41,56 +24,34 @@ ActiveRecord::Schema.define(version: 20141109205812) do
     t.string  "disponible",       limit: 1
   end
 
-<<<<<<< HEAD
-  create_table "ciudads", primary_key: "nombre", force: true do |t|
-    t.text    "pais",                                 null: false
-    t.integer "distancia",                            null: false
-    t.decimal "costo",       precision: 10, scale: 2, null: false
-    t.integer "tiempoviaje",                          null: false
-    t.text    "descripcion",                          null: false
+  create_table "ciudad", primary_key: "nombre", force: true do |t|
+    t.text    "pais",        null: false
+    t.integer "distancia"
+    t.text    "descripcion", null: false
+    t.text    "zonahora",    null: false
+    t.text    "aeropuerto",  null: false
   end
 
   create_table "logins", primary_key: "correo", force: true do |t|
-=======
-  create_table "ciudad", primary_key: "nombre", force: true do |t|
-    t.text    "pais",        null: false
-    t.float   "costo",       null: false
-    t.integer "tiempoviaje", null: false
-  end
-
-  create_table "historialusuario", id: false, force: true do |t|
-    t.integer "idaccion", null: false
-    t.text    "correo",   null: false
-    t.date    "fecha",    null: false
-  end
-
-  create_table "login", primary_key: "correo", force: true do |t|
->>>>>>> 8ca03f47fded2872fb14633b33ceed862ae3eead
     t.string "contraseña", limit: 18, null: false
     t.string "activo",     limit: 1,  null: false
   end
 
-<<<<<<< HEAD
-  create_table "promocions", primary_key: "idpromocion", force: true do |t|
-=======
-  create_table "pasajero", id: false, force: true do |t|
-    t.integer "dni",     default: "nextval('pasajero_dni_seq'::regclass)",     null: false
-    t.integer "idviaje", default: "nextval('pasajero_idviaje_seq'::regclass)", null: false
-    t.text    "clase",                                                         null: false
-    t.integer "asiento",                                                       null: false
+  create_table "promocion", primary_key: "idpromocion", force: true do |t|
+    t.float "porcentaje",   null: false
+    t.date  "fechaentrada", null: false
+    t.date  "vigencia",     null: false
   end
 
-  add_index "pasajero", ["idviaje", "clase", "asiento"], name: "pasajeroc1", unique: true, using: :btree
+  add_index "promocion", ["porcentaje", "fechaentrada", "vigencia"], name: "promocion_porcentaje_fechaentrada_vigencia_key", unique: true, using: :btree
 
-  create_table "promocion", primary_key: "idpromocion", force: true do |t|
->>>>>>> 8ca03f47fded2872fb14633b33ceed862ae3eead
+  create_table "promocions", primary_key: "idpromocion", force: true do |t|
     t.string "codigopromocion", limit: 10, null: false
     t.float  "porcentaje",                 null: false
     t.date   "fechaentrada",               null: false
     t.date   "vigencia",                   null: false
   end
 
-<<<<<<< HEAD
   create_table "tarjeta", primary_key: "notarjeta", force: true do |t|
     t.integer "idusuario",                          null: false
     t.integer "valor"
@@ -98,13 +59,6 @@ ActiveRecord::Schema.define(version: 20141109205812) do
   end
 
   create_table "usuarios", primary_key: "idusuario", force: true do |t|
-=======
-  create_table "tarjetas", primary_key: "notarjeta", force: true do |t|
-    t.integer "dni", default: "nextval('tarjetas_dni_seq'::regclass)", null: false
-  end
-
-  create_table "usuario", primary_key: "dni", force: true do |t|
->>>>>>> 8ca03f47fded2872fb14633b33ceed862ae3eead
     t.text   "correo",                    null: false
     t.text   "nombres",                   null: false
     t.text   "apellidopaterno",           null: false
@@ -112,30 +66,27 @@ ActiveRecord::Schema.define(version: 20141109205812) do
     t.text   "nacionalidad",              null: false
     t.string "genero",          limit: 1, null: false
     t.date   "fechanacimiento",           null: false
-<<<<<<< HEAD
     t.text   "url_imagen"
   end
 
-=======
+  create_table "valor", primary_key: "idvalor", force: true do |t|
+    t.float "costomilla", null: false
+    t.text  "tipomoneda", null: false
+    t.text  "tipomedida", null: false
   end
 
   create_table "viaje", primary_key: "idviaje", force: true do |t|
-    t.text    "origen",                                                                   null: false
-    t.text    "destino",                                                                  null: false
-    t.date    "fecha",                                                                    null: false
-    t.text    "horasalida",                                                               null: false
-    t.text    "horallegada",                                                              null: false
-    t.integer "idavion",               default: "nextval('viaje_idavion_seq'::regclass)", null: false
-    t.float   "costoviaje",                                                               null: false
-    t.string  "realizado",   limit: 1,                                                    null: false
+    t.text    "origen",                   null: false
+    t.text    "destino",                  null: false
+    t.date    "fechasalida",              null: false
+    t.time    "horasalida",               null: false
+    t.date    "fechallegada"
+    t.time    "horallegada"
+    t.integer "distancia"
+    t.integer "idavion",                  null: false
+    t.float   "costoviaje"
+    t.string  "realizado",    limit: 1,   null: false
+    t.string  "tiempo",       limit: nil
   end
 
-  create_table "viajepromocion", id: false, force: true do |t|
-    t.integer "idviaje",     default: "nextval('viajepromocion_idviaje_seq'::regclass)",     null: false
-    t.integer "idpromocion", default: "nextval('viajepromocion_idpromocion_seq'::regclass)", null: false
-  end
-
-  add_index "viajepromocion", ["idviaje"], name: "viajepromocion_idviaje_key", unique: true, using: :btree
-
->>>>>>> 8ca03f47fded2872fb14633b33ceed862ae3eead
 end
