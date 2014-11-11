@@ -1,97 +1,37 @@
-<html>
 
-<head>
-<link rel="stylesheet" type="text/css" href="/assets/css/font.css">
+<h1>Listing avions</h1>
 
-<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-<script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript">
+<table>
+  <thead>
+    <tr>
+      <th>Idavion</th>
+      <th>Modelo</th>
+      <th>Marca</th>
+      <th>Capacidadprimera</th>
+      <th>Capacidadturista</th>
+      <th>Disponible</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-$( document ).ready(function() {
-  var size = 256;
-  var min_size = 64;
-    $(window).scroll(function() {
-        var $myDiv = $('#head');
-        var $mark = $("#mark");
-        var st = $(this).scrollTop();
-        var init = $myDiv.height();
-   
+  <tbody>
+    <% @avions.each do |avion| %>
+      <tr>
+        <td><%= avion.idavion %></td>
+        <td><%= avion.modelo %></td>
+        <td><%= avion.marca %></td>
+        <td><%= avion.capacidadprimera %></td>
+        <td><%= avion.capacidadturista %></td>
+        <td><%= avion.disponible %></td>
+        <td><%= link_to 'Show', avion %></td>
+        <td><%= link_to 'Edit', edit_avion_path(avion) %></td>
+        <td><%= link_to 'Destroy', avion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-        if(size - st >= min_size) {
-          $myDiv.removeClass("hover");
-          $mark.css({top:150-st})
-          $myDiv.height(size- st);
-          $mark.removeClass("m_title");
-          $("#clouds").show();
+<br>
+-->
 
-          $("#page_nav").hide();
-
-        }
-
-        else {
-          $mark.css({top:0})
-          $myDiv.height(min_size);
-          $myDiv.addClass("hover");
-          $mark.addClass("m_title")
-          $("#clouds").hide();
-          $("#page_nav").show();
-        }
-        
-    }).scroll();
-});
-
-</script>
-</head>
-
-<body>
-  <header class="header" id="head">
-  <div id="clouds"></div>
-  
-    <div id="mark" class="header_title">
-      <span  class="main_title">Mamelines</span>
-      <div class="login">
-      <img></div>
-    </div>  
-    </div>
-  
-    
-
-    <nav id ="page_nav">
-      <ul>
-        <li>
-          <a href="/404.html">Error 404</a>
-        </li>
-        <li>
-          <a href="/vuelos">Vuelos</a>
-        </li>
-        <li>
-          <a href="/vuelos">Vuelos</a>
-        </li>
-        <li>
-          <a href="/vuelos">Vuelos</a>
-        </li>
-
-      </ul>
-    </nav>
-    
-
-  </header>
-  
-  <div class="user_overlay"> Menu del usuario </div>
-
-  <div id="main_wrapper">
-    <section>
-      Acá detro todo el contenido
-    </section>
-
-
-  </div>
-
-  <footer>
-    
-  </footer>
-
-
-</body>
-
-</html>
+<%= link_to 'New Avion', new_avion_path %>
