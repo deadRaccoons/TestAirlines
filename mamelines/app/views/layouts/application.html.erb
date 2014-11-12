@@ -1,14 +1,151 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Mamelines org</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= yield %>
+
+<head>
+<link rel="stylesheet" type="text/css" href="/assets/css/font.css">
+
+<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+<script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/lexer.js"></script>
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+  var size = 256;
+  var min_size = 64;
+    $(window).scroll(function() {
+        var $myDiv = $('#head');
+        var $mark = $("#mark");
+        var st = $(this).scrollTop();
+        var init = $myDiv.height();
+   
+
+        if(size - st >= min_size) {
+          $myDiv.removeClass("hover");
+          $mark.css({top:150-st})
+          $myDiv.height(size- st);
+          $mark.removeClass("m_title");
+          $("#clouds").show();
+
+          $("#page_nav").hide();
+
+        }
+
+        else {
+          $mark.css({top:0})
+          $myDiv.height(min_size);
+          $myDiv.addClass("hover");
+          $mark.addClass("m_title")
+          $("#clouds").hide();
+          $("#page_nav").show();
+        }
+        
+    }).scroll();
+});
+
+</script>
+</head>
+
+<body>
+  <header class="header" id="head">
+  <div id="clouds"></div>
+  
+    <div id="mark" class="header_title">
+      <span  class="main_title">MameAirlines</span>
+      <div class="login">
+      <img></div>
+    </div>  
+    </div>
+  
+    
+
+    <nav id ="page_nav">
+      <ul>
+        <li>
+          <a href="/vuelos">Vuelos</a>
+        </li>
+        <li>
+          <a href="/ciudades">Ciudades</a>
+        </li>
+        <li>
+          <a href="/aviones">Aviones</a>
+        </li>
+        <li>
+          <a href="/404">404</a>
+        </li>
+
+      </ul>
+    </nav>
+    
+
+  </header>
+  
+  <div class="user_overlay"> Menu del usuario </div>
+
+  <div id="main_wrapper">
+    <section id="container">
+     
+    </section>
+    <section id="giga"></section>
+
+
+
+  </div>
+
+
 
 </body>
+ <script>
+    $(function() {
+      $('nav a').click(function(e) {
+        href = $(this).attr("href");
+        
+        loadContent(href);
+        history.pushState('', 'New URL: '+href, href);
+        e.preventDefault();
+        
+       
+      });
+      
+      // THIS EVENT MAKES SURE THAT THE BACK/FORWARD BUTTONS WORK AS WELL
+      window.onpopstate = function(event) {
+        console.log("pathname: "+location.pathname);
+        loadContent(location.pathname);
+      };
+
+    });
+  
+    function loadContent(u){
+      //fo out the  slashs
+      u = u.split("/").pop();
+     
+      call = $.getJSON("/api/"+u)
+    .done(function(json){
+          switch(u) {
+            case "ciudades":
+              cargar_ciudades(json,"container");
+            break;
+
+            case "aviones":
+              cargar_aviones(json, "container");
+            break;
+
+            default:
+              cargar_error("container");
+            break;
+          }
+          
+        
+
+      $('nav a').removeClass('active');
+      $('nav a[href="/'+ u +'"]').addClass('active');
+    })
+    .error(function(e) {
+      cargar_error("container");
+    })
+  }
+
+
+
+  </script>
+
 </html>

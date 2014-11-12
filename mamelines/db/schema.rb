@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109205812) do
+ActiveRecord::Schema.define(version: 20141112034059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141109205812) do
     t.string  "disponible",       limit: 1
   end
 
-  create_table "ciudad", primary_key: "nombre", force: true do |t|
+  create_table "ciudads", primary_key: "nombre", force: true do |t|
     t.text    "pais",        null: false
     t.integer "distancia"
     t.text    "descripcion", null: false
@@ -87,6 +87,11 @@ ActiveRecord::Schema.define(version: 20141109205812) do
     t.float   "costoviaje"
     t.string  "realizado",    limit: 1,   null: false
     t.string  "tiempo",       limit: nil
+  end
+
+  create_table "vuelos", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
