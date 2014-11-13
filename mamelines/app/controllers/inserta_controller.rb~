@@ -1,0 +1,74 @@
+class InsertaController < ApplicationController
+  before_action :set_insertum, only: [:show, :edit, :update, :destroy]
+
+  # GET /inserta
+  # GET /inserta.json
+  def index
+    @inserta = Insertum.all
+  end
+
+  # GET /inserta/1
+  # GET /inserta/1.json
+  def show
+  end
+
+  # GET /inserta/new
+  def new
+    @insertum = Insertum.new
+  end
+
+  # GET /inserta/1/edit
+  def edit
+  end
+
+  # POST /inserta
+  # POST /inserta.json
+  def create
+    @insertum = Insertum.new(insertum_params)
+
+    respond_to do |format|
+      if @insertum.save
+        format.html { redirect_to @insertum, notice: 'Insertum was successfully created.' }
+        format.json { render :show, status: :created, location: @insertum }
+      else
+        format.html { render :new }
+        format.json { render json: @insertum.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /inserta/1
+  # PATCH/PUT /inserta/1.json
+  def update
+    respond_to do |format|
+      if @insertum.update(insertum_params)
+        format.html { redirect_to @insertum, notice: 'Insertum was successfully updated.' }
+        format.json { render :show, status: :ok, location: @insertum }
+      else
+        format.html { render :edit }
+        format.json { render json: @insertum.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /inserta/1
+  # DELETE /inserta/1.json
+  def destroy
+    @insertum.destroy
+    respond_to do |format|
+      format.html { redirect_to inserta_url, notice: 'Insertum was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_insertum
+      @insertum = Insertum.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def insertum_params
+      params.require(:insertum).permit(:correo, :contraseña, :activo)
+    end
+end
