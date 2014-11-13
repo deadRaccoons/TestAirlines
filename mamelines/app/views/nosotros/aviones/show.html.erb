@@ -80,24 +80,18 @@ $( document ).ready(function() {
 
   <div id="main_wrapper">
     <section>
-      <h1>Conoce nuestros aviones </h1>
-
-  <ul id="avions">
-     <% @aviones.each do |avione| %>
-      <li>
-        <%= image_tag("/assets/aviones/" + avione.modelo + ".jpg") -%>
+      <h1><%= @nosotros_avione.modelo %> </h1>
+		<li>
+        <%= image_tag("/assets/aviones/" + @nosotros_avione.modelo + ".jpg") -%>
         <div class="info_avion">
-          <strong>marca: </strong><span><%= avione.marca %> </span><br/>        
-          <strong>modelo: </strong><span><%= avione.modelo %> </span><br/> 
-          <strong>capacidad: </strong><span><%= avione.capacidadprimera + avione.capacidadturista %> </span><br/> 
+          <strong>marca: </strong><span><%= @nosotros_avione.marca %> </span><br/>        
+          <strong>modelo: </strong><span><%= @nosotros_avione.modelo %> </span><br/> 
+          <strong>capacidad: </strong><span><%= @nosotros_avione.capacidadprimera + @nosotros_avione.capacidadturista %> </span><br/> 
+          <strong>    <%= link_to 'Show', @nosotros_avione %>
+</strong>
 
         </div>
       </li>
-    <% end %>
-</ul>
-
-
-<%= link_to 'New avione', new_avione_path %>
 
     </section>
 
@@ -114,3 +108,6 @@ $( document ).ready(function() {
 </html>
 
 
+
+
+<%= link_to 'Back', nosotros_aviones_path %>

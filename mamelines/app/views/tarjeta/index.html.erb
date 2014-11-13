@@ -3,11 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>Notarjeta</th>
-      <th>Idusuario</th>
-      <th>Valor</th>
-      <th>Saldo</th>
-      <th>Saldo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,11 +10,6 @@
   <tbody>
     <% @tarjeta.each do |tarjetum| %>
       <tr>
-        <td><%= tarjetum.notarjeta %></td>
-        <td><%= tarjetum.idusuario %></td>
-        <td><%= tarjetum.valor %></td>
-        <td><%= tarjetum.saldo %></td>
-        <td><%= tarjetum.saldo %></td>
         <td><%= link_to 'Show', tarjetum %></td>
         <td><%= link_to 'Edit', edit_tarjetum_path(tarjetum) %></td>
         <td><%= link_to 'Destroy', tarjetum, method: :delete, data: { confirm: 'Are you sure?' } %></td>

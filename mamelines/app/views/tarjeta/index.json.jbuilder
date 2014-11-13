@@ -1,4 +1,4 @@
 json.array!(@tarjeta) do |tarjetum|
-  json.extract! tarjetum, :id, :notarjeta, :idusuario, :valor, :saldo, :saldo
+  json.extract! tarjetum, :id
   json.url tarjetum_url(tarjetum, format: :json)
 end

@@ -83,13 +83,15 @@ $( document ).ready(function() {
       <h1>Conoce nuestros aviones </h1>
 
   <ul id="avions">
-     <% @aviones.each do |avione| %>
+    <% @nosotros_aviones.each do |nosotros_avione| %>
       <li>
-        <%= image_tag("/assets/aviones/" + avione.modelo + ".jpg") -%>
+        <%= image_tag("/assets/aviones/" + nosotros_avione.modelo + ".jpg") -%>
         <div class="info_avion">
-          <strong>marca: </strong><span><%= avione.marca %> </span><br/>        
-          <strong>modelo: </strong><span><%= avione.modelo %> </span><br/> 
-          <strong>capacidad: </strong><span><%= avione.capacidadprimera + avione.capacidadturista %> </span><br/> 
+          <strong>marca: </strong><span><%= nosotros_avione.marca %> </span><br/>        
+          <strong>modelo: </strong><span><%= nosotros_avione.modelo %> </span><br/> 
+          <strong>capacidad: </strong><span><%= nosotros_avione.capacidadprimera + nosotros_avione.capacidadturista %> </span><br/> 
+          <strong>    <%= link_to 'Show', nosotros_avione %>
+</strong>
 
         </div>
       </li>
@@ -97,7 +99,6 @@ $( document ).ready(function() {
 </ul>
 
 
-<%= link_to 'New avione', new_avione_path %>
 
     </section>
 

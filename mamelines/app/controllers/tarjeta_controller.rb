@@ -69,6 +69,6 @@ class TarjetaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tarjetum_params
-      params.require(:tarjetum).permit(:notarjeta, :idusuario, :valor, :saldo, :saldo)
+      params[:tarjetum]
     end
 end

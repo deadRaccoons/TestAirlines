@@ -1,15 +1,32 @@
 Rails.application.routes.draw do
-  resources :promocions
+
+  namespace :nosotros do
+    resources :aviones
+  end
 
   resources :tarjeta
 
-  resources :usuarios
+  get 'aviones/index'
 
-  resources :logins
+  resources :promociones , only: [:show, :index]
 
-  resources :avions
+  resources :tarjetas , only: [:show]
 
-  resources :welcome
+  resources :usuarios, only: [:show]
+
+  resources :logins, only: [:show]
+
+
+  resources :welcome, only: [:index]
+
+  resources :vuelos, only: [:show, :index]
+
+  resources :ciudades, only: [:show, :index]
+
+  namespace :nosotros do
+    resources :aviones, only: [:show, :index]
+  end
+
 
   get 'avions/index'
 
@@ -67,4 +84,23 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  namespace :api, :defaults => {:format => :json}  do
+
+    resources :promociones , only: [:show, :index]
+
+    resources :tarjetas , only: [:show]
+
+    resources :usuarios, only: [:show]
+
+    resources :logins, only: [:show]
+
+    resources :aviones, only: [:show, :index]
+
+    resources :welcome, only: [:show ]
+
+    resources :vuelos, only: [:show, :index]
+
+    resources :ciudades, only: [:show, :index]
+  end
 end
