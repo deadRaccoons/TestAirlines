@@ -6,15 +6,13 @@ o si queremos que haya (aparte de la llave primaria) una tupla que no se repita
 */
 
 create table valor(
-  idvalor int primary key,
+  idvalor int primary key check(idvalor > 0 and idvalor < 2),
   costomilla double precision not null,
-  fecha date not null,
   tipomoneda text not null,
   tipomedida text not null 
 );
-create or replace function fvalor() returns trigger as $tvalor$
+create or replace function fvalors() returns trigger as $tvalors$
   begin 
-    new.fecha = (select current_date);
     if (select max(idvalor) from valor) is null then new.idvalor = 1;
     return null;
     end if;
@@ -23,10 +21,10 @@ create or replace function fvalor() returns trigger as $tvalor$
   end;
 $tvalors$ language plpgsql;
 
-create trigger tvalor
+create trigger tvalors
 before insert on valor
 for each row
-execute procedure fvalor()
+execute procedure fvalors()
 
 create database mameline;
 
@@ -98,26 +96,14 @@ values ('Guadalajara', 'Mexico', 500.00, 70);
 
 
 --tabla login
-CREATE TABLE login(
+CREATE TABLE logins(
   correo text not null,
   contraseña varchar(18) not null,
   activo char(1) not null check(activo in ('y', 'n'))
 );
-alter table login
+alter table logins
 add constraint loginc
 primary key (correo);
-
-create or replace function flogin() returns trigger as $tlogin$
-  begin 
-    new.activo = 'y';
-    return new;
-  end;
-$tlogin$ language plpgsql;
-
-create trigger tlogin
-before insert on login
-for each row
-execute procedure flogin()
 
 --como insertar en la tabla login
 insert into login

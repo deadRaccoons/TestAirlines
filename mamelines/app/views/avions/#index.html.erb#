@@ -48,7 +48,7 @@ $( document ).ready(function() {
   <div id="clouds"></div>
   
     <div id="mark" class="header_title">
-      <span  class="main_title">Mame-airlines</span>
+      <span  class="main_title">Mamelines</span>
       <div class="login">
       <img>
       </div>

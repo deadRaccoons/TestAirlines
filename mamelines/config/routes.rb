@@ -1,13 +1,23 @@
 Rails.application.routes.draw do
+  resources :promocions
+
+  resources :tarjeta
+
+  resources :usuarios
+
+  resources :logins
+
+  resources :avions
+
+  resources :welcome
+
+  get 'avions/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  
-  root 'index#index'
-  get '/:destino' => 'index#index'
-
+   root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -57,24 +67,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  namespace :api, :defaults => {:format => :json}  do
-    resources :promociones
-
-    resources :tarjetas
-
-    resources :usuarios
-
-    resources :logins
-
-    resources :aviones
-
-    resources :welcome
-
-    resources :vuelos
-
-    resources :ciudades
-
-    resources :ingresas
-  end
 end

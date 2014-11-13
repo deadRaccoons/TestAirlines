@@ -1,0 +1,11 @@
+class CreateLogins < ActiveRecord::Migration
+  def change
+    create_table :logins do |t|
+      t.string :correo
+      t.string :contraseña, limit: 20
+      t.string :activo, limit: 1
+
+      t.timestamps
+    end
+  end
+end

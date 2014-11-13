@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113183447) do
+ActiveRecord::Schema.define(version: 20141109205812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,16 +30,6 @@ ActiveRecord::Schema.define(version: 20141113183447) do
     t.text    "descripcion", null: false
     t.text    "zonahora",    null: false
     t.text    "aeropuerto",  null: false
-  end
-
-  create_table "ingresas", primary_key: "correo", force: true do |t|
-    t.string "contraseña", limit: 18, null: false
-    t.string "activo",     limit: 1,  null: false
-  end
-
-  create_table "inserta", primary_key: "correo", force: true do |t|
-    t.string "contraseña", limit: 18, null: false
-    t.string "activo",     limit: 1,  null: false
   end
 
   create_table "logins", primary_key: "correo", force: true do |t|

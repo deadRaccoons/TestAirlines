@@ -1,0 +1,13 @@
+class CreatePromocions < ActiveRecord::Migration
+  def change
+    create_table :promocions do |t|
+      t.integer :idpromocion
+      t.string :codigoPromocion, limit: 10
+      t.precision :porcentaje
+      t.date :fechaentrada
+      t.date :vigencia
+
+      t.timestamps
+    end
+  end
+end

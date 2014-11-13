@@ -1,4 +1,5 @@
-﻿insert into avions values(1,'A320','Airbus',50,80,'y');
+﻿delete from avions;
+insert into avions values(1,'A320','Airbus',50,80,'y');
 insert into avions values(2,'747-8','Boeing',110,190,'y');
 insert into avions values(3,'737','Boeing',70,115,'y');
 insert into avions values(4,'777','Boeing',90,140,'y');

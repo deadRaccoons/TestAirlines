@@ -1,10 +1,66 @@
 
+@font-face {
+  font-family: 'RobotoDraft';
+  font-style: normal;
+  font-weight: 400;
+  src: local('RobotoDraft'), local('RobotoDraft-Regular'), url(https://fonts.gstatic.com/s/robotodraft/v1/0xES5Sl_v6oyT7dAKuoni4gp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2'), url(https://fonts.gstatic.com/s/robotodraft/v1/0xES5Sl_v6oyT7dAKuoni7rIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 body {
 	 font-family: 'RobotoDraft';
 	 font-size: 1em;
 	 background-color: #f9f9f9;
-	color: #212121;
-	-webkit-font-smoothing: antialiased;
+		color: #212121;
+		-webkit-font-smoothing: antialiased;
 }
 
 header {
@@ -42,6 +98,7 @@ header {
 #main_wrapper {
 	position: relative;
 	top: 300px;
+	height: 3500px;
 }
 
 nav {
@@ -111,6 +168,10 @@ a {
 }
 
 .login {
+	width: 50px;
+position: absolute;
+float: right;
+top: 0;
 display: none;
 }
 
@@ -120,33 +181,4 @@ footer {
 	height: 300px;
 	background-size: cover;
 	background-image: url(../images/earth.png);
-}
-
-#avions li {
-	width:31%;
-	height: 300px;
-	background-color: #FFF;
-	color: #333;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
-	position: relative;
-	float: left; 
-	margin: 1%;
-
-}
-#avions li strong {
-	font-size: 0.8em;
-color: rgba(51, 51, 51, 0.61);
-
-} 
-#avions li img {
-	width: 100%;
-	height: 200px;
-}
-
-section h1 {
-	font-size: 30px;
-}
-
-.info_avion {
-	padding: 2%;
 }
