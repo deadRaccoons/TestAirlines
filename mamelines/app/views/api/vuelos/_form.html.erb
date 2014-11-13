@@ -1,0 +1,17 @@
+<%= form_for(@api_vuelo) do |f| %>
+  <% if @api_vuelo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@api_vuelo.errors.count, "error") %> prohibited this api_vuelo from being saved:</h2>
+
+      <ul>
+      <% @api_vuelo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

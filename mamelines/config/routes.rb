@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    resources :vuelos
+  end
+
+  namespace :api do
+    resources :aviones
+  end
+
   namespace :nosotros do
     resources :aviones
   end
