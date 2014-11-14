@@ -1,40 +1,47 @@
 class LoginsController < ApplicationController
-  before_action :set_login, only: [:show, :edit, :update, :destroy]
+  before_action :set_login, only: [:show]
 
   # GET /logins
   # GET /logins.json
   def index
-    @logins = Login.all
+    @login = Login.new
+    render 'new'
   end
 
   # GET /logins/1
   # GET /logins/1.json
   def show
+    @login = Login.find(login_params)
+    render json: @login
   end
 
   # GET /logins/new
   def new
-    @login = Login.new
+    redirect_to "/usuarios/new"
   end
 
   # GET /logins/1/edit
   def edit
   end
 
+  def intento_login
+
+  end
+
   # POST /logins
   # POST /logins.json
   def create
-    @login = Login.new(login_params)
+    @login = Login.find_by_correo(login_params[:correo])
+    secreto = Digest::SHA1.hexdigest(login_params[:secreto])
+    puts secreto
 
-    respond_to do |format|
-      if @login.save
-        format.html { redirect_to @login, notice: 'Login was successfully created.' }
-        format.json { render :show, status: :created, location: @login }
-      else
-        format.html { render :new }
-        format.json { render json: @login.errors, status: :unprocessable_entity }
-      end
+    if @login && @login.secreto == secreto
+      render json: @login
+    else
+      @login = Login.new
+      render 'new'
     end
+
   end
 
   # PATCH/PUT /logins/1
@@ -69,6 +76,6 @@ class LoginsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def login_params
-      params.require(:login).permit(:correo, :contraseña, :activo)
+      params.require(:login).permit(:correo, :secreto)
     end
 end

@@ -4,7 +4,7 @@ class Api::AvionesController < ApplicationController
   # GET /api/aviones
   # GET /api/aviones.json
   def index
-    @api_aviones = Nosotros::Avione.all
+    @api_aviones = Avion.all
     render json: @api_aviones
   end
 

@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20141112034059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "avions", primary_key: "idavion", force: true do |t|
+    t.string  "modelo",           limit: 6, null: false
+    t.text    "marca",                      null: false
+    t.integer "capacidadprimera",           null: false
+    t.integer "capacidadturista",           null: false
+    t.string  "disponible",       limit: 1
+  end
+
   create_table "ciudads", primary_key: "nombre", force: true do |t|
     t.text    "pais",        null: false
     t.integer "distancia"
@@ -28,14 +36,6 @@ ActiveRecord::Schema.define(version: 20141112034059) do
   create_table "logins", primary_key: "correo", force: true do |t|
     t.string "contraseña", limit: 18, null: false
     t.string "activo",     limit: 1,  null: false
-  end
-
-  create_table "nosotros_aviones", primary_key: "idavion", force: true do |t|
-    t.string  "modelo",           limit: 6, null: false
-    t.text    "marca",                      null: false
-    t.integer "capacidadprimera",           null: false
-    t.integer "capacidadturista",           null: false
-    t.string  "disponible",       limit: 1
   end
 
   create_table "promocion", primary_key: "idpromocion", force: true do |t|
@@ -60,14 +60,14 @@ ActiveRecord::Schema.define(version: 20141112034059) do
   end
 
   create_table "usuarios", primary_key: "idusuario", force: true do |t|
-    t.text   "correo",                    null: false
-    t.text   "nombres",                   null: false
-    t.text   "apellidopaterno",           null: false
-    t.text   "apellidomaterno",           null: false
-    t.text   "nacionalidad",              null: false
-    t.string "genero",          limit: 1, null: false
-    t.date   "fechanacimiento",           null: false
-    t.text   "url_imagen"
+    t.text "correo",          null: false
+    t.text "nombres",         null: false
+    t.text "apellidopaterno", null: false
+    t.text "apellidomaterno", null: false
+    t.text "nacionalidad",    null: false
+    t.text "genero",          null: false
+    t.date "fechanacimiento", null: false
+    t.text "url_imagen"
   end
 
   create_table "valor", primary_key: "idvalor", force: true do |t|

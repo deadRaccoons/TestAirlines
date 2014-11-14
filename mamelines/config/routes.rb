@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-    resources :vuelos
-  end
+  get 'logins/intento_login'
 
-  namespace :api do
-    resources :aviones
-  end
+  post 'logins/intento_login'
+
+  resources :usuarios, :path_names => { :new => 'registro', :edit => 'editar', :show => 'me' }
+  
+
+  resources :logins, only: [:index, :create], :path_names =>{:create => 'do'}
 
   namespace :nosotros do
+    resources :aviones , only: [:show, :index]
+  end
+
+  namespace :api do
     resources :aviones
+    resources :vuelos
+
   end
 
   resources :tarjeta
@@ -20,9 +27,9 @@ Rails.application.routes.draw do
 
   resources :tarjetas , only: [:show]
 
-  resources :usuarios, only: [:show]
+  resources :usuarios, only: [:show, :new]
 
-  resources :logins, only: [:show]
+  resources :login, only: [:show, :index]
 
 
   resources :welcome, only: [:index]

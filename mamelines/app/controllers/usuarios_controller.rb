@@ -10,12 +10,15 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
+    @usuario = Usuario.find_by(usuario_params[:correo])
+    render json: @usuario
   end
 
   # GET /usuarios/new
   def new
     @usuario = Usuario.new
   end
+
 
   # GET /usuarios/1/edit
   def edit
@@ -25,16 +28,28 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(usuario_params)
+    @login = Login.new
 
-    respond_to do |format|
-      if @usuario.save
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
-        format.json { render :show, status: :created, location: @usuario }
-      else
-        format.html { render :new }
-        format.json { render json: @usuario.errors, status: :unprocessable_entity }
-      end
+    @login.correo = params[:usuario][:correo]
+    @login.secreto = Digest::SHA1.hexdigest(params[:usuario][:secreto])
+    @login.activo = 'y'
+
+    error = false;
+
+    begin
+      @login.save && @usuario.save  
+     rescue Exception => e
+      error = true
+      flash[:notice] = "Form is invalid"
+      flash[:color]= "invalid"
     end
+
+    if !error
+      redirect_to "/usuarios/me"
+    else
+      render "new"
+    end
+  
   end
 
   # PATCH/PUT /usuarios/1
@@ -61,14 +76,16 @@ class UsuariosController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_usuario
-      @usuario = Usuario.find(params[:id])
+      @usuario = Usuario.find_by_correo(params[:correo])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:correo, :idusuario, :nombres, :apellidopaterno, :apellidomaterno, :nacionalidad, :genero, :fechanacimiento, :url_imagen)
+      params.require(:usuario).permit(:correo, :nombres, :apellidopaterno, :apellidomaterno, :nacionalidad, :genero, :fechanacimiento)
+
     end
 end

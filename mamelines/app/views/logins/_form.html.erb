@@ -11,19 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :correo %><br>
-    <%= f.text_field :correo %>
-  </div>
-  <div class="field">
-    <%= f.label :contraseña %><br>
-    <%= f.text_field :contraseña %>
-  </div>
-  <div class="field">
-    <%= f.label :activo %><br>
-    <%= f.text_field :activo %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <% @page_title = "UserAuth | Login" -%>
+    <div class= "Sign_Form">
+      <h1>Log in</h1>
+  <%= form_for(:login, :url => {:controller => 'logins', :action => 'intento_login'}) do |f| %>
+    <p> Coreo:</br> <%= f.text_field :correo%> </p>
+    <p> Password:</br> <%= f.password_field :secreto %></p>
+    <%= f.submit :Signup %>
+  <% end %>
+    </div>
   </div>
 <% end %>

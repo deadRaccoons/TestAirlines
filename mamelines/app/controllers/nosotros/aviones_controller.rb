@@ -4,13 +4,12 @@ class Nosotros::AvionesController < ApplicationController
   # GET /nosotros/aviones
   # GET /nosotros/aviones.json
   def index
-    @nosotros_aviones = Nosotros::Avione.all
+    @nosotros_aviones = Avion.all
   end
 
   # GET /nosotros/aviones/1
   # GET /nosotros/aviones/1.json
   def show
-     @nosotros_avione = Nosotros::Avione.find(params[:id])
   end
 
   # GET /nosotros/aviones/new
