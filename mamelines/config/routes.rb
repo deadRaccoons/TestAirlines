@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'logins/logout'
+
   get 'logins/intento_login'
 
   post 'logins/intento_login'
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
   resources :usuarios, :path_names => { :new => 'registro', :edit => 'editar', :show => 'me' }
   
 
-  resources :logins, only: [:index, :create], :path_names =>{:create => 'do'}
+  resources :logins, only: [:index, :create, :destroy], :path_names =>{:create => 'do'}
 
   namespace :nosotros do
     resources :aviones , only: [:show, :index]
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
 
   resources :usuarios, only: [:show, :new]
 
-  resources :login, only: [:show, :index]
+  resources :login, only: [:show, :index, :destroy]
 
 
   resources :welcome, only: [:index]

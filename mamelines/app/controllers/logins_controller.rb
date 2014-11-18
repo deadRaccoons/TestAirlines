@@ -4,15 +4,21 @@ class LoginsController < ApplicationController
   # GET /logins
   # GET /logins.json
   def index
-    @login = Login.new
-    render 'new'
+    if session[:current_user_id] != nil
+      redirect_to "/usuarios/" + session[:current_user_id].to_s
+    else
+      @login = Login.new
+      render 'new'
+    end
   end
 
   # GET /logins/1
   # GET /logins/1.json
   def show
     @login = Login.find(login_params)
-    render json: @login
+    if login_params
+      render json: @login
+    end
   end
 
   # GET /logins/new
@@ -36,10 +42,14 @@ class LoginsController < ApplicationController
     puts secreto
 
     if @login && @login.secreto == secreto
-      render json: @login
+      @usuario = Usuario.find_by_correo(@login.correo)
+
+      session[:current_user_id] = @usuario.id
+      session[:current_user_mail] = @usuario.correo
+      
+      redirect_to "/usuarios/"
     else
-      @login = Login.new
-      render 'new'
+      redirect_to "/logins"
     end
 
   end
@@ -66,6 +76,21 @@ class LoginsController < ApplicationController
       format.html { redirect_to logins_url, notice: 'Login was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def logout
+    if session[:current_user_id] != nil
+      @login = Login.find_by_correo(session[:current_user_mail])
+      
+      if @login != nil
+        @login.activo = "n"
+        @login.save
+      end
+
+      session[:current_user_id] = nil
+      session[:current_user_mail] = nil
+    end
+    redirect_to "/"
   end
 
   private

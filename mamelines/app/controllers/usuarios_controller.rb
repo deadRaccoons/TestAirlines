@@ -4,14 +4,26 @@ class UsuariosController < ApplicationController
   # GET /usuarios
   # GET /usuarios.json
   def index
-    @usuarios = Usuario.all
+    if (session[:current_user_id] != nil)
+        redirect_to "/usuarios/" + session[:current_user_id].to_s
+    else
+      redirect_to "/logins"
+    end
+
   end
 
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
-    @usuario = Usuario.find_by(usuario_params[:correo])
-    render json: @usuario
+    if (session[:current_user_id] != nil)
+      @usuario = Usuario.find(session[:current_user_id])
+      if (@usuario == nil)
+        redirect_to "/logins"
+      end
+    else
+      redirect_to "/logins"
+    end
+
   end
 
   # GET /usuarios/new
@@ -22,6 +34,8 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/1/edit
   def edit
+    @usuario = Usuario.find(session[:current_user_id])
+
   end
 
   # POST /usuarios
@@ -45,7 +59,7 @@ class UsuariosController < ApplicationController
     end
 
     if !error
-      redirect_to "/usuarios/me"
+      redirect_to "/usuarios"
     else
       render "new"
     end
