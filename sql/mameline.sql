@@ -12,20 +12,21 @@ create table valor(
   tipomoneda text not null,
   tipomedida text not null 
 );
-create or replace function fvalors() returns trigger as $tvalors$
+create or replace function fvalor() returns trigger as $tvalor$
   begin 
+    new.fecha = (select current_date);
     if (select max(idvalor) from valor) is null then new.idvalor = 1;
     return null;
     end if;
     new.idvalor = (select max(idvalor) from valor) + 1;
     return new;
   end;
-$tvalors$ language plpgsql;
+$tvalor$ language plpgsql;
 
-create trigger tvalors
+create trigger tvalor
 before insert on valor
 for each row
-execute procedure fvalors()
+execute procedure fvalor()
 
 
 --tabla avion
@@ -141,18 +142,12 @@ insert into usuario
 values (/*'string'*/, /*(select max(dni) from usuario) + 1*/, /*'string'*/, /*'string'*/, /*'string'*/, /*'string'*/, /*'char'*/);
 
 
---tarjetas que posee el usuario
-CREATE TABLE tarjetausuario(
-  noTarjeta varchar(16) not null references tarjetas,
-  idusuario int not null references usuarios(idusuario)
-);
-
-create table tarjetas(
+create table tarjeta(
   noTarjeta varchar(16) not null primary key,
-  valor int,
-  saldo double precision
+  valor int not null,
+  idusuario int not null references usuarios(idusuario),
+  disponible varchar(1) not null check(disponible in ('y', 'n'))
 );
-
 
 --tabla promocion
 CREATE TABLE promocions(
@@ -169,7 +164,7 @@ primary key (idPromocion);
 
 create or replace function fpromocions() returns trigger as $tpromocions$
   begin 
-    new.porcentaje = 1 - new.porcentaje;
+    new.porcentaje = 1 - (new.porcentaje / 100);
     if (select max(idpromocion) from promocions) is null then new.idpromocion = 1;
     return new;
     end if;
@@ -277,8 +272,8 @@ create table aplica(
 );
 
 create table administrador (
-  idadministrador integer primary key,
   correo text not null references logins(correo),
   nombres text not null,
-  apellidos text not null
+  apellidos text not null,
+  unique (correo)
 );
