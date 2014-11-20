@@ -1,0 +1,33 @@
+-----
+3.6.0
+-----
+
+* Fixed HTTP range headers for negative length larger than content size.
+* Disabled universal wheel generation as wsgiserver has Python duality.
+* Pull Request #42: Correct TypeError in ``check_auth`` when encrypt is used.
+* Pull Request #59: Correct signature of HandlerWrapperTool.
+* Pull Request #60: Fix error in SessionAuth where login_screen was
+  incorrectly used.
+* Issue #1077: Support keyword-only arguments in dispatchers (Python 3).
+* Issue #1019: Allow logging host name in the access log.
+* Pull Request #50: Fixed race condition in session cleanup.
+
+-----
+3.5.0
+-----
+
+* Issue #1301: When the incoming queue is full, now reject additional
+  connections. This functionality was added to CherryPy 3.0, but
+  unintentionally lost in 3.1.
+
+-----
+3.4.0
+-----
+
+* Miscellaneous quality improvements.
+
+-----
+3.3.0
+-----
+
+CherryPy adopts semver.

@@ -2,14 +2,12 @@
 
 one:
   idpromocion: 1
-  codigoPromocion: MyString
   porcentaje: 
-  fechaentrada: 2014-11-09
-  vigencia: 2014-11-09
+  fechaentrada: 2014-11-19
+  vigencia: 2014-11-19
 
 two:
   idpromocion: 1
-  codigoPromocion: MyString
   porcentaje: 
-  fechaentrada: 2014-11-09
-  vigencia: 2014-11-09
+  fechaentrada: 2014-11-19
+  vigencia: 2014-11-19

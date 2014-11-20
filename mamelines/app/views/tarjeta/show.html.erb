@@ -1,4 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Notarjeta:</strong>
+  <%= @tarjetum.notarjeta %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @tarjetum.valor %>
+</p>
+
+<p>
+  <strong>Idusuario:</strong>
+  <%= @tarjetum.idusuario %>
+</p>
+
+<p>
+  <strong>Disponible:</strong>
+  <%= @tarjetum.disponible %>
+</p>
+
 <%= link_to 'Edit', edit_tarjetum_path(@tarjetum) %> |
 <%= link_to 'Back', tarjeta_path %>

@@ -1,0 +1,17 @@
+import PostgreSQL
+
+import cherrypy
+
+def connect(thread_index):
+    cherrypy.thread_data.db = PostgreSQL.connect('localhost', 'mamelines', 'mame', 'mamelines');
+cherrypy.engine.subscribe('start_thread', connect)
+
+class Root:
+    def index(self):
+        c = cherrypy.thread_data.db.cursor()
+        c.execute('select count(*) from avion')
+        res = c.fetchone()
+        c.close()
+        return "<html> <body> Hello you have %d avions in you table</body> </html>" % res[0]
+    index.exposed = True
+cherrypy.quickstart(Root())

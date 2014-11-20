@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :tarjeta
+
+  resources :promocions
+
   get 'logins/logout'
 
   get 'logins/intento_login'
@@ -20,8 +24,6 @@ Rails.application.routes.draw do
     resources :vuelos
 
   end
-
-  resources :tarjeta
 
   get 'aviones/index'
 

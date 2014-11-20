@@ -18,7 +18,7 @@ class TarjetaControllerTest < ActionController::TestCase
 
   test "should create tarjetum" do
     assert_difference('Tarjetum.count') do
-      post :create, tarjetum: {  }
+      post :create, tarjetum: { disponible: @tarjetum.disponible, idusuario: @tarjetum.idusuario, notarjeta: @tarjetum.notarjeta, valor: @tarjetum.valor }
     end
 
     assert_redirected_to tarjetum_path(assigns(:tarjetum))
@@ -35,7 +35,7 @@ class TarjetaControllerTest < ActionController::TestCase
   end
 
   test "should update tarjetum" do
-    patch :update, id: @tarjetum, tarjetum: {  }
+    patch :update, id: @tarjetum, tarjetum: { disponible: @tarjetum.disponible, idusuario: @tarjetum.idusuario, notarjeta: @tarjetum.notarjeta, valor: @tarjetum.valor }
     assert_redirected_to tarjetum_path(assigns(:tarjetum))
   end
 
