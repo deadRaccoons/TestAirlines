@@ -155,14 +155,16 @@ CREATE TABLE promocions(
   porcentaje double precision not null check(porcentaje > 0 and porcentaje < 1),
   fechaEntrada date not null,
   vigencia date not null check(vigencia > fechaEntrada),
+  descripcion text not null,
+  activo varchar(1) not null,
   unique (porcentaje, fechaEntrada, vigencia)
 );
---insert into promocion values (10, 0.30, '12-11-2014', '13-11-2014')
+
 alter table promocions
 add constraint proomocionsc
 primary key (idPromocion);
 
-create or replace function fpromocions() returns trigger as $tpromocions$
+create or replace function fpromocion() returns trigger as $tpromocion$
   begin 
     new.porcentaje = 1 - (new.porcentaje / 100);
     if (select max(idpromocion) from promocions) is null then new.idpromocion = 1;
@@ -171,16 +173,13 @@ create or replace function fpromocions() returns trigger as $tpromocions$
     new.idpromocion = (select max(idpromocion) from promocions) + 1;
     return new;
   end;
-$tpromocions$ language plpgsql;
+$tpromocion$ language plpgsql;
 
-create trigger tpromocions
+create trigger tpromocion
 before insert on promocions
 for each row
-execute procedure fpromocions()
+execute procedure fpromocion()
 
---como insertar en la tabla promocion
-insert into promocion
-values (/*(select max(idPromocion) from promocion) + 1*/, /*'string'*/, /*double*/, /*'dd-MM-yyyy'*/, /*'dd-MM-yyyy'*/);
 
 --tabla viaje
 CREATE TABLE viaje(

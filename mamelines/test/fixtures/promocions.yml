@@ -3,11 +3,15 @@
 one:
   idpromocion: 1
   porcentaje: 
-  fechaentrada: 2014-11-19
-  vigencia: 2014-11-19
+  fechaentrada: 2014-11-20
+  vigencia: 2014-11-20
+  descripcion: MyText
+  activo: MyString
 
 two:
   idpromocion: 1
   porcentaje: 
-  fechaentrada: 2014-11-19
-  vigencia: 2014-11-19
+  fechaentrada: 2014-11-20
+  vigencia: 2014-11-20
+  descripcion: MyText
+  activo: MyString

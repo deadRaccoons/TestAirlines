@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :tarjeta
-
   resources :promocions
+
+  resources :tarjeta
 
   get 'logins/logout'
 

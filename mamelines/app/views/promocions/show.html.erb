@@ -20,5 +20,15 @@
   <%= @promocion.vigencia %>
 </p>
 
+<p>
+  <strong>Descripcion:</strong>
+  <%= @promocion.descripcion %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @promocion.activo %>
+</p>
+
 <%= link_to 'Edit', edit_promocion_path(@promocion) %> |
 <%= link_to 'Back', promocions_path %>
