@@ -81,19 +81,6 @@ add constraint ciudadsc
 primary key (nombre);
 drop table ciudads
 
---como insertar en la tabla ciudad
-insert into ciudad
-values (/* 'string' */, /* 'string' */, /*float*/, /*int*/);
-
-/*
-insert into ciudad
-values ('Acapulco', 'Mexico', 400.00, 30);
-insert into ciudad
-values ('Monterrey', 'Mexico', 650.00, 200);
-insert into ciudad
-values ('Guadalajara', 'Mexico', 500.00, 70);
-*/
-
 
 --tabla login
 CREATE TABLE logins(
@@ -154,7 +141,7 @@ CREATE TABLE promocions(
   idPromocion integer not null,
   porcentaje double precision not null check(porcentaje > 0 and porcentaje < 1),
   fechaEntrada date not null,
-  vigencia date not null check(vigencia > fechaEntrada),
+  vigencia date not null check(vigencia >= fechaEntrada),
   descripcion text not null,
   activo varchar(1) not null,
   unique (porcentaje, fechaEntrada, vigencia)
@@ -167,6 +154,8 @@ primary key (idPromocion);
 create or replace function fpromocion() returns trigger as $tpromocion$
   begin 
     new.porcentaje = 1 - (new.porcentaje / 100);
+    if new.fechaentrada < (select current_date) then return new;
+    end if;
     if (select max(idpromocion) from promocions) is null then new.idpromocion = 1;
     return new;
     end if;
