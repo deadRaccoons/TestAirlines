@@ -137,7 +137,7 @@ create table tarjeta(
 );
 
 --tabla promocion
-CREATE TABLE promocions(
+CREATE TABLE promocion(
   idPromocion integer not null,
   porcentaje double precision not null check(porcentaje > 0 and porcentaje < 1),
   fechaEntrada date not null,
@@ -147,8 +147,8 @@ CREATE TABLE promocions(
   unique (porcentaje, fechaEntrada, vigencia)
 );
 
-alter table promocions
-add constraint proomocionsc
+alter table promocion
+add constraint proomocionc
 primary key (idPromocion);
 
 create or replace function fpromocion() returns trigger as $tpromocion$
@@ -156,16 +156,16 @@ create or replace function fpromocion() returns trigger as $tpromocion$
     new.porcentaje = 1 - (new.porcentaje / 100);
     if new.fechaentrada < (select current_date) then return new;
     end if;
-    if (select max(idpromocion) from promocions) is null then new.idpromocion = 1;
+    if (select max(idpromocion) from promocion) is null then new.idpromocion = 1;
     return new;
     end if;
-    new.idpromocion = (select max(idpromocion) from promocions) + 1;
+    new.idpromocion = (select max(idpromocion) from promocion) + 1;
     return new;
   end;
 $tpromocion$ language plpgsql;
 
 create trigger tpromocion
-before insert on promocions
+before insert on promocion
 for each row
 execute procedure fpromocion()
 

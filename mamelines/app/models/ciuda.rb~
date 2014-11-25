@@ -1,0 +1,2 @@
+class Ciuda < ActiveRecord::Base
+end

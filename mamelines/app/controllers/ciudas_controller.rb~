@@ -1,0 +1,74 @@
+class CiudasController < ApplicationController
+  before_action :set_ciuda, only: [:show, :edit, :update, :destroy]
+
+  # GET /ciudas
+  # GET /ciudas.json
+  def index
+    @ciudas = Ciuda.all
+  end
+
+  # GET /ciudas/1
+  # GET /ciudas/1.json
+  def show
+  end
+
+  # GET /ciudas/new
+  def new
+    @ciuda = Ciuda.new
+  end
+
+  # GET /ciudas/1/edit
+  def edit
+  end
+
+  # POST /ciudas
+  # POST /ciudas.json
+  def create
+    @ciuda = Ciuda.new(ciuda_params)
+
+    respond_to do |format|
+      if @ciuda.save
+        format.html { redirect_to @ciuda, notice: 'Ciuda was successfully created.' }
+        format.json { render :show, status: :created, location: @ciuda }
+      else
+        format.html { render :new }
+        format.json { render json: @ciuda.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /ciudas/1
+  # PATCH/PUT /ciudas/1.json
+  def update
+    respond_to do |format|
+      if @ciuda.update(ciuda_params)
+        format.html { redirect_to @ciuda, notice: 'Ciuda was successfully updated.' }
+        format.json { render :show, status: :ok, location: @ciuda }
+      else
+        format.html { render :edit }
+        format.json { render json: @ciuda.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /ciudas/1
+  # DELETE /ciudas/1.json
+  def destroy
+    @ciuda.destroy
+    respond_to do |format|
+      format.html { redirect_to ciudas_url, notice: 'Ciuda was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_ciuda
+      @ciuda = Ciuda.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def ciuda_params
+      params.require(:ciuda).permit(:nombre, :pais)
+    end
+end

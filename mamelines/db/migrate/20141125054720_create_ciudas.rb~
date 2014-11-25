@@ -1,0 +1,10 @@
+class CreateCiudas < ActiveRecord::Migration
+  def change
+    create_table :ciudas do |t|
+      t.string :nombre
+      t.string :pais
+
+      t.timestamps
+    end
+  end
+end
