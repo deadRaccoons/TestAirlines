@@ -263,5 +263,7 @@ create table administrador (
   correo text not null references logins(correo),
   nombres text not null,
   apellidos text not null,
-  unique (correo)
 );
+alter table administrador
+add constraint adiministradorc
+primary key (correo)
