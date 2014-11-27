@@ -67,7 +67,6 @@ values (/* 'string' */, /* 'string' */, /*int*/, /*int*/, /*'char'*/);
 
 
 --tabla ciudad
---tiempoviaje es en minutos
 drop table ciudads
 CREATE TABLE ciudads(
   nombre text NOT NULL,
@@ -176,16 +175,14 @@ CREATE TABLE viaje(
   origen text not null references ciudads(nombre),
   destino text not null references ciudads(nombre) check(destino <> origen),  
   fechasalida date not null,
-  horasalida time not null,
-  fechallegada date,
-  horallegada time,
-  distancia int,
-  idAvion int not null references avions(idAvion),
-  costoViaje double precision,
+  horasalida time with time zone not null,
+  fechallegada date not null,
+  horallegada time with time zone not null,
+  distancia int not null,
+  costoViaje double precision not null,
   realizado char(1) not null check (realizado in ('y', 'n'))
 );
 alter table viaje
-add column tiempo interval
 add constraint viajec
 primary key (idViaje);
 
@@ -193,15 +190,13 @@ create or replace function fviaje() returns trigger as $tviaje$
   begin 
     if new.fechasalida = (select current_date) then new.date = null;
     end if;
-    new.distancia = (select distancia from ciudads where new.destino = nombre) - (select distancia from ciudads where new.origen = nombre);
-    if new.distancia < 0 then new.distancia = new.distancia * (-1);
-    end if;
-    new.tiempo = cast((cast(new.distancia as double precision)/ cast(180 as double precision)) as double precision) * cast('1 hour' as interval);
-    new.horallegada = new.horasalida + ((cast(new.distancia as double precision)/ cast(180 as double precision)) * cast('01:00' as interval));
-    new.fechallegada = new.fechasalida + new.horasalida + ((cast(new.distancia as double precision)/ cast(1080 as double precision)) * cast('01:00' as interval));
+    new.horasalida = cast(new.horasalida::time without time zone ||' '|| (select zonahora from ciudads where nombre = new.origen) as time with time zone);
+    new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudads where nombre = new.destino);
+    new.fechallegada = cast(cast(((select current_date)+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
     new.costoViaje = new.distancia * (select costomilla from valor);
+    new.realizado = 'n';
     update viaje set realizado = 'y' where fechasalida + horasalida <= (select current_timestamp);
-    if new.idviaje is null then new.idviaje = (select max(idviaje) from viaje) + 1;
+    if (select max(idviaje) from viaje) is null then new.idviaje = 1;
 	return new;
     end if;
     new.idviaje = (select max(idviaje) from viaje) + 1;
