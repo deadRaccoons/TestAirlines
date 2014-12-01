@@ -2,74 +2,15 @@
 import cherrypy
 import hashlib
 from Conexion import *
+from Administrador import *
+from Login import *
+from jinja2 import *
 
 __all__ = ['Administrador']
 
 SESSION_KEY = '_cp_username'
 
-class Administrador(object):
-    
-    _cp_config = {'tools.sessions.on': True}
-
-    def __init__(self, correo, nombres, apellidos):
-        self.correo = correo
-        self.nombres = nombres
-        self.apellidos = apellidos
-        self.c = Conexion()
-
-    def crea(self):
-        return self.c.actualizar("insert into administrador values ('"+ self.correo +"', '"+ self.nombres +"', '"+ self.apellidos +"');")
-
-    def borra(self):
-        return self.c.actualizar("delete from logins where correo = '"+ self.correo +"';")
-
-    def actualiza(self, correo, secreto, activo):
-        c.actualizar("update administrador set nombres = '"+ self.nombres +"', apellidos = '"+ self.apellidos +"' where correo = '"+ self.correo +"';")
-        
-    @staticmethod
-    def getAdministrador(correo):
-        if correo is None:
-            return None
-        else:
-            c = Conexion()
-            a = c.consultar("select * from administrador where correo = '"+ correo +"';")
-            return Administrador(a[0][0], a[0][1], a[0][2])
-
-    @staticmethod
-    def all_():
-        c = Conexion()
-        todos = []
-        for resultado in c.consultar("select * from administrador"):
-            todos.append(Administrador(resultado[0][0], resultado[0][1], resultado[0][2]))
-        return todos
-
-
-
-class Login(object):    
-    def __init__(self, correo, secreto):
-        self.c = Conexion()
-        self.correo = correo
-        self.secreto = secreto
-
-    def crea(self):
-        c.actualiza("insert into logins values('%s', '%s')", self.correo, self.secreto)
-
-    def borra(self):
-        c.actualiza("delete from logins where correo = '%s'", self.correo)
-
-    @staticmethod
-    def getLogin(correo):
-        if correo is None:
-            return None
-        else:
-            c = Conexion()
-            l = c.consultar("select * from logins where correo = '"+ correo +"'")
-            if(l is not None):
-                return Login(l[0][0], l[0][1])
-            else:
-                return None
-        
-
+env = Environment(loader=FileSystemLoader('templates'))
 
 class Admin(object):
     
@@ -81,21 +22,9 @@ class Admin(object):
     @cherrypy.expose
     def login(self):
         if self.us is None:
-           return """<html>
-              <head>
-              </head>
-              <body>
-                <form method="post" action="do_login">
-                  Correo:
-                  <input type="text" value="" name="correo"><br>
-                  Contrasena:
-                  <input type="password" value="" name="secreto"><br>
-                    <button type="submit">Give it now!</button>
-                </form>
-              </body>
-            </html>"""
+            return file('login.html')
         else:
-            raise cherrypy.HTTPRedirect("inicio")
+            raise cherrypy.HTTPRedirect("index")
 
     @cherrypy.expose
     def do_login(self, correo=None, secreto=None):
@@ -115,23 +44,17 @@ class Admin(object):
                     cherrypy.session.regenerate()
                     cherrypy.session[SESSION_KEY] = cherrypy.request.login = correo
                     self.us = correo
-                    raise cherrypy.HTTPRedirect("inicio")
+                    raise cherrypy.HTTPRedirect("index")
                 else:
                     raise cherrypy.HTTPRedirect("login")
 
     @cherrypy.expose
-    def inicio(self):
+    def index(self):
         if self.us is None:
             raise cherrypy.HTTPRedirect("login")
         admin = Administrador.getAdministrador(cherrypy.session[SESSION_KEY])
-        return """<html>
-          <head>
-          </head>
-          <body>
-            """+ admin.nombres +"""
-            <a href="salir">Salir</a>
-          </body>
-        </html>"""
+        html = env.get_template('index.html')
+        return html.render(admin = "Hola que hace?")
                     
     @cherrypy.expose
     def salir(self):
