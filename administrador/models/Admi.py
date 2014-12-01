@@ -27,9 +27,10 @@ class Administrador(object):
           Correo:
           <input type="text" name="correo"><br>
           Contrasena:
-          <input type="text" name="secreto"><br>
+          <input type="password" name="secreto"><br>
           Confirma Contrasena:
-              <button type="submit">Give it now!</button>
+          <input type="password" name="secreto"><br> 
+              <button type="submit">Registrar</button>
         </form>
         </body>
         </html>"""
