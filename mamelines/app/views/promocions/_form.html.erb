@@ -16,10 +16,6 @@
     <%= f.number_field :idpromocion %>
   </div>
   <div class="field">
-    <%= f.label :codigopromocion %><br>
-    <%= f.text_field :codigopromocion %>
-  </div>
-  <div class="field">
     <%= f.label :porcentaje %><br>
     <%= f.text_field :porcentaje %>
   </div>
@@ -30,6 +26,14 @@
   <div class="field">
     <%= f.label :vigencia %><br>
     <%= f.date_select :vigencia %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :activo %><br>
+    <%= f.text_field :activo %>
   </div>
   <div class="actions">
     <%= f.submit %>

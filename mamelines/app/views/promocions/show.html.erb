@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Codigopromocion:</strong>
-  <%= @promocion.codigoPromocion %>
-</p>
-
-<p>
   <strong>Porcentaje:</strong>
   <%= @promocion.porcentaje %>
 </p>
@@ -23,6 +18,16 @@
 <p>
   <strong>Vigencia:</strong>
   <%= @promocion.vigencia %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @promocion.descripcion %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @promocion.activo %>
 </p>
 
 <%= link_to 'Edit', edit_promocion_path(@promocion) %> |

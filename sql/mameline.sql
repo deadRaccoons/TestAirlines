@@ -8,91 +8,77 @@ o si queremos que haya (aparte de la llave primaria) una tupla que no se repita
 create table valor(
   idvalor int primary key check(idvalor > 0 and idvalor < 2),
   costomilla double precision not null,
+  fecha date not null,
   tipomoneda text not null,
   tipomedida text not null 
 );
-create or replace function fvalors() returns trigger as $tvalors$
+create or replace function fvalor() returns trigger as $tvalor$
   begin 
+    new.fecha = (select current_date);
     if (select max(idvalor) from valor) is null then new.idvalor = 1;
     return null;
     end if;
     new.idvalor = (select max(idvalor) from valor) + 1;
     return new;
   end;
-$tvalors$ language plpgsql;
+$tvalor$ language plpgsql;
 
-create trigger tvalors
+create trigger tvalor
 before insert on valor
 for each row
-execute procedure fvalors()
+execute procedure fvalor()
 
-create database mameline;
 
 --tabla avion
-create table avions(
+create table avion(
   idAvion int primary key,
   modelo varchar(6) NOT NULL,
   marca text not null,
   capacidadPrimera int NOT NULL check(capacidadPrimera > 0),
   capacidadTurista int NOT NULL check(capacidadTurista > 0),
-  disponible varchar(1) not null check(disponible in ('y', 'n'))
+  disponible varchar(1) not null check(disponible in ('y', 'n')),
+  fecha date,
+  velocidad integer not null
 );
 
-create or replace function favions() returns trigger as $tavions$
+create or replace function favion() returns trigger as $tavion$
   begin 
-    if (select max(idavion) from avions) is null then new.idAvion = 1;
-    return new
+    if (select max(idavion) from avion) is null then new.idAvion = 1;
+    return new;
     end if;
-    new.idavion = (select max(idavions) from avions) + 1;
+    new.idavion = (select max(idavion) from avion) + 1;
     return new;
   end;
-$tavions$ language plpgsql;
+$tavion$ language plpgsql;
 
-create trigger tavions
-before insert on avions
+create trigger tavion
+before insert on avion
 for each row
-execute procedure favions()
+execute procedure favion()
+
+
+create or replace view avions 
+as select modelo, marca, capacidadprimera, capacidadturista 
+from avion;
 
 --como insertar en la tabla avion
 insert into avion(modelo, marca, capacidadPrimera, capacidadTurista, disponible)
 values (/* 'string' */, /* 'string' */, /*int*/, /*int*/, /*'char'*/);
 
-/*
-insert into avion(modelo, marca, capacidadPrimera, capacidadTurista, disponible)
-values ('AC-90', 'Airbong' , 40, 100, 'y');
-insert into avion(modelo, marca, capacidadPrimera, capacidadTurista, disponible)
-values ('D-23', 'Airbong', 23, 80, 'y');
-insert into avion(modelo, marca, capacidadPrimera, capacidadTurista, disponible)
-values ('A-12D', 'McMarell', 20, 60, 'y');
-*/
-
 
 --tabla ciudad
---tiempoviaje es en minutos
 drop table ciudads
 CREATE TABLE ciudads(
   nombre text NOT NULL,
   pais text NOT NULL,
   distancia int NOT NULL check(distancia >= 0),
-  descripcion text not null
+  descripcion text not null,
+  zonahoraria text not null
 );
 alter table ciudads
 add constraint ciudadsc
 primary key (nombre);
 drop table ciudads
-
---como insertar en la tabla ciudad
-insert into ciudad
-values (/* 'string' */, /* 'string' */, /*float*/, /*int*/);
-
-/*
-insert into ciudad
-values ('Acapulco', 'Mexico', 400.00, 30);
-insert into ciudad
-values ('Monterrey', 'Mexico', 650.00, 200);
-insert into ciudad
-values ('Guadalajara', 'Mexico', 500.00, 70);
-*/
 
 
 --tabla login
@@ -105,32 +91,6 @@ alter table logins
 add constraint loginc
 primary key (correo);
 
---como insertar en la tabla login
-insert into login
-values (/*'string'*/, /*'string'*/, /*'char'*/);
-
-/*
-insert into login
-values ('dsaa@hotmail.com', '1234', 'n');
-insert into login
-values ('vfgbf@hotmail.com', '123ab', 'n');
-insert into login
-values ('sffd@hotmail.com', '23ge', 'n');
-insert into login
-values ('htdf@hotmail.com', 'abcs', 'n');
-insert into login
-values ('sggds@hotmail.com', 'porsa', 'n');
-insert into login
-values ('lksd@hotmail.com', 'perd', 'n');
-insert into login
-values ('kfds@hotmail.com', 'jghg', 'n');
-insert into login
-values ('str@hotmail.com', 'str', 'n');
-insert into login
-values ('stri@hotmail.com', 'ring', 'n');
-insert into login
-values ('strin@hotmail.com', 'trin', 'n');
-*/
 
 --tabla usuario
 CREATE TABLE usuarios(
@@ -150,9 +110,10 @@ PRIMARY KEY (idusuario);
 
 create or replace function fusuarios() returns trigger as $tusuarios$
   begin 
-    if (select min(idusuario) from usuarios) <> 1 then new.usuario = 1;
+    if (select max(idusuario) from usuarios) is null then new.usuario = 1;
+    return new;
     end if;
-    else new.idusuario = (select max(idusuario) from usuarios) + 1;
+    new.idusuario = (select max(idusuario) from usuarios) + 1;
     return new;
   end;
 $tusuarios$ language plpgsql;
@@ -167,51 +128,46 @@ insert into usuario
 values (/*'string'*/, /*(select max(dni) from usuario) + 1*/, /*'string'*/, /*'string'*/, /*'string'*/, /*'string'*/, /*'char'*/);
 
 
---tarjetas que posee el usuario
-CREATE TABLE tarjetausuario(
-  noTarjeta varchar(16) not null references tarjetas,
-  idusuario int not null references usuarios(idusuario)
-);
-
-create table tarjetas(
+create table tarjeta(
   noTarjeta varchar(16) not null primary key,
-  valor int,
-  saldo double precision
+  valor int not null,
+  idusuario int not null references usuarios(idusuario),
+  disponible varchar(1) not null check(disponible in ('y', 'n'))
 );
-
 
 --tabla promocion
-CREATE TABLE promocions(
+CREATE TABLE promocion(
   idPromocion integer not null,
   porcentaje double precision not null check(porcentaje > 0 and porcentaje < 1),
   fechaEntrada date not null,
-  vigencia date not null check(vigencia > fechaEntrada),
+  vigencia date not null check(vigencia >= fechaEntrada),
+  descripcion text not null,
+  activo varchar(1) not null,
   unique (porcentaje, fechaEntrada, vigencia)
 );
---insert into promocion values (10, 0.30, '12-11-2014', '13-11-2014')
-alter table promocions
-add constraint proomocionsc
+
+alter table promocion
+add constraint proomocionc
 primary key (idPromocion);
 
-create or replace function fpromocions() returns trigger as $tpromocions$
+create or replace function fpromocion() returns trigger as $tpromocion$
   begin 
-    new.porcentaje = 1 - new.porcentaje;
-    if (select max(idpromocion) from promocions) is null then new.idpromocion = 1;
+    new.porcentaje = 1 - (new.porcentaje / 100);
+    if new.fechaentrada < (select current_date) then return new;
+    end if;
+    if (select max(idpromocion) from promocion) is null then new.idpromocion = 1;
     return new;
     end if;
-    new.idpromocion = (select max(idpromocion) from promocions) + 1;
+    new.idpromocion = (select max(idpromocion) from promocion) + 1;
     return new;
   end;
-$tpromocions$ language plpgsql;
+$tpromocion$ language plpgsql;
 
-create trigger tpromocions
-before insert on promocions
+create trigger tpromocion
+before insert on promocion
 for each row
-execute procedure fpromocions()
+execute procedure fpromocion()
 
---como insertar en la tabla promocion
-insert into promocion
-values (/*(select max(idPromocion) from promocion) + 1*/, /*'string'*/, /*double*/, /*'dd-MM-yyyy'*/, /*'dd-MM-yyyy'*/);
 
 --tabla viaje
 CREATE TABLE viaje(
@@ -219,33 +175,31 @@ CREATE TABLE viaje(
   origen text not null references ciudads(nombre),
   destino text not null references ciudads(nombre) check(destino <> origen),  
   fechasalida date not null,
-  horasalida time not null,
-  fechallegada date,
-  horallegada time,
-  distancia int,
-  idAvion int not null references avions(idAvion),
-  costoViaje double precision,
+  horasalida time with time zone not null,
+  fechallegada date not null,
+  horallegada time with time zone not null,
+  distancia int not null,
+  costoViaje double precision not null,
   realizado char(1) not null check (realizado in ('y', 'n'))
 );
 alter table viaje
-add column tiempo interval
 add constraint viajec
 primary key (idViaje);
 
 create or replace function fviaje() returns trigger as $tviaje$
   begin 
-    if new.idviaje is null then new.idviaje = (select max(idviaje) from viaje) + 1;
-    end if;
     if new.fechasalida = (select current_date) then new.date = null;
     end if;
-    new.distancia = (select distancia from ciudads where new.destino = nombre) - (select distancia from ciudads where new.origen = nombre);
-    if new.distancia < 0 then new.distancia = new.distancia * (-1);
-    end if;
-    new.tiempo = cast((cast(new.distancia as double precision)/ cast(180 as double precision)) as double precision) * cast('1 hour' as interval);
-    new.horallegada = new.horasalida + ((cast(new.distancia as double precision)/ cast(180 as double precision)) * cast('01:00' as interval));
-    new.fechallegada = new.fechasalida + new.horasalida + ((cast(new.distancia as double precision)/ cast(1080 as double precision)) * cast('01:00' as interval));
+    new.horasalida = cast(new.horasalida::time without time zone ||' '|| (select zonahora from ciudads where nombre = new.origen) as time with time zone);
+    new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudads where nombre = new.destino);
+    new.fechallegada = cast(cast(((select current_date)+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
     new.costoViaje = new.distancia * (select costomilla from valor);
+    new.realizado = 'n';
     update viaje set realizado = 'y' where fechasalida + horasalida <= (select current_timestamp);
+    if (select max(idviaje) from viaje) is null then new.idviaje = 1;
+	return new;
+    end if;
+    new.idviaje = (select max(idviaje) from viaje) + 1;
     return new;
   end;
 $tviaje$ language plpgsql;
@@ -255,12 +209,7 @@ before insert on viaje
 for each row
 execute procedure fviaje()
 
-insert into viaje values(null, 'Mexico', 'Ciudad de México', '13-11-2014', '16:00', null, null, null, 3, null, 'n', null)
---como insertar en la tabla viaje
-insert into viaje
-values (/*(select max(idViaje) from viaje) + 1*/, /*'string'*/, /*'string'*/, /*'dd-MM-yyyy'*/, /*'string'*/, /*'string'*/, /*int*/, /*double*/);
 insert into viaje values (4, 'Mexico', 'Ciudad de México', '10-11-2014', '14:00', '01:00', null, 15, 30.00, 'n');
-values (/*(select max(idViaje) from viaje) + 1*/, /*'string'*/, /*'string'*/, /*'dd-MM-yyyy'*/, /*'string'*/, /*'string'*/, /*int*/, /*double*/);
 
 /*
 --tabla asignado
@@ -275,7 +224,7 @@ unique (idViaje);
 
 
 --tabla viajepromocion
-CREATE TABLE viajepromocion(
+CREATE TABLE promocionespecial(
   idViaje serial not null references viaje(idViaje),
   idpromocion serial not null references promocion(idpromocion),
   unique (idViaje)
@@ -283,16 +232,33 @@ CREATE TABLE viajepromocion(
 
 
 --tabla pasajero (los usuarios que han viajado y los que viajes han tomado)
-CREATE TABLE pasajero(
-  dni serial not null references usuario(dni),
+CREATE TABLE boleto(
+  idboleto integer,
+  idusuario serial not null references usuario(idusuario),
   idViaje serial not null,
   clase text not null check (clase in ('Primera', 'Turista')),
-  asiento integer not null
+  asiento integer not null,
+  fechasalida date,
+  horasalida time,
+  fechallegada date,
+  horallegada time,
+  costototal double precision
 );
 alter table pasajero
 add constraint pasajeroc1
 unique (idViaje, clase, asiento);
 
---como insertar en pasajero
-insert into pasajero
-values (/*int*/, /*int*/, /*'string'*/, /*int*/);
+create table aplica(
+  idviaje integer references viaje(idviaje),
+  codigopromocion integer references promocions(codigopromocion),
+  idusuario integer references usuarios(idusuario)
+);
+
+create table administrador (
+  correo text not null references logins(correo),
+  nombres text not null,
+  apellidos text not null,
+);
+alter table administrador
+add constraint adiministradorc
+primary key (correo)

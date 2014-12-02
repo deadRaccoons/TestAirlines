@@ -1,0 +1,54 @@
+var geocoder;
+var map;
+var addresses;
+var results;
+var dist;
+var markersArray = [];
+var bounds = new google.maps.LatLngBounds();
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+function initialize() {
+    geocoder = new google.maps.Geocoder();
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    address1 = document.getElementById("viaje_origen").value;
+    address2 = document.getElementById("viaje_destino").value;
+    var b = new google.maps.LatLng(0, 0);
+    var a = {zoom: 1, center: b, mapTypeId: google.maps.MapTypeId.ROADMAP,scaleControl: true};
+    if (document.getElementById("viaje_distancia")) {
+	    distance(address1, address2)
+    }
+}
+function distance(b, a) {
+    if (!geocoder) {
+	return"Error, no geocoder"
+    }
+    addresses = new Array(2);
+    addresses[0] = b;
+    addresses[1] = a;
+    results = new Array(2);
+    results[0] = new Array(2);
+    results[1] = new Array(2);
+    results[0][0] = 0;
+    results[0][1] = 0;
+    results[1][0] = 0;
+    results[1][1] = 0.87;
+    geocoded(1)
+}
+function geocoded(a) {
+    geocoder.geocode({address: addresses[a]}, function(d, c) {
+	if (c == google.maps.GeocoderStatus.OK) {
+	    results[a][0] = parseFloat(d[0].geometry.location.lat());
+	    results[a][1] = parseFloat(d[0].geometry.location.lng());
+	    a--;
+	    if (a >= 0) {
+		geocoded(a)
+	    } else {
+		var b = new google.maps.LatLng(results[0][0], results[0][1]);
+		var f = new google.maps.LatLng(results[1][0], results[1][1]);
+		dist = google.maps.geometry.spherical.computeDistanceBetween(b, f) / 1000;
+		var e = 0.621371192 * dist;
+		document.getElementById("viaje_distancia").value = e.toFixed(2);	    }
+	}
+    })
+}
+}

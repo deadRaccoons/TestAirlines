@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <form method="post" action="/registrarse">
+      Nombres:
+      <input type="password" value="" name="nombres"><br>
+      Apellidos:
+      <input type="password" value="" name="apellidos"><br>
+      Correo:
+      <input type="text" value="" name="correo"><br>
+      Contrasena:
+      <input type="password" value="" name="secreto"><br>
+      Confirma Contrasena:
+      <input type="password" value="" name="secreto"><br>
+      <button type="submit">Entrar</button></br>
+      <a href="registro">Registrarse</a>
+    </form>
+  </body>
+</html>
