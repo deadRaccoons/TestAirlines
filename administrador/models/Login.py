@@ -7,10 +7,10 @@ class Login(object):
         self.secreto = secreto
 
     def crea(self):
-        c.actualiza("insert into logins values('%s', '%s')", self.correo, self.secreto)
+        return self.c.actualizar("insert into logins values('"+ self.correo +"', '"+self.secreto +"', 'y');")
 
     def borra(self):
-        c.actualiza("delete from logins where correo = '%s'", self.correo)
+        return self.c.actualizar("delete from logins where correo = '"+ self.correo +"';")
 
     @staticmethod
     def getLogin(correo):

@@ -9,7 +9,7 @@ class Administrador(object):
         self.c = Conexion()
 
     def crea(self):
-        return self.c.actualizar("insert into administrador values ('"+ self.correo +"', '"+ self.nombres +"', '"+ self.apellidos +"');")
+        return self.c.actualizar("insert into administrador values('"+ self.correo +"', '"+ self.nombres +"', '"+ self.apellidos +"')")
 
     def borra(self):
         return self.c.actualizar("delete from logins where correo = '"+ self.correo +"';")
@@ -24,7 +24,9 @@ class Administrador(object):
         else:
             c = Conexion()
             a = c.consultar("select * from administrador where correo = '"+ correo +"';")
-            return Administrador(a[0][0], a[0][1], a[0][2])
+            if a is not None:
+                return Administrador(a[0][0], a[0][1], a[0][2])
+            return a
 
     @staticmethod
     def all_():
@@ -33,3 +35,8 @@ class Administrador(object):
         for resultado in c.consultar("select * from administrador"):
             todos.append(Administrador(resultado[0][0], resultado[0][1], resultado[0][2]))
         return todos
+
+
+admin  = Administrador("kub@hotmail.com", "Jorge", "Ascencio")
+s = admin.crea()
+print s
