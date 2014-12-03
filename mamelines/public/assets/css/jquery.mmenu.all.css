@@ -97,7 +97,9 @@
   font-size: 14px; }
   .mm-list a,
   .mm-list a:hover {
-    text-decoration: none; }
+    text-decoration: none; 
+    color: rgb(255, 255, 255);
+  }
   .mm-list > li {
     position: relative; }
     .mm-list > li > a,
@@ -220,7 +222,7 @@
   height: 25px; }
 
   html.mm-opened .mm-page {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); }
+   /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);*/ }
 
 .mm-menu {
   background: #fff;
@@ -228,8 +230,8 @@
   .mm-menu .mm-list > li:after {
     border-color: rgba(0, 0, 0, 0.15); }
   .mm-menu .mm-list > li > a.mm-subclose {
-    background: rgba(0, 0, 0, 0.1);
-    color: rgba(255, 255, 255, 0.3); }
+    background: rgb(91, 197, 255);
+    color: rgb(250, 250, 250);}
   .mm-menu .mm-list > li > a.mm-subopen:after, .mm-menu .mm-list > li > a.mm-subclose:before {
     border-color: rgba(255, 255, 255, 0.3); }
   .mm-menu .mm-list > li > a.mm-subopen:before {
@@ -1020,7 +1022,7 @@ html.mm-front .mm-slideout {
 
 .mm-menu.mm-front {
   z-index: 1;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);; }
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
 html.mm-opened.mm-next .mm-page {
   box-shadow: none; }
@@ -1069,7 +1071,7 @@ html.mm-opening .mm-menu.mm-front, html.mm-opening .mm-menu.mm-next {
 	jQuery.mmenu themes extension CSS
 */
 html.mm-opened.mm-light .mm-page {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
 .mm-menu.mm-light {
   background: #f3f3f3;
@@ -1136,7 +1138,7 @@ html.mm-opened.mm-light .mm-page {
   background: #4bd963; }
 
 html.mm-opened.mm-white .mm-page {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
 .mm-menu.mm-white {
   background: white;
