@@ -1,0 +1,40 @@
+<li></li>
+<% if @usuario %>
+  <li>
+  <a href= <%= "/usuarios/" + @usuario.id.to_s %>>
+    <%= @usuario.nombres %> </a>
+    <ul>
+        <li><a href="/nosotros/aviones/">Mis vuelos</a></li>
+        <li><a href="/nosotros/contacto/">Configuracion</a></li>
+        <li><a href="/nosotros/privacidad/">Comprar millas</a></li>
+        <li><a href="/logins/logout">Cerrar Sesion</a></li>
+
+     </ul>    
+  </li>
+<% end %>
+<% if !@usuario %>
+  <li>
+   <a id="login" class="no-hover">
+  <button >Ingresar</button>
+  <button id="registro">Registrarse</button>
+   </a> 
+   </li>
+
+<% end %>
+
+  <li><a href="/">Inicio</a></li>
+  <li>
+     <a href="/nosotros/">Nosotros</a>
+     <ul>
+        <li><a href="/nosotros/aviones/">Aviones</a></li>
+        <li><a href="/nosotros/contacto/">Contacto</a></li>
+        <li><a href="/nosotros/privacidad/">Politicas de privacidad</a></li>
+     </ul>
+  </li>
+  <li><a href="/contact/">Contact</a></li>
+
+  <% if @usuario %>
+<%= link_to 'Logout', "/logins/logout" %> 
+<% end %>
+
+
