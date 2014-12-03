@@ -2,95 +2,100 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/assets/css/font.css">
 
+<link rel="stylesheet" type="text/css" href="/assets/css/jquery.mmenu.all.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+
 <script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.mmenu.min.all.js"></script>
 <script type="text/javascript">
+      $(function() {
+        var $menu = $('nav#menu'),
+          $html = $('html, body');
 
-$( document ).ready(function() {
-  var size = 256;
-  var min_size = 64;
-    $(window).scroll(function() {
-        var $myDiv = $('#head');
-        var $mark = $("#mark");
-        var st = $(this).scrollTop();
-        var init = $myDiv.height();
-   
+        $menu
+          .mmenu()
+          .find( 'a' )
+          .on( 'click',
+            function()
+            {
+              var href = $(this).attr( 'href' );
+              $menu.one(
+                'closed.mm',
+                function()
+                {
+                  setTimeout(
+                    function()
+                    {
+                      $html.animate({
+                        scrollTop: $( href ).offset().top
+                      }); 
+                    }, 10
+                  );  
+                }
+              );
+            }
+          )
+          .end()
+          .find( 'li' )
+          .first()
+          .trigger( 'setSelected' );
+      });
+    </script>
 
-        if(size - st >= min_size) {
-          $myDiv.removeClass("hover");
-          $mark.css({top:150-st})
-          $myDiv.height(size- st);
-          $mark.removeClass("m_title");
-          $("#clouds").show();
 
-          $("#page_nav").hide();
 
-        }
-
-        else {
-          $mark.css({top:0})
-          $myDiv.height(min_size);
-          $myDiv.addClass("hover");
-          $mark.addClass("m_title")
-          $("#clouds").hide();
-          $("#page_nav").show();
-        }
-        
-    }).scroll();
-});
-
-</script>
 </head>
 
 <body>
-  <header class="header" id="head">
-  <div id="clouds"></div>
-  
-    <div id="mark" class="header_title">
-      <span  class="main_title">Mamelines</span>
-      <div class="login">
-      <img></div>
-    </div>  
+<div class="header "><a href="#menu"></a><span class="main_title">Mamelines</span></div>
+<nav id="menu">
+   <ul>
+    <li>
+    <a>
+    <div id="personal-card">
+    Info
     </div>
+    </a>
+    </li>
+
+      <li><a href="/">Home</a></li>
+      <li>
+         <a href="/nosotros/">About us</a>
+         <ul>
+            <li><a href="/nosotros/aviones/">History</a></li>
+            <li><a href="/nosotros/contacto/">The team</a></li>
+            <li><a href="/nosotros/privacidad/">Our address</a></li>
+         </ul>
+      </li>
+      <li><a href="/contact/">Contact</a></li>
+   </ul>
+</nav>
+
+    <div id="page" >
+      
+      <div class="content">
+        <div id="intro">          
+          <p><strong>This is a demo.</strong><br>
+            Click the menu icon to open the menu.</p>
+          
+          <p>The links in the menu link to a section on the same page, some small javascript makes the page scroll smoothly.</p>
+        </div>
+        <div id="first">
+          <p><strong>This is the first section.</strong><br>
+            Notice how the fixed header and footer slide out along with the page.</p>
+
+          <p><a href="#menu">Open the menu.</a></p>
+        </div>
+        <div id="second">
+          <p><strong>This is the second section.</strong><br>
+            <a href="#menu">Open the menu.</a></p>
+        </div>
+        <div id="third">
+          <p><strong>This is the third section.</strong><br>
+            <a href="#menu">Open the menu.</a></p>
+        </div>
+      </div>
+    </div>
+    
   
-    
-
-    <nav id ="page_nav">
-      <ul>
-        <li>
-          <a href="/404.html">Error 404</a>
-        </li>
-        <li>
-          <a href="/avions">Vuelos</a>
-        </li>
-        <li>
-          <a href="/vuelos">Vuelos</a>
-        </li>
-        <li>
-          <a href="/vuelos">Vuelos</a>
-        </li>
-
-      </ul>
-    </nav>
-    
-
-  </header>
-  
-  <div class="user_overlay"> Menu del usuario </div>
-
-  <div id="main_wrapper">
-    <section>
-      Acá detro todo el contenido
-    </section>
-
-
-  </div>
-
-  <footer>
-    
-  </footer>
-
-
 </body>
-
-</html>

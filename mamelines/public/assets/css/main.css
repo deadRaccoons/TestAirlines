@@ -16,6 +16,33 @@ header {
 	z-index: 50;
 }
 
+#personal-card {
+	height: 200px;
+
+}
+
+.main_title {
+	position: relative;
+	left: 50px;
+	font-size: 37px;
+	top: 10px;
+	color: rgb(255, 255, 255);
+}
+
+.header {
+	position: fixed;
+	top: 0;
+	height: 64px;
+	width: 100%;
+	background: rgb(91, 197, 255);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+#page {
+	position: relative;
+	top: 70px;
+}
+
 .header_title {
 	position: relative;
 	color: #fff;
@@ -31,12 +58,15 @@ header {
 }
 
 .main_title:before {
-	background: no-repeat url("../images/logo.png") right center;
-	background-size: contain;
-	content: '';
-	float: left;
-	height: 1.5em;
-	width: 1.5em;
+background: no-repeat url("../images/logo.png") right center;
+background-size: contain;
+content: '';
+float: left;
+height: 1.5em;
+width: 1.5em;
+left: -4px;
+top: -8px;
+position: relative;
 }
 
 #main_wrapper {
@@ -44,27 +74,7 @@ header {
 	top: 300px;
 }
 
-nav {
-	display: none;
-	width: 100%;
-	display: block;
-	line-height: 1.5;
-	height: 3em;
-	background-color: rgba(3, 169, 244,0.7);
-}
 
-nav > ul {
-	list-style: none;
-	width: 1160px;
-	position: relative;
-	margin: 0 auto;
-}
-
-nav ul li {
-	padding: 1em;
-	position: relative;
-	float: left;
-}
 
 section {
 	width: 1160px;
