@@ -32,6 +32,7 @@
 });
 
  $(function(){
+
   $("#login").on('click',function(e){
     var request = $.ajax({
       url: "/logins/",
@@ -40,6 +41,12 @@
     request.done(function( msg ) {
       $("#overlay").show();
       $( "#overlay" ).html( msg );
+    });
+
+    $('#finder').blurjs({
+      source: '#iddi',
+      radius: 50,
+      overlay: 'rgba(255,255,255,0.4)'
     });
  
   })
