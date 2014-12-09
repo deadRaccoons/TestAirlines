@@ -103,13 +103,18 @@ create table horas(
   destino text references ciudads(nombre),
   fechasalida date,
   horasalida time with time zone,
+  distancia int not null,
   tiempo interval,
   fechallegada date,
   horallegada time with time zone
 );
+alter table horas
+add constraint horasc
+primary key (origen, destino, fechasalida, horasalida);
 create or replace function fhoras() returns trigger as $thoras$
   begin
     new.horasalida = cast(new.horasalida::time without time zone ||' '|| (select zonahora from ciudads where nombre = new.origen) as time with time zone);
+    new.tiempo = cast((new.distancia/180 * 60) ||' minutes' as interval);
     new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudads where nombre = new.destino);
     new.fechallegada = cast(cast(((select current_date)+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
     return new;
@@ -121,7 +126,8 @@ before insert on horas
 for each row
 execute procedure fhoras()
 
-insert into horas values ('Ciudad de México', 'Berlin', (select current_date), (select current_time), '02:30', null, null);
-insert into horas values ('Berlin', 'Ciudad de México', (select current_date), (select current_time), '02:30', null, null);
+
+insert into horas values ('Ciudad de México', 'Berlin', (select current_date), (select current_time), 1360, null, null, null);
+insert into horas values ('Berlin', 'Ciudad de México', (select current_date), (select current_time), 1360, null, null, null);
 select '18:00:00 CST';
 select * from horas
