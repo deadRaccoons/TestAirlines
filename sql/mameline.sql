@@ -197,6 +197,7 @@ create or replace function fviaje() returns trigger as $tviaje$
     new.costoViaje = cast(new.distancia * (select costomilla from valor) as double precision);
     new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudads where nombre = new.destino);
     new.fechallegada = cast(cast(((select current_date)+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
+    new.realizado = 'n';
     if (select max(idviaje) from viaje) is null then new.idviaje = 1;
 	return new;
     end if;
