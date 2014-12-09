@@ -1,0 +1,23 @@
+<h1>Listing api_aviones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @api_aviones.each do |api_avione| %>
+      <tr>
+        <td><%= link_to 'Show', api_avione %></td>
+        <td><%= link_to 'Edit', edit_api_avione_path(api_avione) %></td>
+        <td><%= link_to 'Destroy', api_avione, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Avione', new_api_avione_path %>

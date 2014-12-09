@@ -1,0 +1,36 @@
+
+<head>
+<link rel="stylesheet" type="text/css" href="/assets/css/font.css">
+
+<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+<script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
+
+</head>
+<section>
+
+
+  <ul id="avions">
+     <% @aviones.each do |avione| %>
+      <li>
+        <%= image_tag("/assets/aviones/" + avione.modelo + ".jpg") -%>
+        <div class="info_avion">
+          <strong>marca: </strong><span><%= avione.marca %> </span><br/>        
+          <strong>modelo: </strong><span><%= avione.modelo %> </span><br/> 
+          <strong>capacidad: </strong><span><%= avione.capacidadprimera + avione.capacidadturista %> </span><br/> 
+
+        </div>
+      </li>
+    <% end %>
+</ul>
+
+
+<%= link_to 'New avione', new_avione_path %>
+
+    </section>
+
+
+</body>
+
+</html>
+
+

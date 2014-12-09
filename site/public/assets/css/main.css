@@ -1,0 +1,305 @@
+
+body {
+	 font-family: 'RobotoDraft';
+	 font-size: 1em;
+	 background-color: #f9f9f9;
+	color: #212121;
+	-webkit-font-smoothing: antialiased;
+}
+
+header {
+	color :#FFF;
+	background-color: rgba(3, 169, 244,1);
+	height: 256px;
+	width: 100%;
+	position: fixed;
+	z-index: 50;
+}
+
+#personal-card {
+	height: 200px;
+
+}
+
+.main_title {
+	position: relative;
+	left: 50px;
+	font-size: 37px;
+	top: 10px;
+	color: rgb(255, 255, 255);
+}
+
+.header {
+	z-index: 500;
+	position: fixed;
+	top: 0;
+	height: 64px;
+	width: 100%;
+	background: rgba(91, 197, 255,0.26);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.finder {
+position: relative;
+width: 800px;
+margin: 0 auto;
+top: -238px;
+height: 151px;
+background: rgba(255,255,255,0.7);
+padding: 20px;
+}
+.finder h1 {
+	color: rgba(91, 197, 255, 1);
+	font-size: 25px;
+}
+#page {
+	position: relative;
+	top: 70px;
+}
+
+.header_title {
+	position: relative;
+	color: #fff;
+	font-size: 56px;
+	font-weight: 400;
+	line-height: 1.5;
+	margin: 0 auto;
+	overflow: hidden;
+	width: 1160px;
+	top:150px;
+	white-space: nowrap;
+	z-index: 50;
+}
+
+.main_title:before {
+background: no-repeat url("../images/logo.png") right center;
+background-size: contain;
+content: '';
+float: left;
+height: 1.5em;
+width: 1.5em;
+left: -4px;
+top: -8px;
+position: relative;
+}
+
+#main_wrapper {
+	position: relative;
+	top: 300px;
+}
+
+
+
+section {
+	min-width: 1160px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.hover {
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+}
+
+.m_title {
+	font-size: 42px;
+}
+
+a {
+	text-decoration: none;
+	color: rgba(255,255,255,0.8);
+}
+
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+@-webkit-keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+#clouds {
+	position: absolute;
+	opacity: 0.5;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-image: url(../images/bg-clouds.png);
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+	animation: animatedBackground 40s linear infinite;
+	-ms-animation: animatedBackground 40s linear infinite;
+	-moz-animation: animatedBackground 40s linear infinite;
+	-webkit-animation: animatedBackground 40s linear infinite;
+}
+
+.login {
+display: none;
+}
+
+
+footer {
+	width: 100%;
+	height: 300px;
+	background-size: cover;
+	background-image: url(../images/earth.png);
+}
+
+#avions li {
+	width:31%;
+	height: 300px;
+	background-color: #FFF;
+	color: #333;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+	position: relative;
+	float: left; 
+	margin: 1%;
+
+}
+#avions li strong {
+	font-size: 0.8em;
+color: rgba(51, 51, 51, 0.61);
+
+} 
+#avions li img {
+	width: 100%;
+	height: 200px;
+}
+
+section h1 {
+	font-size: 30px;
+}
+
+.info_avion {
+	padding: 2%;
+}
+
+a.no-hover {
+	background-color: transparent;
+}
+
+#overlay {
+left: 10%;
+top: 11%;
+position: fixed;
+width: 80%;
+height: 80%;
+z-index: 300000;
+background-color: rgba(0, 0, 0, 0);
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.56);
+display: none;
+}
+
+.super {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.36);
+}
+
+.card {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+	border-radius: 2px;
+}
+/*************************************************************/
+/* adddssss
+/**************************************************************/
+
+#wrapper{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#ma-ads{
+	position: relative;
+	z-index: 0;
+}
+
+.big {
+	height: 100%;
+}
+.controls a {
+	display: block;
+	height: 100%;
+	width: 50px;
+	position: absolute;
+	color: transparent;
+}
+
+.controls a:hover {
+	background-color: rgba(0,0,0,0.3);
+	border:-1px dotted white;
+	color: transparent;
+
+}
+
+#gallery-next {
+	right: 0;
+}
+
+#gallery-prev {
+	left: 0;
+}
+
+.column-row {
+	width: 195px;
+height: 100%;
+position: relative;
+float: left;
+
+}
+
+.column-row div {
+	margin: 2%;
+}
+
+.adds {
+	height: 100%;
+}
+
+.adds div img {
+	border:none;
+	width: 100%;
+	height: 100%;
+}
+
+.add-msg{
+	font-family: 'RobotoDraft';
+position: relative;
+margin: 0 auto;
+width: 50%;
+top: 20%;
+font-size: 66px;
+color: rgb(255, 255, 255);
+font-weight: 300;
+}
+
+.addn {
+	height: 100%;
+	display: none;
+}
+
+.addn-active {
+	display: block;
+}
+
+.addn a {
+	display: inline;
+	border:none;
+	color: transparent;
+}
+
+.img-container {
+	height: 100%;
+	background-size: cover;
+}
+.finder form {
+	margin-top: 16px;
+	height: 100%;
+	width: 100%;
+}
+
+.semi-title {
+	width: 100%;
+border-bottom: 1px solid rgba(195, 195, 195, 0.28);
+padding-bottom: 8px;
+}

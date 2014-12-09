@@ -1,0 +1,108 @@
+
+<head>
+<link rel="stylesheet" type="text/css" href="/assets/css/font.css">
+
+<link rel="stylesheet" type="text/css" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/materials.css">
+
+
+<script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.mmenu.min.all.js"></script>
+<script type="text/javascript" src="http://blurjs.com/blur.js"></script>
+
+<script type="text/javascript" src="/assets/js/controls.js"></script>
+
+</head>
+
+<body>
+<div id="overlay"></div>
+<div class="header "><a href="#menu"></a><span class="main_title">MameAirlines</span></div>
+<nav id="menu">
+   <ul>
+    <%= render 'card' %>
+   </ul>
+</nav>
+	<div id="wrapper">
+		<section id="ma-ads" class="big">
+			<div class="controls">
+				<a id="gallery-prev" href="#">P</a>
+				<a id="gallery-next" href="#">N</a>
+			</div>
+			<div class="adds">
+					
+				<div class="addn addn-active">
+					<div id="iddi"  class="img-container" style="
+				    background-image: url(/assets/adds/1.jpg);
+					">
+						<div class="add-msg">
+							<h3 id="add-msg-title">Viaja al himalaya</h3>
+						</div>
+					</div>
+				</div>			
+			</div>
+		
+		<div id="finder" class="super card finder ">
+				<div class="semi-title">
+					<h1>Busque vuelos</h1>
+				</div>
+				<form name="fligth-finder">
+					<div class="rows">
+						<div class="column-row">
+							<button>Ida y Vuelta</button>
+							<button>Solo ida </button>
+						</div>
+						<div class="column-row">
+							<div class="pretty-input">
+								<input type="text" class="autocomplete" required placeholder="Salir de">
+								<i class="search-icon"></i>
+								<div id="airport-sugestions" class="airport suggestions">
+								</div>
+							</div>
+							<div class="pretty-calendar">
+								<input type="date"required>
+								<i class="calendar-icon"></i>
+								<div class="date suggestions"></div>
+
+							</div>
+						</div>
+						<div class="column-row">
+							<div class="pretty-input">
+								<input type="text" class="autocomplete" required placeholder="Salir de">
+								<i class="search-icon"></i>
+								<div id="airport-sugestions" class="airport suggestions">
+								</div>
+							</div>
+							<div class="pretty-calendar">
+								<input type="date"required>
+								<i class="calendar-icon"></i>
+								<div class="date suggestions"></div>
+
+							</div>
+						</div>
+						<div class="column-row">
+							<div class="pretty-select">
+								<select>
+									<option> 1 viajero</option>
+									<option> 2 viajero</option>
+									<option> 3 viajero</option>
+									<option> 4 viajero</option>
+								</select>
+							</div>
+							<div class="pretty-search">
+								<div class="search-slider">
+									<button id="plane"></button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			
+		</section>
+	</div>
+    
+  
+</body>
