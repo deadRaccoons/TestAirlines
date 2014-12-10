@@ -3,6 +3,7 @@
 <head>
     <title>MameAirlines</title>
     <script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/controls.js"></script>
     <link rel="stylesheet" href="/assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/new.css">
     <link type="text/css" rel="stylesheet" media="screen and (max-width: 1024px)" href="/assets/css/new.mini.css">
@@ -76,19 +77,21 @@
                 <div class="logo-head">
                     <h2>Bienvenido a</h2>
                     <i class="logo-beautty"></i>
-                    <strong class="logo">Mame<br/>Airlines</strong>
+                    <strong class="logo">MameAirlines</strong>
                 </div>
 
                 <div id="spider-fly">
-
+                    <h2>Busca un vuelo</h2>
                     <div class="origin-destiny">
                         <div class="input">
-                            <input type="text" class="suggested"/>
+                        <i class="logo2">Desde:</i>
+                            <input name="origin-query" type="text" class="suggested"/>
                             <div class="suggestions" id="origin-suggest"></div>
                         </div>
 
                         <div class="input">
-                            <input type="text" class="suggested"/>
+                        <i class="logo2">Hacia:</i>
+                            <input id="destiny-query" type="text" class="suggested"/>
                             <div id="destiny-suggest" class="suggestions"></div>
                         </div>
                     </div>

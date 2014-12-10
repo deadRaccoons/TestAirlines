@@ -1,48 +1,12 @@
  $(function() {
-  
-  $("#gallery-prev").on('click', function(){
-    gallery.prev();
-    blrr();
+
+  $("#origin-query").focus(function() {
+    console.log("focus");
+    $( ".logo-head" ).css( "display", "none" ).fadeOut( 3000 );
   });
+  
+  
 
-  $("#gallery-next").on('click', function(){
-      gallery.next();
-      blrr();
-    });
-
-  blrr();
-
-
-  var $menu = $('nav#menu'),
-  $html = $('html, body');
-
-  $menu
-    .mmenu()
-    .find( 'a' )
-    .on( 'click',
-      function()
-      {
-        var href = $(this).attr( 'href' );
-        $menu.one(
-          'closed.mm',
-          function()
-          {
-            setTimeout(
-              function()
-              {
-                $html.animate({
-                  scrollTop: $( href ).offset().top
-                }); 
-              }, 10
-            );  
-          }
-        );
-      }
-    )
-    .end()
-    .find( 'li' )
-    .first()
-    .trigger( 'setSelected' );
 });
 
 
