@@ -4,6 +4,7 @@ import hashlib
 from Conexion import *
 from Administrador import *
 from Login import *
+from Viaje import *
 from jinja2 import *
 
 __all__ = ['Administrador']
@@ -96,6 +97,10 @@ class Admin(object):
             admin.borra()
             login.borra()
             raise cherrypy.HTTPRedirect("registro")
+
+    @cherrypy.expose
+    def viajeNuevo(self):
+        return file('viajenuevo.html')
             
             
 
