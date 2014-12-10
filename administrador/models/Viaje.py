@@ -20,27 +20,29 @@ class Viaje(object):
         return self.c.actualizar("insert into viaje values(null,'"+ self.origen +"', '"+ self.destino +"', '"+ self.fechasalida +"', '"+ self.horasalida +"', null, null, "+ str(self.distancia) +", null, null, null)")
 
     @staticmethod
-    def getViajes(fecha):
+    def getViajes(fecha, hora):
         if fecha is None:
             return None
         else:
             c = Conexion()
-            viajes = c.consultar("select * from viaje where fechasalida = '"+  +"' and realizado = 'n'")
+            viajes = c.consultar("select * from viaje where fechasalida = '"+ fecha +"' and hora = '"+ hora +"' and realizado = 'n'")
             if viajes is not None:
                 lv = []
                 for viaje in viajes:
-                    lv.append(Viaje(c[0][0], c[0][1], c[0][2], c[0][3], c[0][4], c[0][5], c[0][6], c[0][7], c[0][8], c[0][9], c[0][10]))
+                    v = list(viaje)
+                    lv.append(Viaje(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10]))
                 return lv
-            return c
+            return viajes
         
     @staticmethod
     def all_():
         c = Conexion()
         todos = []
         for resultado in c.consultar("select * from viaje"):
-            todos.append(Viaje(c[0][0], c[0][1], c[0][2], c[0][3], c[0][4], c[0][5], c[0][6], c[0][7], c[0][8], c[0][9], c[0][10]))
+            r = list(resultado)
+            todos.append(Viaje(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[10]))
         return todos
 
-viajes = Viaje.all_()
+viajes = Viaje.getViajes("2014-12-09", "03:00")
 for viaje in viajes:
-    print viaje
+    print viaje.idviaje
