@@ -23,8 +23,6 @@ class Admin(object):
     def login(self):
         try:
             c = self.us[SESSION_KEY]
-            if c is not None:
-                self.us = None
         except:
             self.us = None
         if self.us is None:

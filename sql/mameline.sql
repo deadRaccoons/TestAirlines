@@ -193,10 +193,10 @@ create or replace function fviaje() returns trigger as $tviaje$
   begin 
     update viaje set realizado = 'y' where fechasalida + horasalida <= (select current_timestamp);
     new.horasalida = cast(new.horasalida::time without time zone ||' '|| (select zonahora from ciudads where nombre = new.origen) as time with time zone);
-    new.tiempo = cast((new.distancia/180 * 60) ||' minutes' as interval);
+    new.tiempo = cast((new.distancia/180) ||' hours' as interval);
     new.costoViaje = cast(new.distancia * (select costomilla from valor) as double precision);
     new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudads where nombre = new.destino);
-    new.fechallegada = cast(cast(((select current_date)+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
+    new.fechallegada = cast(cast((new.fechasalida+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
     new.realizado = 'n';
     if (select max(idviaje) from viaje) is null then new.idviaje = 1;
 	return new;

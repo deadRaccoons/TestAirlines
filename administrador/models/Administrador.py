@@ -35,8 +35,3 @@ class Administrador(object):
         for resultado in c.consultar("select * from administrador"):
             todos.append(Administrador(resultado[0][0], resultado[0][1], resultado[0][2]))
         return todos
-
-
-admin  = Administrador("kub@hotmail.com", "Jorge", "Ascencio")
-s = admin.crea()
-print s
