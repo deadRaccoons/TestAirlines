@@ -20,7 +20,7 @@ class Conexion:
                 cur.close()
             except:
                 print "no se puede desconectar consulta"
-        if(len(rows) == 0):
+        if(rows is not None and len(rows) == 0):
             rows = None
         return rows
 

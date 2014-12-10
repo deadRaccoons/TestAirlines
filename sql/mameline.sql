@@ -182,6 +182,7 @@ CREATE TABLE viaje(
   tiempo interval not null,
   costoViaje double precision not null,
   realizado char(1) not null check (realizado in ('y', 'n')),
+  idavion int references avion(idavion) not null,
   unique(origen, destino, fechasalida, horasalida)
 );
 
@@ -193,10 +194,10 @@ create or replace function fviaje() returns trigger as $tviaje$
   begin 
     update viaje set realizado = 'y' where fechasalida + horasalida <= (select current_timestamp);
     new.horasalida = cast(new.horasalida::time without time zone ||' '|| (select zonahora from ciudads where nombre = new.origen) as time with time zone);
-    new.tiempo = cast((new.distancia/180 * 60) ||' minutes' as interval);
+    new.tiempo = cast((new.distancia/180) ||' hours' as interval);
     new.costoViaje = cast(new.distancia * (select costomilla from valor) as double precision);
     new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudads where nombre = new.destino);
-    new.fechallegada = cast(cast(((select current_date)+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
+    new.fechallegada = cast(cast((new.fechasalida+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
     new.realizado = 'n';
     if (select max(idviaje) from viaje) is null then new.idviaje = 1;
 	return new;
@@ -216,9 +217,8 @@ to viaje
 do instead nothing
 
 insert into valor values (null, .12, null, 'dollar', 'milla');
-insert into viaje values (null, 'Berlin', 'Ciudad de México', '09-12-2014', '14:00', null, null, 6700, null, null, 'n');
+insert into viaje values (null, 'Berlin', 'Ciudad de México', '19-12-2014', '14:00', null, null, 6700, null, null, 'n', 1);
 update viaje set costoViaje = 2.3 where idViaje = 1
-delete from viaje
 
 /*
 --tabla asignado
