@@ -4,6 +4,9 @@ body {
 	 font-size: 1em;
 	 background-color: #fDfDfD;
 	color: #232323;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -13,15 +16,19 @@ a, a:visited, a:focus, a:active {
 
 header,nav {
 	color :#212121;
-	height: 65px;
+	height: 63px;
 	width: 100%;
 	z-index: 50;
 }
 
 .logo::before {
 	content: "";
-	
 	background-image: url(/assets/images/logo.png);
+	width: 64px;
+	height: 60px;
+	background-size: 82px;
+	position: absolute;
+	left: -92px;
 }
 
 .clearfix:before,
@@ -40,7 +47,7 @@ header,nav {
 }
 
 .upper {
-	background-size: 65;
+	background-size: 65px;
 	height: 100%;
 	width: 80px;
 	vertical-align: middle;
@@ -105,6 +112,7 @@ header div {
 
 #search-bar {
 	width: 100%;
+	left: 25px;
 }
 
 #search-bar input {
@@ -114,6 +122,8 @@ header div {
 	border: none;
 	padding-left: 45px;
 	font-weight: bold;
+	top: -2px;
+	background: rgba(0, 0, 0, 0);
 }
 
 input:focus, input:active {
@@ -133,7 +143,7 @@ input:focus, input:active {
 
 nav {
 	position: absolute;
-	/* background: rgb(68, 68, 68); */
+	background: white;
 	bottom: 0;
 	overflow: hidden;
 	/*box-shadow: 0px -2px 5px rgba(3, 3, 3, 0.26);*/
@@ -141,20 +151,22 @@ nav {
 
 section#main {
 	width: 100%;
-	height: 80%;
+	height: 100%;
 }
 
 ul li a {
 	display: block;
 	height: 100%;
 	float: left;
-	border-left: 1px dotted rgba(214, 214, 214, 0.99);
+	border-left: 1px solid rgba(235, 235, 235, 0.99);
 	padding-top: 0;
 	color:rgb(65,65,65);
+	text-align: center;
 }
 
 ul li a:hover{
 	background-color: rgb(211, 44, 39);
+	color: white;
 }
 
 #actions {
@@ -168,7 +180,7 @@ background-color: rgb(186, 183, 182);
 }
 
 #gallery {
-	height: 80%;
+height: 90%;
 width: 75%;
 position: absolute;
 background: url(http://tuswallpapersgratis.com/wp-content/uploads/Encima_de_los_Alpes-1280x800-395090.jpeg);
@@ -190,4 +202,71 @@ background-size: cover;
 .active {
 	background-color: rgb(211, 44, 39);
 	color: white;
+}
+
+.logo-head {
+	background-color: rgb(116, 114, 112);
+	height: 21%;
+	padding-left: 7%;
+	padding-top: 7%;
+}
+
+.logo-head>h2 {
+	font-weight: bold;
+font-size: 22px;
+color: rgb(63, 61, 59);
+}
+
+.logo-head .logo {
+	display: block;
+margin-top: 5%;
+font-weight: bold;
+color: rgb(255, 255, 255);
+font-size: 40px;
+left: 32%;
+position: relative;
+
+}
+
+.logo-beautty {
+
+}
+
+
+.p-10 {
+	position: relative;
+	width: 20%;
+}
+
+.p-20 {
+	position: relative;
+	width: 39%;
+}
+
+.links a {
+	width: 25%;
+}
+
+li a i {
+	display: block;
+	position: relative;
+	top: 36%;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.link-co {
+	position: relative;
+	width: 75%;
+	left: -1px;
+}
+
+.link-coco {
+	position: relative;
+	width: 25%;
+	left: -1px;
+}
+
+.link-coco a {
+	width: 33%;
 }
