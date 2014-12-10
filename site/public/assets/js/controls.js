@@ -1,14 +1,45 @@
  $(function() {
 
+  $logo = $("#ll");
+
   $("#origin-query").focus(function() {
     console.log("focus");
-    $( ".logo-head" ).css( "display", "none" ).fadeOut( 3000 );
+    $("#ll4").html($logo);
+
+    $( ".logo-head" ).hide('slow');
+    $("#fly-details").show('slow');
   });
   
+  var destino = $("#destiny-query").val();
+  var sugesstions = "?q=";
+
+  $("#origin-query").keyup(function(e){
+      $.getJSON( "/ciudads", {
+            q: $(this).val(),
+          })
+         .done(function( data ) {
+            $data = $("#origin-suggestions");
+            show_destiny_suggestions(data, $data);
+            $data.show('slow');
+          });
+    });
   
 
 });
 
+
+var show_destiny_suggestions =  function(json, container) {
+  container.empty();
+  var html  = "<ul>";
+    $.each(json, function( index, ciudad ) {
+       html += "<li><a data='hola'><i>"+ ciudad.IATA +"</i><o>" + ciudad.nombre + "</o></a><li>"
+
+    });
+    html  += "</ul>";
+
+    container.append(html);
+    
+}
 
 
 

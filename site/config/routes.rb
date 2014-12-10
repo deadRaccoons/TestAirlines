@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    resources :ciudads
+  end
+
+  resources :ciudads
+
+  get 'ciudades/index'
+
   resources :promocions
 
   resources :tarjeta

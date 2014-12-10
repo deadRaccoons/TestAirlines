@@ -89,7 +89,34 @@ header,nav {
 
 .suggestions {
 	display: none;
-	padding:1%;
+	overflow: hidden;
+	width: 88%;
+	position: absolute;
+	background: rgb(242, 242, 242);
+	max-height: 150px;	
+	z-index: 50;
+}
+
+.suggestions li o {
+	left: 82px;
+	position: absolute;
+	font-weight: bold;
+}
+
+#origin-suggestions li {
+	list-style: none;
+}
+
+#origin-suggestions {
+	padding-top: 0 !important;
+}
+.suggestions li a {
+	display: block;
+height: 39px;
+width: 100%;
+text-align: left;
+border-bottom: 1px solid rgb(219, 215, 215);
+	
 }
 
 nav ul, div ul{
@@ -231,7 +258,7 @@ background-size: cover;
 	color: rgb(63, 61, 59);
 }
 
-.logo-head .logo {
+.logo-head.logo, #ll {
 	display: block;
 	margin-top: 9%;
 	font-weight: bold;
@@ -239,7 +266,7 @@ background-size: cover;
 	font-size: 240%;
 	left: 9%;
 	position: relative;
-
+	width: 50%;
 }
 
 .logo-beautty {
@@ -325,4 +352,8 @@ font-weight: bold;
 
 .input i:before {
 	background-image: url(/assets/images/pin.png)
+}
+
+#fly-details {
+	display: none;
 }

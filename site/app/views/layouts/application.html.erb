@@ -77,53 +77,53 @@
                 <div class="logo-head">
                     <h2>Bienvenido a</h2>
                     <i class="logo-beautty"></i>
-                    <strong class="logo">MameAirlines</strong>
+                    <strong id="ll" class="logo">MameAirlines</strong>
                 </div>
 
                 <div id="spider-fly">
-                    <h2>Busca un vuelo</h2>
+                    <div id="ll4" ><h2 >Busca un vuelo</h2></div>
                     <div class="origin-destiny">
                         <div class="input">
                         <i class="logo2">Desde:</i>
-                            <input name="origin-query" type="text" class="suggested"/>
-                            <div class="suggestions" id="origin-suggest"></div>
+                            <input id="origin-query" type="text" placeholder="Ciudad Origen" class="suggested"/>
+                            <div class="suggestions" id="origin-suggestions"></div>
                         </div>
 
                         <div class="input">
                         <i class="logo2">Hacia:</i>
-                            <input id="destiny-query" type="text" class="suggested"/>
+                            <input id="destiny-query" placeholder="Ciudad Destino" type="text" class="suggested"/>
                             <div id="destiny-suggest" class="suggestions"></div>
                         </div>
                     </div>
+                    <div id="fly-details">
+                        <div class="dates">
+                            <div class="row-date">
+                                <div class="departure-date">
+                                    <h5 class="subtitle">Departure</h5>
+                                    <div class="date">
+                                        <div class="row-3">
+                                            <div class="big left">1</div>
+                                            <div class="little right">May</div>
+                                            <div class="little right">2014</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="dates">
-                        <div class="row-date">
-                            <div class="departure-date">
-                                <h5 class="subtitle">Departure</h5>
-                                <div class="date">
-                                    <div class="row-3">
-                                        <div class="big left">1</div>
-                                        <div class="little right">May</div>
-                                        <div class="little right">2014</div>
+                            <div class="row-date">
+                                <div class="departure-date">
+                                    <h5 class="subtitle">Departure</h5>
+                                    <div class="date deactived">
+                                        <div class="row-3">
+                                            <div class="big left">1</div>
+                                            <div class="little right">May</div>
+                                            <div class="little right">2014</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row-date">
-                            <div class="departure-date">
-                                <h5 class="subtitle">Departure</h5>
-                                <div class="date deactived">
-                                    <div class="row-3">
-                                        <div class="big left">1</div>
-                                        <div class="little right">May</div>
-                                        <div class="little right">2014</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    
                     <div class="persons">
                         <div class="person-row">
                             <div class="persons">
@@ -160,7 +160,8 @@
                             Buscar
                         </button>
                     </div>
-                    
+                </div>
+
                 </div>
 
             </div>

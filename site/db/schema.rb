@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125054720) do
+ActiveRecord::Schema.define(version: 20141112034059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "administrador", id: false, force: true do |t|
-    t.text "correo",    null: false
+  create_table "administrador", primary_key: "correo", force: true do |t|
     t.text "nombres",   null: false
     t.text "apellidos", null: false
   end
@@ -25,7 +24,8 @@ ActiveRecord::Schema.define(version: 20141125054720) do
   add_index "administrador", ["correo"], name: "adminc", unique: true, using: :btree
   add_index "administrador", ["correo"], name: "administrador_correo_key", unique: true, using: :btree
 
-  create_table "avion", primary_key: "idavion", force: true do |t|
+  create_table "avion", id: false, force: true do |t|
+    t.integer "idavion",                    null: false
     t.string  "modelo",           limit: 6, null: false
     t.text    "marca",                      null: false
     t.integer "capacidadprimera",           null: false
@@ -33,11 +33,12 @@ ActiveRecord::Schema.define(version: 20141125054720) do
     t.string  "disponible",       limit: 1
   end
 
-  create_table "ciuda", force: true do |t|
-    t.string   "nombre"
-    t.string   "pais"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "avions", primary_key: "idavion", force: true do |t|
+    t.string  "modelo",           limit: 6, null: false
+    t.text    "marca",                      null: false
+    t.integer "capacidadprimera",           null: false
+    t.integer "capacidadturista",           null: false
+    t.string  "disponible",       limit: 1
   end
 
   create_table "ciudads", primary_key: "nombre", force: true do |t|
@@ -49,11 +50,10 @@ ActiveRecord::Schema.define(version: 20141125054720) do
     t.text    "IATA"
   end
 
-  create_table "horas", id: false, force: true do |t|
-    t.text   "origen"
-    t.text   "destino"
-    t.date   "fechasalida"
-    t.time   "horasalida"
+  create_table "horas", primary_key: "origen", force: true do |t|
+    t.text   "destino",                  null: false
+    t.date   "fechasalida",              null: false
+    t.time   "horasalida",               null: false
     t.string "tiempo",       limit: nil
     t.date   "fechallegada"
     t.time   "horallegada"
@@ -64,20 +64,25 @@ ActiveRecord::Schema.define(version: 20141125054720) do
     t.string "activo",  limit: 1,  null: false
   end
 
-  create_table "promocions", primary_key: "idpromocion", force: true do |t|
-    t.float  "porcentaje",             null: false
-    t.date   "fechaentrada",           null: false
-    t.date   "vigencia",               null: false
-    t.text   "descripcion",            null: false
-    t.string "activo",       limit: 1, null: false
+  create_table "promocion", primary_key: "idpromocion", force: true do |t|
+    t.float "porcentaje",   null: false
+    t.date  "fechaentrada", null: false
+    t.date  "vigencia",     null: false
   end
 
-  add_index "promocions", ["porcentaje", "fechaentrada", "vigencia"], name: "promocions_porcentaje_fechaentrada_vigencia_key", unique: true, using: :btree
+  add_index "promocion", ["porcentaje", "fechaentrada", "vigencia"], name: "promocion_porcentaje_fechaentrada_vigencia_key", unique: true, using: :btree
+
+  create_table "promocions", primary_key: "idpromocion", force: true do |t|
+    t.string "codigopromocion", limit: 10, null: false
+    t.float  "porcentaje",                 null: false
+    t.date   "fechaentrada",               null: false
+    t.date   "vigencia",                   null: false
+  end
 
   create_table "tarjeta", primary_key: "notarjeta", force: true do |t|
-    t.integer "valor",                null: false
-    t.integer "idusuario",            null: false
-    t.string  "disponible", limit: 1, null: false
+    t.integer "idusuario",                          null: false
+    t.integer "valor"
+    t.decimal "saldo",     precision: 10, scale: 2
   end
 
   create_table "usuarios", primary_key: "idusuario", force: true do |t|
@@ -93,9 +98,22 @@ ActiveRecord::Schema.define(version: 20141125054720) do
 
   create_table "valor", primary_key: "idvalor", force: true do |t|
     t.float "costomilla", null: false
-    t.date  "fecha",      null: false
     t.text  "tipomoneda", null: false
     t.text  "tipomedida", null: false
+  end
+
+  create_table "viaje", primary_key: "idviaje", force: true do |t|
+    t.text    "origen",                   null: false
+    t.text    "destino",                  null: false
+    t.date    "fechasalida",              null: false
+    t.time    "horasalida",               null: false
+    t.date    "fechallegada"
+    t.time    "horallegada"
+    t.integer "distancia"
+    t.integer "idavion",                  null: false
+    t.float   "costoviaje"
+    t.string  "realizado",    limit: 1,   null: false
+    t.string  "tiempo",       limit: nil
   end
 
   create_table "vuelos", force: true do |t|
