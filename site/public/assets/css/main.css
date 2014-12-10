@@ -227,7 +227,6 @@ display: none;
 
 .controls a:hover {
 	background-color: rgba(0,0,0,0.3);
-	border:-1px dotted white;
 	color: transparent;
 
 }

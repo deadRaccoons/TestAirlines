@@ -1,108 +1,130 @@
+<html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="/assets/css/font.css">
-
-<link rel="stylesheet" type="text/css" href="/assets/css/jquery.mmenu.all.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-<link rel="stylesheet" type="text/css" href="/assets/css/materials.css">
-
-
-<script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.mmenu.min.all.js"></script>
-<script type="text/javascript" src="http://blurjs.com/blur.js"></script>
-
-<script type="text/javascript" src="/assets/js/controls.js"></script>
-
+	<title>MameAirlines</title>
+	<script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
+	<link rel="stylesheet" href="/assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/assets/css/new.css">
+    <link type="text/css" rel="stylesheet" media="screen and (max-width: 1024px)" href="/assets/css/new.mini.css">
+	<link rel="stylesheet" href="/assets/css/fonts.css">
 </head>
 
 <body>
-<div id="overlay"></div>
-<div class="header "><a href="#menu"></a><span class="main_title">MameAirlines</span></div>
-<nav id="menu">
-   <ul>
-    <%= render 'card' %>
-   </ul>
-</nav>
-	<div id="wrapper">
-		<section id="ma-ads" class="big">
-			<div class="controls">
-				<a id="gallery-prev" href="#">P</a>
-				<a id="gallery-next" href="#">N</a>
-			</div>
-			<div class="adds">
-					
-				<div class="addn addn-active">
-					<div id="iddi"  class="img-container" style="
-				    background-image: url(/assets/adds/1.jpg);
-					">
-						<div class="add-msg">
-							<h3 id="add-msg-title">Viaja al himalaya</h3>
-						</div>
-					</div>
-				</div>			
-			</div>
+	<header>
+		<div class="logo"><h1 class="logo" id="logo-title">MameAirlines</h1></div>
 		
-		<div id="finder" class="super card finder ">
-				<div class="semi-title">
-					<h1>Busque vuelos</h1>
+		<div class="search-bar-container">
+		 	<div id="search-bar">
+		 	<i class="search-icon"></i>
+		 	<input type="text" id="query" placeholder="Busca vuelos, destinos, promociones">
+		 	</div>
+		 </div> 
+		 <div class="controls left">
+		 	<ul class="controls">
+		 		<li><a href="#">Idioma</a></li>
+		 		<li><a href="#">Login</a></li>
+		 		<li><a href="#">Registro</a></li>
+		 	</ul>
+		 </div>
+	</header>
+	<div id="main">
+		<div id="gallery">
+			<=% render ads %>
+		</div>
+		<div id="actions">
+			<div id="galley-details" class="action">Load async</div>
+
+			<div id="context" class="action visible">
+				<div class="logo-head">
+					<h2>Bienvenido a</h2>
+					<h1 class="logo">MameAirlines</h1>
 				</div>
-				<form name="fligth-finder">
-					<div class="rows">
-						<div class="column-row">
-							<button>Ida y Vuelta</button>
-							<button>Solo ida </button>
-						</div>
-						<div class="column-row">
-							<div class="pretty-input">
-								<input type="text" class="autocomplete" required placeholder="Salir de">
-								<i class="search-icon"></i>
-								<div id="airport-sugestions" class="airport suggestions">
-								</div>
-							</div>
-							<div class="pretty-calendar">
-								<input type="date"required>
-								<i class="calendar-icon"></i>
-								<div class="date suggestions"></div>
 
-							</div>
-						</div>
-						<div class="column-row">
-							<div class="pretty-input">
-								<input type="text" class="autocomplete" required placeholder="Salir de">
-								<i class="search-icon"></i>
-								<div id="airport-sugestions" class="airport suggestions">
-								</div>
-							</div>
-							<div class="pretty-calendar">
-								<input type="date"required>
-								<i class="calendar-icon"></i>
-								<div class="date suggestions"></div>
+				<div id="spider-fly">
 
-							</div>
+					<div class="origin-destiny">
+						<div class="input">
+							<input type="text" class="suggested"/>
+							<div class="suggestions" id="origin-suggest"></div>
 						</div>
-						<div class="column-row">
-							<div class="pretty-select">
-								<select>
-									<option> 1 viajero</option>
-									<option> 2 viajero</option>
-									<option> 3 viajero</option>
-									<option> 4 viajero</option>
-								</select>
-							</div>
-							<div class="pretty-search">
-								<div class="search-slider">
-									<button id="plane"></button>
-								</div>
-							</div>
 
+						<div class="input">
+							<input type="text" class="suggested"/>
+							<div id="destiny-suggest" class="suggestions"></div>
 						</div>
 					</div>
-				</form>
+
+					<div class="dates">
+						<div class="row-date">
+							<div class="departure-date">
+								<h5 class="subtitle">Departure</h5>
+								<div class="date">
+									<div class="row-3">
+										<div class="big left">1</div>
+										<div class="little right">May</div>
+										<div class="little right">2014</div>
+									</div>
+								<div>
+							</div>
+						</div>
+
+						<div class="row-date">
+							<div class="departure-date">
+								<h5 class="subtitle">Departure</h5>
+								<div class="date deactived">
+									<div class="row-3">
+										<div class="big left">1</div>
+										<div class="little right">May</div>
+										<div class="little right">2014</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="persons">
+						<div class="person-row">
+							<div class="persons">
+								<h5 class="subtitle">Adultos</h5>
+								<div class="row3">
+									<div class="big left">1</div>
+									<div class="little right">12+</div>
+									<div class="little right">años</div>
+								</div>
+							</div>
+						</div>
+						<div class="person-row">
+							<div class="persons">
+								<h5 class="subtitle">Niños</h5>
+							</div>
+						</div>
+					
+					</div>
+
+					<div class="class-selector">
+						<select name="class" id="class-select">
+							<option value="turista">Turista</option>
+							<option value="primera">Primera</option>
+						</select>
+					</div>
+
+					<div class="plane-controls">
+						<button id="reset-plane">
+							<i class="reset-icon"></i>
+							Limpiar
+						</button>
+						<button id="search">
+							<i class="search-icon"></i>
+							Buscar
+						</button>
+					</div>
+					
+				</div>
+
 			</div>
-			
-			
-		</section>
+			<div id="chosser" class="action ">Load async</div>
+		</div>
 	</div>
-    
-  
 </body>
+
+</html>

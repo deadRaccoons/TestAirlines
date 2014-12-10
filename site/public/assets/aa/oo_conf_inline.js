@@ -1,0 +1,1 @@
+var oo_feedback=new OOo.Ocode({legacyVariables:{vars:typeof custom_var!=="undefined"?custom_var:"",override:true},referrerRewrite:typeof _ht!=="undefined"?_ht:window.location.href});

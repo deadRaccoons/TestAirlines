@@ -370,7 +370,6 @@ html.mm-opening .mm-slideout {
 
 .mm-footer .mm-buttonbar {
   border: none;
-  border-radius: none;
   line-height: 40px;
   margin: -10px -10px 0 -20px; }
   .mm-footer .mm-buttonbar > * {
@@ -626,8 +625,7 @@ div.mm-panel > div.mm-search {
     height: 30px;
     margin: 0;
     padding: 0 10px; }
-  .mm-search input::-ms-clear {
-    display: none; }
+
 
 .mm-menu .mm-noresultsmsg {
   text-align: center;
