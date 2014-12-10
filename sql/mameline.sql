@@ -182,6 +182,7 @@ CREATE TABLE viaje(
   tiempo interval not null,
   costoViaje double precision not null,
   realizado char(1) not null check (realizado in ('y', 'n')),
+  idavion int references avion(idavion) not null,
   unique(origen, destino, fechasalida, horasalida)
 );
 
@@ -216,9 +217,8 @@ to viaje
 do instead nothing
 
 insert into valor values (null, .12, null, 'dollar', 'milla');
-insert into viaje values (null, 'Berlin', 'Ciudad de México', '09-12-2014', '14:00', null, null, 6700, null, null, 'n');
+insert into viaje values (null, 'Berlin', 'Ciudad de México', '19-12-2014', '14:00', null, null, 6700, null, null, 'n', 1);
 update viaje set costoViaje = 2.3 where idViaje = 1
-delete from viaje
 
 /*
 --tabla asignado
