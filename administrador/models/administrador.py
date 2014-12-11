@@ -6,6 +6,7 @@ from Administrador import *
 from Login import *
 from Viaje import *
 from Ciudad import *
+from Avion import *
 from jinja2 import *
 
 __all__ = ['Administrador']
@@ -16,7 +17,8 @@ env = Environment(loader=FileSystemLoader('templates'))
 
 class Admin(object):
     
-    _cp_config = {'tools.sessions.on': True}
+    _cp_config = {'tools.sessions.on': True, 'tools.encode.on': True, 
+                  'tools.encode.encoding': "utf-8"}
 
     def __init__(self):
         self.us = None
@@ -102,14 +104,14 @@ class Admin(object):
     @cherrypy.expose
     def creaviaje(self):
         ciudads = Ciudad.all_()
-        cuerpo = ""
-        for ciudad in ciudads:
-            cuerpo = cuerpo + """<option value=\""""+ ciudad.nombre +"""">"""+ ciudad.nombre +"""</option>"""
-        html = env.get_template('nuevoviaje.html')
-        html.render(ciudades = cuerpo)
-        return file('nuevoviaje.html')
+        avions = Avion.all_()
+        html = env.get_template("nuevoviaje.html")
+        return html.render(ciudades = ciudads, aviones = avions)
             
-            
+    @cherrypy.expose
+    def viajecreado(self, origen, destino, ):
+        return "Se inserto"
+        
 
 if __name__ == '__main__':
     cherrypy.quickstart(Admin())
