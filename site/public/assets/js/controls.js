@@ -76,14 +76,20 @@
    $("#destiny-suggestions").delegate(".ss", "click", function() {
       var name = $(this).attr("data-city_name");
       rs =  true;
-      $(this).hide();
-      $("#destiny-query").val(name);
+      $("#destiny-suggestions").css("display", "none");
 
    })
 
    $("#control-up").on('click', function(e){
-    e.preventDefault();
+      e.preventDefault(); 
+      buscaVuelo.pasajeros = (++buscaVuelo.pasajeros >= 8) ? 8 : buscaVuelo.pasajeros;
+      $("#passenger-count").text(buscaVuelo.pasajeros);
+   });
 
+   $("#control-down").on('click', function(e){
+      e.preventDefault(); 
+      buscaVuelo.pasajeros = (--buscaVuelo.pasajeros <= 1) ? 1 : buscaVuelo.pasajeros;
+      $("#passenger-count").text(buscaVuelo.pasajeros);
    });
 
   
@@ -95,7 +101,7 @@ var show_destiny_suggestions =  function(json, container) {
   container.empty();
   var html  = "<ul>";
     $.each(json, function( index, ciudad ) {
-       html += "<li><a class='ss' data-city_name='"+ "[" + ciudad.IATA+"]" +  " " + ciudad.nombre  +"'><i>"+ ciudad.IATA +"</i><o>" + ciudad.nombre + "</o></a><li>"
+       html += "<li><a class='ss' data-IATA='"+ ciudad.IATA +"' data-city_name='"+ "[" + ciudad.IATA+"]" +  " " + ciudad.nombre  +"'><i>"+ ciudad.IATA +"</i><o>" + ciudad.nombre + "</o></a><li>"
 
     });
     html  += "</ul>";
@@ -108,6 +114,8 @@ var show_destiny_suggestions =  function(json, container) {
 var buscaVuelo = {};
 buscaVuelo.origenIATA = null;
 buscaVuelo.destinoIATA =  null;
+buscaVuelo.pasajeros = 1;
+buscaVuelo.clase = null;
 
 
 var gallery = {};
