@@ -1,15 +1,5 @@
 
-<head>
-<link rel="stylesheet" type="text/css" href="/assets/css/font.css">
-
-<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-<script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
-
-</head>
-<section>
-
-
-  <ul id="avions">
+  <ul id="avionsss">
      <% @aviones.each do |avione| %>
       <li>
         <%= image_tag("/assets/aviones/" + avione.modelo + ".jpg") -%>
@@ -22,15 +12,5 @@
       </li>
     <% end %>
 </ul>
-
-
-<%= link_to 'New avione', new_avione_path %>
-
-    </section>
-
-
-</body>
-
-</html>
 
 
