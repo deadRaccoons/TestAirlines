@@ -68,7 +68,7 @@
 
     <section id="main" >
         <div id="gallery">
-            <=% render ads %>
+            <%= yield %>
         </div>
         <div id="actions" class="right">
             <div id="galley-details" class="action">Load async</div>
@@ -92,7 +92,7 @@
                         <div class="input">
                         <i class="logo2">Hacia:</i>
                             <input id="destiny-query" placeholder="Ciudad Destino" type="text" class="suggested"/>
-                            <div id="destiny-suggest" class="suggestions"></div>
+                            <div id="destiny-suggestions" class="suggestions"></div>
                         </div>
                     </div>
                     <div id="fly-details">

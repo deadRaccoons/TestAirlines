@@ -103,11 +103,11 @@ header,nav {
 	font-weight: bold;
 }
 
-#origin-suggestions li {
+#origin-suggestions li, #destiny-suggestions li{
 	list-style: none;
 }
 
-#origin-suggestions {
+#origin-suggestions , #destiny-suggestions {
 	padding-top: 0 !important;
 }
 .suggestions li a {
@@ -208,6 +208,11 @@ ul li a {
 ul li a:hover{
 	background-color: rgb(211, 44, 39);
 	color: white;
+	cursor: pointer;
+}
+
+li.ss {
+
 }
 
 #actions {
