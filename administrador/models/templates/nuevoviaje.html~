@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function quita(){
+        var x = document.getElementById("viaje_origen");
+        var s = x.value;
+        var y = "Todos menos seleccionado "+ s;
+        var n = document.getElementById("viaje_destino");
+        var i;
+        var j;
+        for(j = 0; j < x.length; j++){
+          n.remove(0);
+        }
+        if(s == 0){
+          var o = document.createElement("option");
+          o.text = "no ha seleccionado un pais";
+          o.value = 0;
+          fecha(0);
+        } else {
+          for(i = 1; i < x.length; i++){
+            if(s != x.options[i].value){
+              var o = document.createElement("option");
+              o.text = x.options[i].text;
+              o.value = x.options[i].value;
+              n.add(o);
+            }
+          }
+          fecha(1);
+        }
+      }
+       
+      function fecha(p){
+        var m = document.getElementById("viaje_mes");
+        var v = m.value;
+        var i;
+        var meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"];
+        if(p == 1){
+          for(i = 0; i < 12; i++){
+            var o = document.createElement("option");
+            o.text = meses[i];
+            m.add(o);
+          }
+        } else {
+          for(i = 0; i < 12; i++){
+            m.remove(0);
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form name="navion" action="/nuevoAvion">
+      Origen:
+      <select id="viaje_origen" name="origen" onchange="quita()">
+	<option value="0">--Selecciona</option>
+	{{ciudades}}
+      </select> </br>
+      Fecha:
+      <select id="viaje_anio" name="anio">
+        <option value="2014">2014</option>
+	<option value="2015">2015</option>
+      </select>
+      <select id="viaje_mes" name="mes"></select>
+      <select id="viaje_dia" name="dia"></select></br>
+      Hora Salida:
+      <select id="viaje_hora" name="hora"></select>
+      <select id="viaje_minuto" name="minuto"></select></br>
+      Distancia:
+      <input id="viaje_distancia" type="text" name="distancia"/></br>
+      Avion:
+      <select id="viaje_avion" name="idavion"></select>
+    </form>
+  </body>
+</html>

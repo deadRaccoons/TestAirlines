@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <%${admin}$>
-    <a href="salir">Salir</a>
-  </body>
-</html>

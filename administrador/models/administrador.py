@@ -5,6 +5,7 @@ from Conexion import *
 from Administrador import *
 from Login import *
 from Viaje import *
+from Ciudad import *
 from jinja2 import *
 
 __all__ = ['Administrador']
@@ -99,8 +100,14 @@ class Admin(object):
             raise cherrypy.HTTPRedirect("registro")
 
     @cherrypy.expose
-    def viajeNuevo(self):
-        return file('viajenuevo.html')
+    def creaviaje(self):
+        ciudads = Ciudad.all_()
+        cuerpo = ""
+        for ciudad in ciudads:
+            cuerpo = cuerpo + """<option value=\""""+ ciudad.nombre +"""">"""+ ciudad.nombre +"""</option>"""
+        html = env.get_template('nuevoviaje.html')
+        html.render(ciudades = cuerpo)
+        return file('nuevoviaje.html')
             
             
 
