@@ -81,6 +81,11 @@
 
    })
 
+   $("#control-up").on('click', function(e){
+    e.preventDefault();
+
+   });
+
   
 
 });
@@ -100,6 +105,9 @@ var show_destiny_suggestions =  function(json, container) {
 }
 
 
+var buscaVuelo = {};
+buscaVuelo.origenIATA = null;
+buscaVuelo.destinoIATA =  null;
 
 
 var gallery = {};

@@ -361,6 +361,11 @@ color: rgb(255, 255, 255);
 	
 }
 
+.plane-controls  button:hover {
+	background-color: #fff;
+	color: #212121;
+}
+
 .input input {
 	width: 100%;
 height: 40px;
@@ -398,7 +403,7 @@ font-weight: bold;
 	height: 150px;
 }
 
-.row-date {
+.row-date,.person-row {
 	width: 42%;
 	height: 85%;
 	float: left;
@@ -407,6 +412,18 @@ font-weight: bold;
 	padding: 2%;
 }
 
+.person-row {
+	width: 93%;
+}
+
+.row-2 {
+	font-size: 4em;
+}
+
+.persons {
+	height: 92px;
+font-size: 0.6em;
+}
 
 .date {
 height: 80%;
@@ -420,4 +437,44 @@ height: 80%;
 	font-size: 2em;
 	float: left;
 	top: 13px;
+}
+
+#class-select {
+	width: 60%;
+	height: 40px;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	outline: 1px solid rgb(223, 223, 223);
+}
+
+.row-2 .big {
+	font-size: 2.5em;
+	margin-left: 9px;
+	top: -7px;
+	width: 70px;
+}
+
+.row-2 a {
+	text-align: center;
+	font-size: 29px;
+	display: block;
+	float: right;
+	width: 24px;
+	position: absolute;
+	top: 9px;
+	left: 37px;
+	opacity: 0.5;
+
+}
+
+.row-2 a:hover {
+	outline: 1px solid #dfdfdf;
+	opacity: 1;
+	cursor: pointer;
+}
+
+#control-down {
+	top: 31px;
 }
