@@ -39,7 +39,6 @@ class LoginsController < ApplicationController
   def create
     @login = Login.find_by_correo(login_params[:correo])
     secreto = Digest::SHA1.hexdigest(login_params[:secreto])
-    puts secreto
 
     if @login && @login.secreto == secreto
       @usuario = Usuario.find_by_correo(@login.correo)
@@ -49,6 +48,7 @@ class LoginsController < ApplicationController
       
       redirect_to "/usuarios/"
     else
+      flash[:alert] = "Usuario o contraseña incorrecta"
       redirect_to "/logins"
     end
 
