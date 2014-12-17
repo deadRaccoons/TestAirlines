@@ -1,4 +1,5 @@
-from Conexion import *
+# -*- coding: utf-8 -*-
+from models import *
 
 class Login(object):    
     def __init__(self, correo, secreto):

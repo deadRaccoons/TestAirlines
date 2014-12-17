@@ -1,18 +1,31 @@
-<html>                                                        
-  <head></head>                                                           
-  <body> 
-    <form action="createlogin">
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function adminR(){
+        s1 = document.forms["regAdmin"]["secreto"].value;
+        s2 = document.forms["regAdmin"]["secreto2"].value;
+        if(s1 != s2){
+          alert("Las contraseñas no coinciden");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <form name="regAdmin" action="/registrarse" onsubmit="return adminR()">
       Nombres:
-      <input type="text" name="nombre"><br>
+      <input type="text" value="" name="nombres" required="required" pattern="^[A-Z][a-z]+(\s[A-Z][a-z]+)*$" placeholder="Juan Carlos"><br>
       Apellidos:
-      <input type="text" name="apellido"><br>
+      <input type="text" value="" name="apellidos" required="required" pattern="^[A-Z][a-z]+(\s[A-Z][a-z]+)*$" placeholder="Pérez López"><br>
       Correo:
-      <input type="text" name="correo"><br>
+      <input type="text" value="" name="correo" required="required"pattern=".*@.*"><br>
       Contrasena:
-      <input type="password" name="secreto"><br>
+      <input type="password" value="" required="required" name="secreto"><br>
       Confirma Contrasena:
-      <input type="password" name="secreto"><br>
-      <button type="submit">Registrar</button>                          
-    </form>                                                                 
-  </body>                                                                 
+      <input type="password" value="" required="required" name="secreto2"><br>
+      <button type="submit">Registrase</button></br>
+    </form>
+  </body>
 </html>

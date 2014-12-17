@@ -1,6 +1,0 @@
-function adminR(){
-    s1 = document.getElementByName("secreto");
-    s2 = document.getElementByName("secreto2");
-    if(s1 == s2)
-	alert("Las contraseñas no coinciden")
-}

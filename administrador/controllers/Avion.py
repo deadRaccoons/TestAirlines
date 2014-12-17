@@ -1,4 +1,5 @@
-from Conexion import *
+# -*- coding: utf-8 -*-
+from models import *
 
 class Avion(object):
     
@@ -19,12 +20,15 @@ class Avion(object):
         con = Conexion()
         todos = []
         for resultado in con.consultar("select * from avion"):
+            r = list(resultado)
+            todos.append(Avion(r[0], r[1], r[2], r[3], r[4], r[5]))
+        return todos
 
     @staticmethod
     def disponibles(fecha, hora, lugar):
         con = Conexion()
         disponibles = []
-        todos = con.consultar("select viaje.idavion from avion join viaje on avion.idavion = viaje.idavion where fechallegada <= '"+ fecha +"' and (select cast(horallegada as time) +'04:00:00') <= '"+ hora +"' and disponible = 'y' and destino = '"+ lugar +"' group by viaje.idavion having count(*) < 2"):
+        todos = con.consultar("select viaje.idavion from avion join viaje on avion.idavion = viaje.idavion where fechallegada <= '"+ fecha +"' and (select cast(horallegada as time) +'04:00:00') <= '"+ hora +"' and disponible = 'y' and destino = '"+ lugar +"' group by viaje.idavion having count(*) < 2")
         if todos is not None:
             for disponible in todos:
                 a = lis(disponible)

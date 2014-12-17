@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-from administrador.models.Conexion import *
-
-__all__ = ['Administrador']
+from models import *
 
 class Administrador(object):
 
@@ -12,7 +10,7 @@ class Administrador(object):
         self.c = Conexion()
 
     def crea(self):
-        return self.c.actualizar("insert into administrador values ('"+ self.correo +"', '"+ self.nombres +"', '"+ self.apellidos +"');")
+        return self.c.actualizar("insert into administrador values('"+ self.correo +"', '"+ self.nombres +"', '"+ self.apellidos +"')")
 
     def borra(self):
         return self.c.actualizar("delete from logins where correo = '"+ self.correo +"';")
@@ -21,19 +19,21 @@ class Administrador(object):
         c.actualizar("update administrador set nombres = '"+ self.nombres +"', apellidos = '"+ self.apellidos +"' where correo = '"+ self.correo +"';")
         
     @staticmethod
-    def getByCorreo(correo):
-        c = Conexion()
-        a = c.consultar("select * from administrador where correo = '"+ correo +"';")
-        return Administrador(a[0][0], a[0][1], a[0][2])
+    def getAdministrador(correo):
+        if correo is None:
+            return None
+        else:
+            c = Conexion()
+            a = c.consultar("select * from administrador where correo = '"+ correo +"';")
+            if a is not None:
+                return Administrador(a[0][0], a[0][1], a[0][2])
+            return a
 
     @staticmethod
     def all_():
         c = Conexion()
         todos = []
         for resultado in c.consultar("select * from administrador"):
-            todos.append(Administrador(resultado[0][0], resultado[0][1], resultado[0][2]))
+            r = list(resultado)
+            todos.append(Administrador(r[0], r[1], r[2]))
         return todos
-
-
-todos = Administrador.all_()
-print todos

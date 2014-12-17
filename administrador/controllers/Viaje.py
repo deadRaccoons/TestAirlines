@@ -1,4 +1,5 @@
-from Conexion import *
+
+from models import *
 
 class Viaje(object):
 

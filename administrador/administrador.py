@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
 import cherrypy
 import hashlib
-from Conexion import *
-from Administrador import *
-from Login import *
-from Viaje import *
-from Ciudad import *
-from Avion import *
+from models import *
+from controllers import *
 from jinja2 import *
 
 __all__ = ['Administrador']
 
 SESSION_KEY = '_cp_username'
 
-env = Environment(loader=FileSystemLoader('templates'))
+env = Environment(loader=FileSystemLoader('views'))
 
 class Admin(object):
     
@@ -30,7 +26,8 @@ class Admin(object):
         except:
             self.us = None
         if self.us is None:
-            return file('login.html')
+            html = env.get_template('login.html')
+            return html.render()
         else:
             raise cherrypy.HTTPRedirect("index")
 
@@ -109,8 +106,13 @@ class Admin(object):
         return html.render(ciudades = ciudads, aviones = avions)
             
     @cherrypy.expose
-    def viajecreado(self, origen, destino, ):
-        return "Se inserto"
+    def viajecreado(self, origen, destino, anio, mes, dia, hora, minuto, distancia, idavion):
+        v =  Viaje(None, origen, destino, str(anio)+"-"+ str(mes)+"-"+ str(dia), str(hora)+ ":"+ str(minuto), None, None, distancia, None, None, None, idavion)
+        r = v.crea()
+        if r == 1:
+            return "Se creo"
+        else:
+            raise cherrypy.HTTPRedirect("creaviaje")
         
 
 if __name__ == '__main__':
