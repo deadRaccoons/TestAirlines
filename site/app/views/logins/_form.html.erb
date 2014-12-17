@@ -1,4 +1,8 @@
 <%= form_for(@login) do |f| %>
+
+    <% if flash[:alert] %>
+        <div class="notice"><%= flash[:alert] %></div>
+      <% end %>
   <% if @login.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@login.errors.count, "error") %> prohibited this login from being saved:</h2>
@@ -14,12 +18,14 @@
   <div class="actions">
     <% @page_title = "UserAuth | Login" -%>
     <div class= "Sign_Form">
-      <h1>Log in</h1>
-  <%= form_for(:login, :url => {:controller => 'logins', :action => 'intento_login'}) do |f| %>
-    <p> Coreo:</br> <%= f.text_field :correo%> </p>
-    <p> Password:</br> <%= f.password_field :secreto %></p>
-    <%= f.submit :Signup %>
+
+    <div class="forcer"><strong class="logo">MameAirlines</strong></div>
+        <%= form_for(:login, :url => {:controller => 'logins', :action => 'intento_login'}) do |f| %>
+    <%= f.text_field :correo,  :placeholder => "Usuario"%> </p>
+    <%= f.password_field :secreto,  :placeholder => "Contraseña"%></p>
+    <%= f.submit :Signup, :class => "submit" %>
   <% end %>
     </div>
+
   </div>
 <% end %>

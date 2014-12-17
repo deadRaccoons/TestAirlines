@@ -280,13 +280,13 @@ background-size: cover;
 	color: rgb(63, 61, 59);
 }
 
-.logo-head.logo, #ll {
+.logo-head.logo, #ll , .Sign_Form .logo{
 	display: block;
 	margin-top: 9%;
 	font-weight: bold;
 	color: rgb(255, 255, 255);
 	font-size: 240%;
-	left: 9%;
+	left: 20%;
 	position: relative;
 	width: 50%;
 }
@@ -481,4 +481,65 @@ height: 80%;
 
 #control-down {
 	top: 31px;
+}
+
+.pretty {
+	position: relative;
+	width: 50%;
+	height: 70%;
+	margin: 0 auto;
+}
+
+.layer {
+	text-align: center;
+	padding-top: 41px;
+}
+
+.Sign_Form input {
+	width: 100%;
+	height: 40px;
+	border: none;
+	font-size: 15px;
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.submit:hover {
+	background-color: rgb(211, 44, 39);
+	color: white;
+}
+
+.Sign_Form, .notice {
+	width: 350px;
+margin: 0 auto;
+text-align: left;
+padding: 20px;
+background: rgb(211, 44, 39);
+}
+
+.Sign_Form h1 {
+	text-align: center;
+font-size: 22px;
+color: rgb(255, 255, 255);
+padding: 10px;
+}
+
+.forcer {
+	margin-bottom: 30px;
+text-align: center;
+}
+
+.pretty a, .pretty a:visited {
+	text-decoration: none;
+	color: deepskyblue;
+	padding: 20px;
+	padding: 20px;
+	display: block;
+}
+
+.pretty .notice {
+	color: rgb(255, 255, 255);
+font-weight: bold;
+background: rgb(255, 0, 0);
+padding: 8px 32px 8px 8px;
 }
