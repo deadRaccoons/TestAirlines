@@ -1,7 +1,0 @@
-class Avion:
-    conn = Conexion()
-
-    def verTodos(self):
-        rows = conn.consulta("select * from avions;")
-        for row in rows:
-            print row[0]
