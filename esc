@@ -1,0 +1,205 @@
+[33mcommit 2abc50bba3d53d35019cb13e2849b3f864b0527a[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 18 15:17:01 2014 -0600
+
+    correcion login
+
+[33mcommit 4ac5fc6c5220cbab2ee86e0eba636fa0d1ef609c[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 18 13:54:58 2014 -0600
+
+    backup
+
+[33mcommit 672e7c3f5a6a175dfdc997a6d1820d9a3a3c1e2b[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Fri Nov 14 03:36:45 2014 -0600
+
+    un poco de info
+
+[33mcommit d43ebdbef207bd0f4dec6dc0583a3245ccf487a2[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Fri Nov 14 03:35:08 2014 -0600
+
+    login y registro 75%
+
+[33mcommit 07b55057cd0a7fa83a5b5900a132dadd92a833d8[m
+Author: RicardoTaboada <tabo.odricar@gmail.com>
+Date:   Thu Nov 13 22:35:37 2014 -0600
+
+    Se crearon los esqueletos para las paginas del administrador
+
+[33mcommit 9d0ce9f4cb581f7db02e563abaffaff8db666221[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Nov 13 15:45:32 2014 -0600
+
+    mas cosas a la api
+
+[33mcommit a6f078081a9a2ca88678b2a5f9b3012c6b14ac25[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Nov 13 15:39:28 2014 -0600
+
+    agregado el nombre de spacio nosotros
+
+[33mcommit 8e8bec6287c4ad68d7398d4422e98083b19824e2[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Nov 13 15:06:14 2014 -0600
+
+    regresando a la version 1.0
+
+[33mcommit 4f11cfe0207e49d0dd87b15bc1f9c1ab08fcb474[m
+Author: RicardoTaboada <tabo.odricar@gmail.com>
+Date:   Thu Nov 13 14:43:02 2014 -0600
+
+    Hola mapaches
+
+[33mcommit f7cffe773932989927d732d222fbfcf096b2f06c[m
+Author: jonathan <jonathan@localhost.localdomain>
+Date:   Thu Nov 13 14:01:28 2014 -0600
+
+    hola que hace
+
+[33mcommit 3665b11eea2b12a35947d9e9a172f6e60db86f01[m
+Author: Rackso <oscarvilla55@hotmail.com>
+Date:   Thu Nov 13 13:44:08 2014 -0600
+
+    prueba de oscar
+
+[33mcommit abae4ef74a4564d7904fb16cf6f330a5c35f1a8a[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Thu Nov 13 13:30:48 2014 -0600
+
+    imagen
+
+[33mcommit ebe05945b312d2f74de2dedd30b4465bcf09b2c0[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Nov 13 12:51:20 2014 -0600
+
+    remodelado de la api
+
+[33mcommit e947717072eaa4b648485d6f68a87ee3661ec237[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Thu Nov 13 11:02:23 2014 -0600
+
+    modrelacional
+
+[33mcommit e4f4a6deecc55ae952feb77333f8a6187bcf8723[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Nov 12 01:02:10 2014 -0600
+
+    remodelado hacia la api
+
+[33mcommit b2c0cebdb36d77f0ca0eb4094b77a8adad3063b4[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 11 16:00:12 2014 -0600
+
+    avions
+
+[33mcommit b172c1c7e5d92d28085fc7b466a1acc283c45fdc[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 11 15:56:01 2014 -0600
+
+    tarjetas de aviones :D
+
+[33mcommit 3785d1b9d50016d824e1528d2e8bf27910ac2998[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 11 15:16:44 2014 -0600
+
+    tarjetas de aviones :D
+
+[33mcommit 37bb7096fff4a5cf4c1b74b19cf580cf0fe292ea[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Tue Nov 11 14:59:13 2014 -0600
+
+    backup
+
+[33mcommit 9539bdee676fa9bcd2c28295e32815b87811a130[m
+Merge: 08e6f73 8ca03f4
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Tue Nov 11 14:43:40 2014 -0600
+
+    actualiza mamelines.sql
+
+[33mcommit 08e6f73d15b518e430845a12446a3ec9f0f54b54[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Tue Nov 11 14:36:45 2014 -0600
+
+    actualiza mamelines.sql
+
+[33mcommit 8ca03f47fded2872fb14633b33ceed862ae3eead[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 11 14:16:55 2014 -0600
+
+    ordenando algunas cosas
+
+[33mcommit 834111425a5601c96015877d11694b5b2e3339d3[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Sat Nov 8 22:11:14 2014 -0600
+
+    avions arreglado
+
+[33mcommit ea5264cf3001447f96163d4f10cffc5cfd1ed1f3[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Sat Nov 8 04:55:22 2014 -0600
+
+    error 404
+
+[33mcommit 224eb3383414caaa8312bc5700bfc540887fc071[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Sat Nov 8 04:26:49 2014 -0600
+
+    agregado el index, se ocultaron los aviones por problemas con las migraciones
+
+[33mcommit cd45a142a53cc6a74b7559f14696a82c1a72b11f[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Fri Nov 7 22:48:53 2014 -0600
+
+    aviones y tabla avions
+
+[33mcommit d493ffd3221f56ac64e2e7651d2dd4fa766a2f20[m
+Author: yorchek <jorge@localhost.localdomain>
+Date:   Sun Nov 2 21:06:40 2014 -0600
+
+    base de datos conectada
+
+[33mcommit 8cae0496b32893c75db61e80a66152ff36a368ff[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Oct 30 15:11:02 2014 -0600
+
+    Archivos de la base
+
+[33mcommit 7c097d042a9394e34829281815348ec29e7ff54e[m
+Merge: abe1435 275bced
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Oct 30 15:07:43 2014 -0600
+
+    Merge branch 'master' of https://github.com/deadRaccoons/proyecto3
+
+[33mcommit abe14351e4de20260d99947bb0fd96377ecc7fe0[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Oct 30 15:06:24 2014 -0600
+
+    nuevo archivo
+
+[33mcommit 275bced032fbcd994a58503c70dd397218bc479a[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Oct 30 15:06:18 2014 -0600
+
+    creacion de hola
+
+[33mcommit 1f859463fdb8a5472628b840a621416d7c3b2888[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Oct 30 14:49:55 2014 -0600
+
+    make
+
+[33mcommit fbe0de8a27289d11ddc49dec6b4e570f4364523a[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Oct 30 14:39:54 2014 -0600
+
+    rails new mammam
+
+[33mcommit e8e043b490399a5493267889eb8085d9ad83df78[m
+Author: jndrd <ndrd@ciencias.unam.mx>
+Date:   Thu Oct 23 16:13:16 2014 -0500
+
+    Initial commit

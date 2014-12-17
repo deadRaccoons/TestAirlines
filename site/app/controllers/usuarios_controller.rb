@@ -1,6 +1,7 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
+
   # GET /usuarios
   # GET /usuarios.json
   def index
@@ -43,20 +44,18 @@ class UsuariosController < ApplicationController
   def create
     @usuario = Usuario.new(usuario_params)
     @login = Login.new
-
     @login.correo = params[:usuario][:correo]
     @login.secreto = Digest::SHA1.hexdigest(params[:usuario][:secreto])
     @login.activo = 'y'
-
     error = false;
 
+          @login.save && @usuario.save  
+
     begin
-      @login.save && @usuario.save  
      rescue Exception => e
       error = true
-      flash[:notice] = "Form is invalid"
-      flash[:color]= "invalid"
-    end
+      flash[:notice] = e.to_s
+    end 
 
     if !error
       redirect_to "/usuarios"

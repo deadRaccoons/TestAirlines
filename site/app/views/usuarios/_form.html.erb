@@ -15,20 +15,21 @@
 <div class="Sign_Form">
   <h1>Sign Up</h1>
   <%= form_for(:usuario, :url => {:controller => 'usuarios', :action => 'create'}) do |f| %>
-    <p> Nombres:</br> <%= f.text_field :nombres%> </p>
-    <p> Apellido Paterno:</br> <%= f.text_field :apellidopaterno%> </p>
-    <p> Apellido Materno:</br> <%= f.text_field :apellidomaterno%> </p>
-    <p> Nacionalidad:</br> <%= f.text_field :nacionalidad%> </p>
-    <p> Genero:</br> <%= f.text_field :genero%> </p>
-    <p> Nacimiento:</br> <%= date_select :usuario, :fechanacimiento %></p>
-    <p> Coreo:</br> <%= f.text_field :correo%> </p>
-    <p> Password:</br> <%= f.password_field :secreto %></p>
-    <p> Password Confirmation:</br> <%= f.password_field :secreto_confirmado %> </p>
+    <%= f.text_field :nombres, :placeholder => "Nombre(s)"%> </p>
+    <%= f.text_field :apellidopaterno, :placeholder => "Apellido Paterno"%> </p>
+    <%= f.text_field :apellidomaterno, :placeholder => "Apellido Materno"%> </p>
+    <%= f.text_field :nacionalidad ,:placeholder => "Nacionalidad"%> </p>
+    <%= f.text_field :genero ,:placeholder => "Genero"%> </p>
+    <%= date_select :usuario, :fechanacimiento %></p>
+    <%= f.text_field :correo,:placeholder => "Correo Electronico"%> </p>
+    <%= f.password_field :secreto,:placeholder => "Contraseña" %></p>
+    <%= f.password_field :secreto_confirmado,:placeholder => "Confirme contraseña"%> </p>
+
     <%= f.submit :Signup %>
   <% end %>
   <% if @usuario.errors.any? %>
     <ul class="Signup_Errors">
-    <% for message_error in @user.errors.full_messages %>
+    <% for message_error in @usuario.errors.full_messages %>
       <li>* <%= message_error %></li>
     <% end %>
     </ul>
