@@ -1,0 +1,70 @@
+.month {
+	width: 290px;
+	height: 150px;
+	padding: 15px;
+}
+
+.month a {
+	display: block;
+	width: 40px;
+	height: 30px;
+	position: relative;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	vertical-align: middle;
+	margin: -30;
+}
+
+.month strong {
+	display: block;
+margin: 10px;
+text-align: center;
+font-weight: bold;
+}
+
+/* lunes, martes, miercoles, jueves, viernes, sabado, domingo */
+
+.day_0 {
+	left: 0px;
+}
+.day_1 {
+	left: 40px;
+}
+.day_2 {
+	left: 80px;
+}
+.day_3 {
+	left: 120px;
+}
+.day_4 {
+	left: 160px;
+}
+.day_5 {
+	left: 200px;
+}
+.day_6 {
+	left: 240px;
+}
+
+
+.week_0 {
+	top:0px;
+}
+.week_1 {
+	top:30px;
+}
+.week_2 {
+	top:60px;
+}
+.week_3 {
+	top:90px;
+}
+.week_4 {
+	top:120px;
+}
+.week_5 {
+	top:150px;
+}
+.week_6 {
+	top:18f 0px;
+}

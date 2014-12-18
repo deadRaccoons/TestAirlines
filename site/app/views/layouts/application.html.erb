@@ -4,10 +4,12 @@
     <title>MameAirlines</title>
     <script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/assets/js/controls.js"></script>
+    <script type="text/javascript" src="/assets/js/calendar.js"></script>
     <link rel="stylesheet" href="/assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/new.css">
     <link type="text/css" rel="stylesheet" media="screen and (max-width: 1024px)" href="/assets/css/new.mini.css">
     <link rel="stylesheet" href="/assets/css/font.css">
+    <link rel="stylesheet" href="/assets/css/calendar.css">
 </head>
 
 <body>
@@ -98,7 +100,7 @@
                     <div id="fly-details">
                         <div class="dates">
                             <div class="row-date">
-                                <div class="departure-date">
+                                <div id="calendar-departure-date" class="departure-date">
                                     <h5 class="subtitle">Departure</h5>
                                     <div class="date">
                                         <div class="row-3">
@@ -111,7 +113,7 @@
                             </div>
 
                             <div class="row-date">
-                                <div class="departure-date">
+                                <div id="calendar-land-date" class="departure-date">
                                     <h5 class="subtitle">Departure</h5>
                                     <div class="date deactived">
                                         <div class="row-3">

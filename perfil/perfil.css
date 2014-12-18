@@ -1,0 +1,98 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family: verdana;
+    color:#bcbcbc;
+}
+div#menu{
+    position:absolute;
+    width:65px;
+    height:100%;
+    background-color:#2f3030;
+    overflow:hidden;
+    moz-transition: width 0.5s;
+}
+div#menu:hover{
+    width:220px;
+}
+
+div#logo-principal{
+    width: 75px;
+    height: 75px;
+    margin: 10px;
+    margin-left:75px;
+    margin-top: 40px;
+    background-image: url(user.png);
+}
+
+div.contenedor1{
+    width: 150px;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+div#espacio{
+    margin-top: 70px;
+}
+div.comprav{
+    width: 48px;
+    height: 48px;
+    float: left;
+    background-image: url(compra.png);
+}
+
+p.compra{
+    margin-left:60px;
+   // line-height: 40px;
+}
+    
+div.Lugares{
+    width: 48px;
+    height: 48px;
+    float: left;
+    background-image: url(lugares.png);
+}
+
+
+p.frecuentes{
+    margin-left:60px;
+   // line-height: 40px;
+}
+    
+div.Historial{
+    width: 48px;
+    height: 48px;
+    float: left;
+     background-image: url(history.png);
+}
+
+p.historial{
+    margin-left:60px;
+   line-height: 40px;
+}
+    
+div.configuraciones{
+    width: 48px;
+    height: 48px;
+    float: left;
+     background-image: url(setting.png);
+}
+
+p.config{
+    margin-left:60px;
+    line-height: 40px;
+}
+div.Salir{
+    width: 48px;
+    height: 48px;
+    float: left;
+    background-image: url(exit.png);
+}
+
+p.salir{
+    margin-left:60px;
+    line-height: 40px;
+}
+    
+

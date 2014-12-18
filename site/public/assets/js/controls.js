@@ -92,6 +92,20 @@
       $("#passenger-count").text(buscaVuelo.pasajeros);
    });
 
+   var $galleryDetails = $("#galley-details");
+
+   /* controlador para el calendario */ 
+   $("#calendar-departure-date").on("click", function(e){
+      $galleryDetails.append(calendar.fillCalendar(2014));
+      $galleryDetails.show("slow");
+   });
+
+   /* controlador para el otro calendario */
+   $("#calendar-land-date").on("click", function(e){
+      $galleryDetails.show("slow");
+
+   });
+
   
 
 });

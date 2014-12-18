@@ -9,7 +9,7 @@
 
 body {
 	 font-family: 'RobotoDraft';
-	 font-size: 1em;
+	 font-size: 0.9em;
 	 background-color: #fDfDfD;
 	color: #232323;
 	height: 100%;
@@ -255,6 +255,16 @@ background-size: cover;
 
 }
 
+#galley-details {
+right: 100%;
+position: absolute;
+width: 100%;
+background: rgb(57, 56, 55);
+height: 100%;
+overflow-y: scroll;
+padding: 2%;
+}
+
 .action {
 	display: none;
 }
@@ -456,8 +466,8 @@ height: 80%;
 	width: 70px;
 }
 
-#passenger-count {
-	font-size: 54px;
+#passenger-count 
+{	font-size: 54px;
 }
 
 .row-2 a {
@@ -535,6 +545,11 @@ text-align: center;
 	padding: 20px;
 	padding: 20px;
 	display: block;
+}
+
+.departure-date:hover{
+	cursor: pointer;
+	background-color: #dfdfdf;
 }
 
 .pretty .notice {
