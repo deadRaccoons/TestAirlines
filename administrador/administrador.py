@@ -12,9 +12,6 @@ SESSION_KEY = '_cp_username'
 env = Environment(loader=FileSystemLoader('views'))
 
 class Admin(object):
-    
-    _cp_config = {'tools.sessions.on': True, 'tools.encode.on': True, 
-                  'tools.encode.encoding': "utf-8"}
 
     def __init__(self):
         self.us = None
@@ -26,8 +23,7 @@ class Admin(object):
         except:
             self.us = None
         if self.us is None:
-            html = env.get_template('login.html')
-            return html.render()
+            return file('views/login.html')
         else:
             raise cherrypy.HTTPRedirect("index")
 
@@ -74,7 +70,7 @@ class Admin(object):
 
     @cherrypy.expose
     def registro(self):
-        return file('registro.html')
+        return file('views/registro.html')
         
     @cherrypy.expose
     def registrarse(self, nombres, apellidos, correo, secreto, secreto2):
@@ -116,4 +112,4 @@ class Admin(object):
         
 
 if __name__ == '__main__':
-    cherrypy.quickstart(Admin())
+    cherrypy.quickstart(Admin(), "" ,"app.conf")
