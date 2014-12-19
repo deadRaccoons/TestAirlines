@@ -1,0 +1,580 @@
+[33mcommit e93ac6105097068fabb26ba4c20ceccf48b56564[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Dec 18 23:27:44 2014 -0600
+
+    Distancia aerea en millas (enteras)
+
+[33mcommit 9d791f3b5283b315aab84dbe4547741e8301f7d0[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Dec 18 14:45:48 2014 -0600
+
+    Sirviendo css y js del directorio static
+
+[33mcommit ec4bf96b0c83f6217c89b2ad14b0bef9b0f71a35[m
+Merge: daccd86 e939aac
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 17 18:04:34 2014 -0600
+
+    Merge branch 'master' of github.com:deadRaccoons/MameAirlines
+
+[33mcommit daccd86af1efe8ea557d6b63c3ea1c2f98f66f42[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 17 18:04:29 2014 -0600
+
+    calendar.js
+
+[33mcommit e939aac48fad581982723eb2118c0bf6dbd774c3[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Wed Dec 17 14:13:44 2014 -0600
+
+    Archivos admin en sus respectivas carpetas
+
+[33mcommit cd2e4a9c75dc3a3554b8c1330663bb1d5fc6f0ed[m
+Author: Rackso <oscarvilla55@hotmail.com>
+Date:   Tue Dec 16 21:41:11 2014 -0600
+
+    agregue una funcion que puede que
+    necesitemos para que facebook sirva
+
+[33mcommit f0deac2c9de05b9449da3ef8bfda12c57df8b6f0[m
+Author: RicardoTaboada <tabo.odricar@gmail.com>
+Date:   Tue Dec 16 20:32:30 2014 -0600
+
+    archivos basura borrados
+
+[33mcommit 9a6dbd9084a2c02e96f7fa5d853dd35ff948906d[m
+Author: Rackso <oscarvilla55@hotmail.com>
+Date:   Tue Dec 16 20:19:17 2014 -0600
+
+    Acabo de subir el codigo para comentarios
+    de facebook
+
+[33mcommit 1bddc67ee4fa778c8561096a2469e5ea80df31b6[m
+Merge: 1d83bdd f051927
+Author: RicardoTaboada <tabo.odricar@gmail.com>
+Date:   Tue Dec 16 20:10:48 2014 -0600
+
+    Merge branch 'master' of https://github.com/deadRaccoons/MameAirlines
+
+[33mcommit 1d83bdda5bbf9f8b3199bf963afb2e9838365ffb[m
+Author: RicardoTaboada <tabo.odricar@gmail.com>
+Date:   Tue Dec 16 20:10:35 2014 -0600
+
+    es el gitignore para el proyecto. tambien es un ensayo
+
+[33mcommit f051927d9d6328d21db066a137e8be49b75d57e1[m
+Merge: 9c3ea59 9d1c8dc
+Author: Rackso <oscarvilla55@hotmail.com>
+Date:   Tue Dec 16 20:04:34 2014 -0600
+
+    git me obliga a hacer este commit
+
+[33mcommit 9d1c8dc89f26bb42dd0402b067692323f6f1719d[m
+Author: Dany <daniicape19@gmail.com>
+Date:   Tue Dec 16 16:46:02 2014 -0600
+
+    parte del perfil del usuario
+
+[33mcommit f4c350d8ee9096cd11a3c7ed8b521de457d61688[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Dec 16 12:45:35 2014 -0600
+
+    calendar.js
+
+[33mcommit 4df2e993b89f578e6cb04dfbac899337e281472b[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Mon Dec 15 12:34:29 2014 -0600
+
+    Notificaciones flash
+
+[33mcommit 9c3ea594a6b13d4b8961892d43f8437dd6d36c56[m
+Author: Rackso <oscarvilla55@hotmail.com>
+Date:   Sat Dec 13 20:08:58 2014 -0600
+
+    chequen las ultimas lineas del archivo de configuracion de apache que meti a la carpeta Tabo creo que con eso y los metodos que meti en la clase cherrypytest.py podemos hacer que la app corra en apache.
+
+[33mcommit 7286df5a3e4a99a19b0660cdb18fbbb969ea6c5e[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Dec 11 14:06:11 2014 -0600
+
+    Mas cosas
+
+[33mcommit 45bd0a6fee9f21ac517ec3e7976f98d3a8a4e7b0[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Dec 11 14:03:14 2014 -0600
+
+    Pag viajes
+
+[33mcommit 89fda1087d3e8d2fc5fa11dc87a9cc14fbe1f0a0[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Dec 11 13:34:45 2014 -0600
+
+    mas  cosas al index
+
+[33mcommit ea2e22e490054c87c9164868b654ec8269725f34[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Dec 11 11:45:12 2014 -0600
+
+    backup mameline.backup
+
+[33mcommit 46d57fe6f5c5096682a318c1d7e35e70f236e98c[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 20:04:27 2014 -0600
+
+    mas coasasz
+
+[33mcommit b748736671a4b7853bcb9c1dbd1bdb7e38a00eb3[m
+Merge: 587824f da48a26
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 18:57:27 2014 -0600
+
+    Merge branch 'master' of https://github.com/deadRaccoons/MameAirlines
+
+[33mcommit 587824f3c26f27f4448b4db9f3225edd8745d41c[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 18:56:00 2014 -0600
+
+    yield
+
+[33mcommit 30e361dac3f6ec62492e987cc67052001855062c[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 17:55:53 2014 -0600
+
+    sugerencias automaticas
+
+[33mcommit da48a26b7499b3c79182550853941908cd7d2eec[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Wed Dec 10 15:27:42 2014 -0600
+
+    Clase Ciudad
+
+[33mcommit 2f0014419a06220d28c26cba982afc69a796db17[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 15:18:47 2014 -0600
+
+    continuing looking
+
+[33mcommit 21197e1ba7b175642d17f7c0fcbe3673548f549e[m
+Merge: 149db0a 0ac09da
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 14:11:11 2014 -0600
+
+    Merge branch 'master' of https://github.com/deadRaccoons/MameAirlines
+
+[33mcommit 149db0aae9d81bea2b124ee7c543b5cef6379328[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 14:11:03 2014 -0600
+
+    refreshing
+
+[33mcommit 0ac09da0a9fb6057a47d817d6e9c852eb981d591[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Wed Dec 10 13:46:16 2014 -0600
+
+    Viajes con Avion arreglado
+
+[33mcommit 4ccf756ee3a0aea7e61d7f31548bcbe9ab217d8e[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Wed Dec 10 13:27:24 2014 -0600
+
+    Viajes con Avion
+
+[33mcommit ab2d50bd5c0edfd185a72be7ad74794825e0f3ab[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Wed Dec 10 12:23:39 2014 -0600
+
+    Clase Viaje Casi Completa
+
+[33mcommit 750a808a97f59d7abaa5b21e03641222e618b894[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Wed Dec 10 11:56:18 2014 -0600
+
+    Clase Viaje
+
+[33mcommit 968de02457099bed916c0aecbd595c1dfba86228[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 10:40:08 2014 -0600
+
+    new look
+
+[33mcommit 3ca5fead610052604e68d39c09266fac3f5244df[m
+Merge: 543942d 82bdda2
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 06:23:02 2014 -0600
+
+    Merge branch 'master' of https://github.com/deadRaccoons/MameAirlines
+
+[33mcommit 543942da9db25d4f05f66f7e51b4259a0c932916[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 10 06:22:46 2014 -0600
+
+    new look
+
+[33mcommit 82bdda20181029fbf0bb08a88707f807808cf4b2[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Tue Dec 9 16:26:38 2014 -0600
+
+    Casi modelo Viajes
+
+[33mcommit 2f1d9dffc14496534bd8545b130a52377bfad4ee[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Tue Dec 9 15:59:59 2014 -0600
+
+    ya se pueden instertar viajes en la base
+
+[33mcommit b37774a7bb22cb38f9065c99e49df459fcb959de[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Dec 9 14:41:27 2014 -0600
+
+    camibio nombre carpeta
+
+[33mcommit c53b7189a7d3e84da51d58ce6329ce54484621e3[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Dec 9 14:40:58 2014 -0600
+
+    cambiando el nombre de la carpta
+
+[33mcommit abab0dfa541444fc068364d453a4f61420364e6c[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Dec 4 17:37:06 2014 -0600
+
+    restricciones de integridad registro admin
+
+[33mcommit 6c71805341cc3a1a7da97a0cd0dc7629775d0c0c[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Dec 4 16:10:48 2014 -0600
+
+    Galeria de promociones
+
+[33mcommit a5c2eaf11f1ba3f49a62f4eacfb83f8fa260211a[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Dec 4 15:12:48 2014 -0600
+
+    Background
+
+[33mcommit 51e9baea026530d61ff37ec0e6193bae017b181c[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Dec 4 14:50:18 2014 -0600
+
+    Edicion pagina principal
+
+[33mcommit c5d960076741862df9965ba5c2687938b8672b19[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 3 12:35:16 2014 -0600
+
+    recoomit
+
+[33mcommit dc4ac55083e7ca269e3e982bcbd397621a494927[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Dec 3 00:08:40 2014 -0600
+
+    barra laterial con login overlay
+
+[33mcommit f2dc4e9465f0fb6f28328c299b0794630a0ff58e[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Dec 2 19:32:56 2014 -0600
+
+    reestilando
+
+[33mcommit b89d6ffa0f64bde6a6a066d29d61488f7f5d764b[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Dec 2 19:31:23 2014 -0600
+
+    reestilando
+
+[33mcommit 725e1a0bd6828baf62e99f3397bb9ebd96289137[m
+Merge: cddcc54 5ce6c46
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Dec 2 17:10:47 2014 -0600
+
+    Merge branch 'master' of github.com:deadRaccoons/proyecto3
+
+[33mcommit cddcc54557c77f80bd033f607862a5ede3a24a27[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Dec 2 17:10:44 2014 -0600
+
+    another
+
+[33mcommit 5ce6c46100f9111755205e322e431ac7f7f2866f[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Mon Dec 1 18:17:13 2014 -0600
+
+    registro directo a inicio de sesion, logout
+
+[33mcommit 57f8d07071a113726bd31fded6ca8d42f050f4aa[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Mon Dec 1 14:50:40 2014 -0600
+
+    Usando html's
+
+[33mcommit 366b55134f70f683d0a7c8cfe09a2a6a34c95672[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Mon Dec 1 11:48:45 2014 -0600
+
+    Inicio de sesion administrador
+
+[33mcommit 1c31651fb91e1381bfb4b39f42f5c11c5f2ef392[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Wed Nov 26 21:40:12 2014 -0600
+
+    cosas agregadas
+
+[33mcommit d408b82b896bab032c8e3ee390035550f58ede1d[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Tue Nov 25 12:56:47 2014 -0600
+
+    aviones registro administrador
+
+[33mcommit e202ba1f73b2b4c6e0c6dfca3bafa732bb87746e[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Tue Nov 25 00:16:11 2014 -0600
+
+    cambio de nombre de la tabla promocions a promocion
+
+[33mcommit b457f90d7e7f44e799391f7a5171eefac101e684[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Tue Nov 25 00:14:07 2014 -0600
+
+    Se cambio nombre de promocions a promocion en la base
+
+[33mcommit c041486cfcce3adf1b9a4af581d3f518321cbba6[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Mon Nov 24 23:29:26 2014 -0600
+
+    conexion python base de datos prueba
+
+[33mcommit 528ebcd6589b773d04c10d68c7f5fc24d8d3dba3[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Nov 20 20:56:18 2014 -0600
+
+    zonas horarias en viaje
+
+[33mcommit 2ef53fcfd3b000109a4a223069cea093f212f216[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Nov 20 18:20:24 2014 -0600
+
+    promocions
+
+[33mcommit ce6eccdddd140367f3191da2a229ebe39cac5091[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Thu Nov 20 17:58:42 2014 -0600
+
+    mameline.backup con 100 nuevos usuarios
+
+[33mcommit c727ec601eda3d7c9c0f8353cce63ba083edeae4[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Thu Nov 20 00:16:34 2014 -0600
+
+    tarjeta y promocions
+
+[33mcommit 1e2f8d2d4a3b4f8a45b5d84f28c091870ea48fdf[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Thu Nov 20 00:14:05 2014 -0600
+
+    tarjeta, promocions
+
+[33mcommit 2abc50bba3d53d35019cb13e2849b3f864b0527a[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 18 15:17:01 2014 -0600
+
+    correcion login
+
+[33mcommit 4ac5fc6c5220cbab2ee86e0eba636fa0d1ef609c[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 18 13:54:58 2014 -0600
+
+    backup
+
+[33mcommit 672e7c3f5a6a175dfdc997a6d1820d9a3a3c1e2b[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Fri Nov 14 03:36:45 2014 -0600
+
+    un poco de info
+
+[33mcommit d43ebdbef207bd0f4dec6dc0583a3245ccf487a2[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Fri Nov 14 03:35:08 2014 -0600
+
+    login y registro 75%
+
+[33mcommit 07b55057cd0a7fa83a5b5900a132dadd92a833d8[m
+Author: RicardoTaboada <tabo.odricar@gmail.com>
+Date:   Thu Nov 13 22:35:37 2014 -0600
+
+    Se crearon los esqueletos para las paginas del administrador
+
+[33mcommit 9d0ce9f4cb581f7db02e563abaffaff8db666221[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Nov 13 15:45:32 2014 -0600
+
+    mas cosas a la api
+
+[33mcommit a6f078081a9a2ca88678b2a5f9b3012c6b14ac25[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Nov 13 15:39:28 2014 -0600
+
+    agregado el nombre de spacio nosotros
+
+[33mcommit 8e8bec6287c4ad68d7398d4422e98083b19824e2[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Nov 13 15:06:14 2014 -0600
+
+    regresando a la version 1.0
+
+[33mcommit 4f11cfe0207e49d0dd87b15bc1f9c1ab08fcb474[m
+Author: RicardoTaboada <tabo.odricar@gmail.com>
+Date:   Thu Nov 13 14:43:02 2014 -0600
+
+    Hola mapaches
+
+[33mcommit f7cffe773932989927d732d222fbfcf096b2f06c[m
+Author: jonathan <jonathan@localhost.localdomain>
+Date:   Thu Nov 13 14:01:28 2014 -0600
+
+    hola que hace
+
+[33mcommit 3665b11eea2b12a35947d9e9a172f6e60db86f01[m
+Author: Rackso <oscarvilla55@hotmail.com>
+Date:   Thu Nov 13 13:44:08 2014 -0600
+
+    prueba de oscar
+
+[33mcommit abae4ef74a4564d7904fb16cf6f330a5c35f1a8a[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Thu Nov 13 13:30:48 2014 -0600
+
+    imagen
+
+[33mcommit ebe05945b312d2f74de2dedd30b4465bcf09b2c0[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Nov 13 12:51:20 2014 -0600
+
+    remodelado de la api
+
+[33mcommit e947717072eaa4b648485d6f68a87ee3661ec237[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Thu Nov 13 11:02:23 2014 -0600
+
+    modrelacional
+
+[33mcommit e4f4a6deecc55ae952feb77333f8a6187bcf8723[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Wed Nov 12 01:02:10 2014 -0600
+
+    remodelado hacia la api
+
+[33mcommit b2c0cebdb36d77f0ca0eb4094b77a8adad3063b4[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 11 16:00:12 2014 -0600
+
+    avions
+
+[33mcommit b172c1c7e5d92d28085fc7b466a1acc283c45fdc[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 11 15:56:01 2014 -0600
+
+    tarjetas de aviones :D
+
+[33mcommit 3785d1b9d50016d824e1528d2e8bf27910ac2998[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 11 15:16:44 2014 -0600
+
+    tarjetas de aviones :D
+
+[33mcommit 37bb7096fff4a5cf4c1b74b19cf580cf0fe292ea[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Tue Nov 11 14:59:13 2014 -0600
+
+    backup
+
+[33mcommit 9539bdee676fa9bcd2c28295e32815b87811a130[m
+Merge: 08e6f73 8ca03f4
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Tue Nov 11 14:43:40 2014 -0600
+
+    actualiza mamelines.sql
+
+[33mcommit 08e6f73d15b518e430845a12446a3ec9f0f54b54[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Tue Nov 11 14:36:45 2014 -0600
+
+    actualiza mamelines.sql
+
+[33mcommit 8ca03f47fded2872fb14633b33ceed862ae3eead[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Tue Nov 11 14:16:55 2014 -0600
+
+    ordenando algunas cosas
+
+[33mcommit 834111425a5601c96015877d11694b5b2e3339d3[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Sat Nov 8 22:11:14 2014 -0600
+
+    avions arreglado
+
+[33mcommit ea5264cf3001447f96163d4f10cffc5cfd1ed1f3[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Sat Nov 8 04:55:22 2014 -0600
+
+    error 404
+
+[33mcommit 224eb3383414caaa8312bc5700bfc540887fc071[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Sat Nov 8 04:26:49 2014 -0600
+
+    agregado el index, se ocultaron los aviones por problemas con las migraciones
+
+[33mcommit cd45a142a53cc6a74b7559f14696a82c1a72b11f[m
+Author: yorchek <yorchek@localhost.localdomain>
+Date:   Fri Nov 7 22:48:53 2014 -0600
+
+    aviones y tabla avions
+
+[33mcommit d493ffd3221f56ac64e2e7651d2dd4fa766a2f20[m
+Author: yorchek <jorge@localhost.localdomain>
+Date:   Sun Nov 2 21:06:40 2014 -0600
+
+    base de datos conectada
+
+[33mcommit 8cae0496b32893c75db61e80a66152ff36a368ff[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Oct 30 15:11:02 2014 -0600
+
+    Archivos de la base
+
+[33mcommit 7c097d042a9394e34829281815348ec29e7ff54e[m
+Merge: abe1435 275bced
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Oct 30 15:07:43 2014 -0600
+
+    Merge branch 'master' of https://github.com/deadRaccoons/proyecto3
+
+[33mcommit abe14351e4de20260d99947bb0fd96377ecc7fe0[m
+Author: yorchek <kuberjorg3n@hotmail.com>
+Date:   Thu Oct 30 15:06:24 2014 -0600
+
+    nuevo archivo
+
+[33mcommit 275bced032fbcd994a58503c70dd397218bc479a[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Oct 30 15:06:18 2014 -0600
+
+    creacion de hola
+
+[33mcommit 1f859463fdb8a5472628b840a621416d7c3b2888[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Oct 30 14:49:55 2014 -0600
+
+    make
+
+[33mcommit fbe0de8a27289d11ddc49dec6b4e570f4364523a[m
+Author: Jonathan Andrade <ndrd@ciencias.unam.mx>
+Date:   Thu Oct 30 14:39:54 2014 -0600
+
+    rails new mammam
+
+[33mcommit e8e043b490399a5493267889eb8085d9ad83df78[m
+Author: jndrd <ndrd@ciencias.unam.mx>
+Date:   Thu Oct 23 16:13:16 2014 -0500
+
+    Initial commit

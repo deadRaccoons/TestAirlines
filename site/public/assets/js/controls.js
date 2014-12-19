@@ -93,18 +93,35 @@
    });
 
    var $galleryDetails = $("#galley-details");
+   var actualSelector = null; 
+
 
    /* controlador para el calendario */ 
    $("#calendar-departure-date").on("click", function(e){
-      $galleryDetails.append(calendar.fillCalendar(2014));
+      $galleryDetails.append(calendar.fillCalendar(12));
       $galleryDetails.show("slow");
+      actualSelector = "calendar-departure-date";
    });
 
    /* controlador para el otro calendario */
    $("#calendar-land-date").on("click", function(e){
       $galleryDetails.show("slow");
-
+      actualSelector = "calendar-land-date";
    });
+
+  $container = $("#galley-details");
+
+  $container.delegate(".day", "click", function(e){
+      e.preventDefault();
+      var prettyDate = JSON.parse($(this).attr("data-pretty-date").toString());
+      var prefix = (actualSelector === "calendar-departure-date") ? "dep-" : "land-";
+      $("#"+prefix + "day").text(prettyDate.day);
+      $("#"+prefix + "month").text(prettyDate.month);
+      $("#"+prefix + "year").text(prettyDate.year);
+      $container.hide("slow")
+
+  });
+
 
   
 

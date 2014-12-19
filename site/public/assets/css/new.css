@@ -9,7 +9,7 @@
 
 body {
 	 font-family: 'RobotoDraft';
-	 font-size: 0.9em;
+	 font-size: 0.9+++em;
 	 background-color: #fDfDfD;
 	color: #232323;
 	height: 100%;
@@ -440,11 +440,14 @@ height: 80%;
 }
 
 .row-3 .big {
-	font-size: 6em;
+	font-size: 4.2em;
+	top: 9px;
+	width: 75px;
+	text-align: center;
 }
 
 .row-3 .little {
-	font-size: 2em;
+	font-size: 1.4em;
 	float: left;
 	top: 13px;
 }
