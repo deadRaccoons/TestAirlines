@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20141112034059) do
     t.text  "tipomedida", null: false
   end
 
-  create_table "viaje", primary_key: "idviaje", force: true do |t|
+  create_table "viajes", primary_key: "idviaje", force: true do |t|
     t.text    "origen",                   null: false
     t.text    "destino",                  null: false
     t.date    "fechasalida",              null: false

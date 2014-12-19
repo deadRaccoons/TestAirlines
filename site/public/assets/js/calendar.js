@@ -11,6 +11,9 @@ var calendar =  calendar || {
 		months : [["Enero", "Febrero", "Marzo", "Abril",
 					"Mayo", "Junio", "Julio", "Agosto", 
 					"Septiembre","Octubre", "Noviembre", "Diciembre"]],
+		getMonth : function(index) {
+			return calendar.date.months[0][Math.abs(index % 12)]
+		}
 							
 	},
 

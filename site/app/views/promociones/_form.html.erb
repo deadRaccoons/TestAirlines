@@ -1,0 +1,17 @@
+<%= form_for(@promocione) do |f| %>
+  <% if @promocione.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@promocione.errors.count, "error") %> prohibited this promocione from being saved:</h2>
+
+      <ul>
+      <% @promocione.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

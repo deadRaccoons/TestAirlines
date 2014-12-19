@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :promociones
+
+  resources :viajes
+
+  resources :vuelos
+
   namespace :api do
     resources :ciudads
   end

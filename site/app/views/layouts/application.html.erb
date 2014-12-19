@@ -5,6 +5,7 @@
     <script type="text/javascript" src="/assets/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="/assets/js/controls.js"></script>
     <script type="text/javascript" src="/assets/js/calendar.js"></script>
+    <script type="text/javascript" src="/assets/js/flys.js"></script>
     <link rel="stylesheet" href="/assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/new.css">
     <link type="text/css" rel="stylesheet" media="screen and (max-width: 1024px)" href="/assets/css/new.mini.css">
@@ -101,7 +102,7 @@
                         <div class="dates">
                             <div class="row-date">
                                 <div id="calendar-departure-date" class="departure-date">
-                                    <h5 class="subtitle">Departure</h5>
+                                    <h5 class="subtitle">Salida</h5>
                                     <div class="date">
                                         <div class="row-3">
                                             <div id="dep-day" class="big left">1</div>
@@ -114,12 +115,13 @@
 
                             <div class="row-date">
                                 <div id="calendar-land-date" class="departure-date">
-                                    <h5 class="subtitle">Departure</h5>
+                                    <h5 class="subtitle">Regreso</h5>
+                                    <a href="#" id="close-date">X</a>
                                     <div class="date deactived">
                                         <div class="row-3">
-                                            <div class="big left">1</div>
-                                            <div class="little right">May</div>
-                                            <div class="little right">2014</div>
+                                            <div id="land-day" class="big left">1</div>
+                                            <div  id="land-month" class="little right">May</div>
+                                            <div id="land-year" class="little right">2014</div>
                                         </div>
                                     </div>
                                 </div>
@@ -168,8 +170,14 @@
                 </div>
 
             </div>
-            <div id="chosser" class="action ">Load async</div>
+            
+            <div id="chosser" class="action ">
+                
+            </div>
         </div>
+        <div id="flys">
+
+            </div>
     </section>
 
 </body>

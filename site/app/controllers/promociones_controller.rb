@@ -1,0 +1,75 @@
+class PromocionesController < ApplicationController
+  before_action :set_promocione, only: [:show, :edit, :update, :destroy]
+
+  # GET /promociones
+  # GET /promociones.json
+  def index
+    @promociones = Promocione.all
+    
+  end
+
+  # GET /promociones/1
+  # GET /promociones/1.json
+  def show
+  end
+
+  # GET /promociones/new
+  def new
+    @promocione = Promocione.new
+  end
+
+  # GET /promociones/1/edit
+  def edit
+  end
+
+  # POST /promociones
+  # POST /promociones.json
+  def create
+    @promocione = Promocione.new(promocione_params)
+
+    respond_to do |format|
+      if @promocione.save
+        format.html { redirect_to @promocione, notice: 'Promocione was successfully created.' }
+        format.json { render :show, status: :created, location: @promocione }
+      else
+        format.html { render :new }
+        format.json { render json: @promocione.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /promociones/1
+  # PATCH/PUT /promociones/1.json
+  def update
+    respond_to do |format|
+      if @promocione.update(promocione_params)
+        format.html { redirect_to @promocione, notice: 'Promocione was successfully updated.' }
+        format.json { render :show, status: :ok, location: @promocione }
+      else
+        format.html { render :edit }
+        format.json { render json: @promocione.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /promociones/1
+  # DELETE /promociones/1.json
+  def destroy
+    @promocione.destroy
+    respond_to do |format|
+      format.html { redirect_to promociones_url, notice: 'Promocione was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_promocione
+      @promocione = Promocione.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def promocione_params
+      params[:promocione]
+    end
+end

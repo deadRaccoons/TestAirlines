@@ -2,6 +2,8 @@
 
  $(function() {
 
+  updateDate();
+
   $logo = $("#ll");
 
   $("#origin-query").focus(function() {
@@ -75,21 +77,23 @@
 
    $("#destiny-suggestions").delegate(".ss", "click", function() {
       var name = $(this).attr("data-city_name");
-      rs =  true;
-      $("#destiny-suggestions").css("display", "none");
+
+      $(this).hide();
+      receive_sugesstions =  false;
+      $("#destiny-query").val(name);
 
    })
 
    $("#control-up").on('click', function(e){
       e.preventDefault(); 
-      buscaVuelo.pasajeros = (++buscaVuelo.pasajeros >= 8) ? 8 : buscaVuelo.pasajeros;
-      $("#passenger-count").text(buscaVuelo.pasajeros);
+      flySearch.parameters.seats = (++flySearch.parameters.seats >= 8) ? 8 : flySearch.parameters.seats;
+      $("#passenger-count").text(flySearch.parameters.seats);
    });
 
    $("#control-down").on('click', function(e){
       e.preventDefault(); 
-      buscaVuelo.pasajeros = (--buscaVuelo.pasajeros <= 1) ? 1 : buscaVuelo.pasajeros;
-      $("#passenger-count").text(buscaVuelo.pasajeros);
+      flySearch.parameters.seats = (--flySearch.parameters.seats <= 1) ? 1 : flySearch.parameters.seats;
+      $("#passenger-count").text(flySearch.parameters.seats);
    });
 
    var $galleryDetails = $("#galley-details");
@@ -98,7 +102,7 @@
 
    /* controlador para el calendario */ 
    $("#calendar-departure-date").on("click", function(e){
-      $galleryDetails.append(calendar.fillCalendar(12));
+      $galleryDetails.html(calendar.fillCalendar(12));
       $galleryDetails.show("slow");
       actualSelector = "calendar-departure-date";
    });
@@ -114,10 +118,22 @@
   $container.delegate(".day", "click", function(e){
       e.preventDefault();
       var prettyDate = JSON.parse($(this).attr("data-pretty-date").toString());
+      var date = $(this).attr("data-date").split("/");
       var prefix = (actualSelector === "calendar-departure-date") ? "dep-" : "land-";
+
       $("#"+prefix + "day").text(prettyDate.day);
       $("#"+prefix + "month").text(prettyDate.month);
       $("#"+prefix + "year").text(prettyDate.year);
+
+      if (prefix === "dep-") {
+        prefix = "land-"
+        var d  = new Date(date[2], date[1], date[0])
+        var day =  d.setDate(d.getDate() + 7);
+        $("#"+prefix + "day").text(d.getDate());
+        $("#"+prefix + "month").text(calendar.date.getMonth(d.getMonth()).substr(0,3));
+        $("#"+prefix + "year").text(d.getFullYear());
+      }
+
       $container.hide("slow")
 
   });
@@ -142,11 +158,22 @@ var show_destiny_suggestions =  function(json, container) {
 }
 
 
-var buscaVuelo = {};
-buscaVuelo.origenIATA = null;
-buscaVuelo.destinoIATA =  null;
-buscaVuelo.pasajeros = 1;
-buscaVuelo.clase = null;
+var updateDate =  function () {
+   var t = new Date();
+  
+  var prefix = "dep-";
+  $("#"+prefix + "day").text(t.getDate());
+  $("#"+prefix + "month").text(calendar.date.getMonth(t.getMonth()).substr(0,3));
+  $("#"+prefix + "year").text(t.getFullYear());
+  
+  prefix = "land-";
+  t.setDate(t.getDate() + 7)
+  $("#"+prefix + "day").text(t.getDate());
+  $("#"+prefix + "month").text(calendar.date.getMonth(t.getMonth()).substr(0,3));
+  $("#"+prefix + "year").text(t.getFullYear());
+}
+
+
 
 
 var gallery = {};
