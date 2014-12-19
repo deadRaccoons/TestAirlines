@@ -71,6 +71,10 @@ class Admin(object):
     @cherrypy.expose
     def registro(self):
         return file('views/registro.html')
+
+    @cherrypy.expose
+    def distancia(self):
+        return file('views/distancia.html')
         
     @cherrypy.expose
     def registrarse(self, nombres, apellidos, correo, secreto, secreto2):

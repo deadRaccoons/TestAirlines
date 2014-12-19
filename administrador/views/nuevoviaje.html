@@ -2,109 +2,22 @@
 <html >
   <head lang="es">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script>
-      function quita(){
-        var x = document.getElementById("origen");
-        var s = x.value;
-        var y = "Todos menos seleccionado "+ s;
-        var n = document.getElementById("destino");
-        var i;
-        var j;
-        for(j = 0; j < x.length; j++){
-          n.remove(0);
-        }
-        if(s == 0){
-          var o = document.createElement("option");
-          o.text = "no ha seleccionado un pais";
-          o.value = 0;
-          fecha(0);
-        } else {
-          for(i = 1; i < x.length; i++){
-            if(s != x.options[i].value){
-              var o = document.createElement("option");
-              o.text = x.options[i].text;
-              o.value = x.options[i].value;
-              n.add(o);
-            }
-          }
-          fecha(1);
-        }
-      }
-       
-      function fecha(p){
-        var m = document.getElementById("mes");
-        var v = m.value;
-        var i;
-        var meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"];
-        if(p == 1){
-          for(i = 0; i < 12; i++){
-            var o = document.createElement("option");
-            o.text = meses[i];
-	    if(i < 10)
-              o.value = "0"+ i;
-	    else o.value = ""+i
-            m.add(o);
-          }
-        } else {
-          for(i = 0; i < 12; i++){
-            m.remove(0);
-          }
-        }
-        dias();
-      }
-
-      function dias(){
-        var d = document.getElementById("dia");
-        for(i = 1; i < 32; i++){
-	  var o = document.createElement("option");
-	  if(i < 10){
-	   o.text = "0"+ i;
-	   o.value = "0"+i;
-	  } else{
-	    o.text = ""+ i;
-	    o.value = ""+ i;
-          }
-	  d.add(o);
-        }
-	hora();
-      }
-
-      function hora(){
-         var h = document.getElementById("hora");
-         for(i = 1; i < 25; i++){
-           var o = document.createElement("option");
-	   if(i < 10){
-		 o.text = "0"+ i;
-		o.value = "0" +i;
-	   } else {
-		o.text = ""+i;
-		o.value = ""+i;
-	   }
-           h.add(o);
-         }
-	 var m = document.getElementById("minuto");
-	 var o = document.createElement("option");
-         o.text = "00"
-	 m.add(o)
-      }
+     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
+    <script src="static/js/viajes.js">
     </script>
   </head>
   <body>
-    <form name="navion" action="/viajecreado">
+    <form name="navion" action="/viajecreado" onsubmit="return crear()">
       Origen:
       <select id="origen" name="origen" onchange="quita()">
-	<option value="0">--Selecciona</option>
+	<option value="nada">--Selecciona</option>
 	{% for ciudad in ciudades %}
 	<option value="{{ ciudad.nombre }}">{{ ciudad.nombre }}</option>
 	{% endfor %}
       </select> </br>
       Destino:
-      <select id="destino" name="destino">
-	<option value="0">--Selecciona</option>
-	{% for ciudad in ciudades %}
-	<option value="{{ ciudad.nombre }}">{{ ciudad.nombre }}</option>
-	{% endfor %}
-</select></br>
+      <select id="destino" name="destino" onchange="initialize()">
+      </select></br>
       Fecha:
       <select id="anio" name="anio">
         <option value="2014">2014</option>
@@ -126,5 +39,6 @@
       <button type="submit">Crear</button>
     </form>
     <a href="index">Regresar</a>
+    <div hidden id="googleMap" style="width:500px;height:380px;"></div>
   </body>
 </html>
