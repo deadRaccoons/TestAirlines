@@ -11,7 +11,6 @@ function quita(){
     if(s == "nada"){
 	var d = document.getElementById("distancia");
 	d.value = "0";
-        fecha(0);
     } else {
 	for(i = 1; i < x.length; i++){
 	    if(s != x.options[i].value){
@@ -21,34 +20,36 @@ function quita(){
               n.add(o);
 	    }
 	}
-	fecha(1);
 	initialize();
     }   
 };
-function fecha(p){
+function mes(){
     var m = document.getElementById("mes");
     var v = m.value;
     var i;
     var meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"];
-    if(p == 1){
-        for(i = 0; i < 12; i++){
-            var o = document.createElement("option");
-            o.text = meses[i];
-            if(i < 10)
-		o.value = "0"+ i;
-            else o.value = ""+i
-            m.add(o);
-        }
-    } else {
-        for(i = 0; i < 12; i++){
-            m.remove(0);
-        }
+    for(i = 0; i < 12; i++){
+        var o = document.createElement("option");
+        o.text = meses[i];
+        if(i < 9){
+	    o.value = "0"+ i;
+        } else {
+	    o.value = ""+ i;
+	}
+        m.add(o);
     }
     dias();
+    hora();
 };
 function dias(){
+    var v = document.getElementById("mes").value;
     var d = document.getElementById("dia");
-    for(i = 1; i < 32; i++){
+    var n = 32;
+    if(v == "02")
+	n = 29;
+    if(v == "04" || v == "06" || v == "09" || v == "11")
+	n = 31;
+    for(i = 1; i < n; i++){
         var o = document.createElement("option");
         if(i < 10){
             o.text = "0"+ i;
@@ -59,7 +60,6 @@ function dias(){
         }
         d.add(o);
     }
-    hora();
 };
 function hora(){
     var h = document.getElementById("hora");
@@ -74,38 +74,42 @@ function hora(){
         }
         h.add(o);
     }
-    var m = document.getElementById("minuto");
-    var o = document.createElement("option");
-    o.text = "00";
-    o.value = "00";
-    m.add(o);
 };
 function crear(){
     var o = document.getElementById("origen");
     var v = o.options[o.selectedIndex].value;
+    var today = new Date();
+    var day = new Date(document.getElementById("anio").value, document.getElementById("mes").value, document.getElementById("dia").value, document.getElementById("hora").value, document.getElementById("minuto").value, 00, 00);
+    var dif = parseInt((day.getTime()-today.getTime())/(24*3600*1000));
     var errores = "";
     var r = "0";
     if(v == "nada"){
 	errores = errores +  "Selecciona un pais origen";
 	r = "1";
     }
-    if(document.getElementById("distancia").value == 0){
-	errores = errores + "\nDistancia es cero";
+    if(document.getElementById("distancia").value < 200){
+	errores = errores + "\nDistancia muy corta";
+	r = "1";
+    }
+    if(document.getElementById("distancia").value > 7000){
+	errores = errores + "\nDistancia muy grande";
+	r = "1";
+    }
+    if(dif < 20){
+	errores = errores + "\nLa fecha debe ser al menos 20 dias a partir del dia de hoy\nLa fecha dada son "+ dif +" dias despúes de hoy";
 	r = "1";
     }
     if(r == "1"){
 	alert(errores);
 	return false;
     }
-    return false;
+    return true;
 };
 var geocoder;
 var map;
 var addresses;
 var results;
 var dist;
-var markersArray = [];
-var bounds = new google.maps.LatLngBounds();
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 function initialize() {

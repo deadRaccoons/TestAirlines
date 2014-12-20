@@ -99,20 +99,24 @@ class Admin(object):
             raise cherrypy.HTTPRedirect("registro")
 
     @cherrypy.expose
-    def creaviaje(self):
+    def creaviaje(self, mesage=""):
         ciudads = Ciudad.all_()
         avions = Avion.all_()
         html = env.get_template("nuevoviaje.html")
-        return html.render(ciudades = ciudads, aviones = avions)
+        return html.render(ciudades = ciudads, aviones = avions, mensage = mesage)
             
     @cherrypy.expose
     def viajecreado(self, origen, destino, anio, mes, dia, hora, minuto, distancia, idavion):
-        v =  Viaje(None, origen, destino, str(anio)+"-"+ str(mes)+"-"+ str(dia), str(hora)+ ":"+ str(minuto), None, None, distancia, None, None, None, idavion)
-        r = v.crea()
-        if r == 1:
-            return "Se creo"
+        m = int(mes)+1
+        viaje = None
+        if(m<10):
+            viaje = Viaje(None, origen, destino, anio +"-0"+ str(m) +"-"+ dia, hora +":"+minuto, None, None, distancia, None, None, None, idavion)
         else:
-            raise cherrypy.HTTPRedirect("creaviaje")
+            viaje = Viaje(None, origen, destino, anio +"-"+ str(m) +"-"+ dia, hora +":"+minuto, None, None, distancia, None, None, None, idavion)
+        n = viaje.crea()
+        if(n == 1):
+            return self.creaviaje("Se creo el viaje")
+        return self.creaviaje("No se pudo crear el viaje")
         
 
 if __name__ == '__main__':

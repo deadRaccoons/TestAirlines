@@ -6,7 +6,8 @@
     <script src="static/js/viajes.js">
     </script>
   </head>
-  <body>
+  <body onload="mes()">
+    <div>{{ mensage }}</div>
     <form name="navion" action="/viajecreado" onsubmit="return crear()">
       Origen:
       <select id="origen" name="origen" onchange="quita()">
@@ -20,25 +21,28 @@
       </select></br>
       Fecha:
       <select id="anio" name="anio">
-        <option value="2014">2014</option>
-	<option value="2015">2015</option>
+        <option value="2015" selected="selected">2015</option>
+	<option value="2016">2016</option>
       </select>
-      <select id="mes" name="mes"></select>
+      <select id="mes" name="mes" onchange="dias()"></select>
       <select id="dia" name="dia"></select></br>
       Hora Salida:
       <select id="hora" name="hora"></select>
-      <select id="minuto" name="minuto"></select></br>
+      <select id="minuto" name="minuto">
+	<option value="00">00</option>
+      </select></br>
       Distancia:
       <input id="distancia" name="distancia" type="text"/></br>
       Avion:
       <select id="idavion" name="idavion" >
 	{% for avion in aviones %}
-	<option value="{{ avion.id }}">{{ avion.modelo + ", "+ avion.marca }}</option>
+	<option value="{{ avion.idavion }}">{{ avion.modelo + ", "+ avion.marca }}</option>
 	{% endfor %}
       </select>
       <button type="submit">Crear</button>
     </form>
     <a href="index">Regresar</a>
     <div hidden id="googleMap" style="width:500px;height:380px;"></div>
+    {{yo}}
   </body>
 </html>

@@ -193,11 +193,11 @@ primary key (idViaje);
 create or replace function fviaje() returns trigger as $tviaje$
   begin 
     update viaje set realizado = 'y' where fechasalida + horasalida <= (select current_timestamp);
-    new.horasalida = cast(new.horasalida::time without time zone ||' '|| (select zonahora from ciudads where nombre = new.origen) as time with time zone);
-    new.tiempo = cast((new.distancia/180) ||' hours' as interval);
+    new.horasalida = cast(new.horasalida::time without time zone ||' '|| (select zonahora from ciudad where nombre = new.origen) as time with time zone);
+    new.tiempo = cast((new.distancia/360) ||' hours' as interval);
     new.costoViaje = cast(new.distancia * (select costomilla from valor) as double precision);
-    new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudads where nombre = new.destino);
-    new.fechallegada = cast(cast((new.fechasalida+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
+    new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudad where nombre = new.destino);
+    new.fechallegada = cast(cast((new.fechasalida+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudad where nombre = new.destino) as timestamp) as date);
     new.realizado = 'n';
     if (select max(idviaje) from viaje) is null then new.idviaje = 1;
 	return new;
@@ -213,11 +213,11 @@ for each row
 execute procedure fviaje();
 
 create or replace rule rviaje as on update
-to viaje
+to viaje where old.realizado = 'y'
 do instead nothing
 
 insert into valor values (null, .12, null, 'dollar', 'milla');
-insert into viaje values (null, 'Berlin', 'Ciudad de México', '19-12-2014', '14:00', null, null, 6700, null, null, 'n', 1);
+insert into viaje values (null, 'Ciudad de Mexico', 'Berlin', '22-12-2014', '14:00:00', null, null, 6050, null, null, 'n', 1);
 update viaje set costoViaje = 2.3 where idViaje = 1
 
 /*
@@ -242,8 +242,8 @@ CREATE TABLE promocionespecial(
 
 --tabla pasajero (los usuarios que han viajado y los que viajes han tomado)
 CREATE TABLE boleto(
-  idboleto integer,
-  idusuario serial not null references usuario(idusuario),
+  idboleto integer primary key,
+  idusuario serial not null references usuarios(idusuario),
   idViaje serial not null,
   clase text not null check (clase in ('Primera', 'Turista')),
   asiento integer not null,
@@ -251,10 +251,12 @@ CREATE TABLE boleto(
   horasalida time,
   fechallegada date,
   horallegada time,
-  costototal double precision
+  costototal double precision,
+  unique (idViaje, clase, asiento)
 );
-alter table pasajero
-add constraint pasajeroc1
+alter table boleto
+add constraint boletoc
+primary key (idboleto),
 unique (idViaje, clase, asiento);
 
 create table aplica(
