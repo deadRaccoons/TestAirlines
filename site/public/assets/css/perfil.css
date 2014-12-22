@@ -22,7 +22,7 @@ div#logo-principal{
     margin: 10px;
     margin-left:75px;
     margin-top: 40px;
-    background-image: url(user.png);
+    background-image: url(/assets/images/user.png);
 }
 
 div.contenedor1{
@@ -39,7 +39,7 @@ div.comprav{
     width: 48px;
     height: 48px;
     float: left;
-    background-image: url(compra.png);
+    background-image: url(/assets/images/compra.png);
 }
 
 p.compra{
@@ -51,7 +51,7 @@ div.Lugares{
     width: 48px;
     height: 48px;
     float: left;
-    background-image: url(lugares.png);
+    background-image: url(/assets/images/lugares.png);
 }
 
 
@@ -64,7 +64,7 @@ div.Historial{
     width: 48px;
     height: 48px;
     float: left;
-     background-image: url(history.png);
+     background-image: url(/assets/images/history.png);
 }
 
 p.historial{
@@ -76,7 +76,7 @@ div.configuraciones{
     width: 48px;
     height: 48px;
     float: left;
-     background-image: url(setting.png);
+     background-image: url(/assets/images/setting.png);
 }
 
 p.config{
@@ -87,7 +87,7 @@ div.Salir{
     width: 48px;
     height: 48px;
     float: left;
-    background-image: url(exit.png);
+    background-image: url(/assets/images/exit.png);
 }
 
 p.salir{
