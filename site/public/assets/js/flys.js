@@ -34,7 +34,7 @@ var flySearch = flySearch || {
 			},
 			success: function(json){
 				var html  = flySearch._showResults(json);
-				$container.html(html);
+				$("#flyss").html(html);
 			},
 			error: function(dato){
 
@@ -46,20 +46,37 @@ var flySearch = flySearch || {
 	_showResults : function (json) {
 		console.log(json);
 		var html = "<ul id='flights-results'>";
+
+		html += "<li id='results-header'><div class='pricing'>"
+			+ "<strong>" + "Costo viaje" + "</strong></div>" 
+			+ "<div class='class-details'>"
+			+ "<strong> Clase </strong>"
+			+ "</div>"
+			+ "<div class='departure-on'>"
+			+ "<strong>" + "Despega en " + "</strong></div>"
+			+ "<div class='duration'>"
+			+ "<strong>" + "Duración" + "</strong>"
+			+"</div>"
+			+"<div class='start'>Salida</div>"
+			+"<div class='end'>Llegada</div>"
+			+ "</li>"
+
 		var moneda = "MXN"
 		$.each(json, function(k, v) {
-			html += "<li><div class='pricing'><strong>" + v.costoviaje 
-			+ "</strong><span>" + moneda + " </span></div>" 
+			html += "<li class='result'><div class='pricing'><span>" + moneda + " </span>"
+			+ "<strong>" + v.costoviaje + "</strong></div>" 
 			+ "<div class='class-details'>"
 			+ "<strong> Turista </strong>"
 			+ "<span> Pocos asientos disponibles </span>"
 			+ "</div>"
 			+ "<div class='departure-on'>"
-			+ "<strong>" + "despega en 5n horas " + "</strong>"
+			+ "<strong>" + "5n horas " + "</strong></div>"
 			+ "<div class='duration'>"
 			+ "<strong>" + v.tiempo + "</strong>"
 			+"</div>"
-			+ "</li>"
+			+"<div class='start'>11:00</div>"
+			+"<div class='end'>18:45</div>"
+			+ "</li>";
 		});
 
 		return html += "</ul>";
@@ -69,5 +86,10 @@ var flySearch = flySearch || {
 $(function(){
 	$("#search").on("click", function(e){
 		flySearch.search();
+	});
+
+	$("#back-2-search").on("click", function(e){
+		$("#flys").hide("slow");
+		$("#actions").show();
 	});
 });
