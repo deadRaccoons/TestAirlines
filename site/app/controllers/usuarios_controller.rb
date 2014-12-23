@@ -19,8 +19,8 @@ class UsuariosController < ApplicationController
   def show
     if (session[:current_user_id] != nil)
       @usuario = Usuario.find(session[:current_user_id])
-      if (@usuario != nil)
-        redirect_to @usuario
+      if (@usuario == nil)
+        redirect_to "/logins"
       end
     else
       redirect_to "/logins"
@@ -37,7 +37,6 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1/edit
   def edit
     @usuario = Usuario.find(session[:current_user_id])
-    redirect_to edit_usuario_path(@usuario)
 
   end
 
@@ -60,7 +59,7 @@ class UsuariosController < ApplicationController
     end 
 
     if !error
-      redirect_to "/usuarios"
+      redirect_to @usuario
     else
       render "new"
     end
