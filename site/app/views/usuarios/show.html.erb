@@ -7,6 +7,7 @@
   </head>
   
   <body>
+  <div class="user-menu">
     <div id= "menu">
       <div id= "logo-principal">
       </div>
@@ -36,8 +37,12 @@
 	<p class = "salir"><a href="/logins/logout">Salir </a></p>
       </div>
     </div>
+    </div>
+    <div class="user-content">
+    <%= yield %>
+    </div>
   </body>
 </html>
 
 
-<%= link_to 'Logout', "/logins/logout" %> |
+

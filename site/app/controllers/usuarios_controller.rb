@@ -59,6 +59,8 @@ class UsuariosController < ApplicationController
     end 
 
     if !error
+      session[:current_user_id] = @usuario.id
+      flash[:alert] = "Bienvenido a bordo!"
       redirect_to @usuario
     else
       render "new"
@@ -102,6 +104,7 @@ class UsuariosController < ApplicationController
   end
 
   def promos
+    render layout: "promos"
   end
 
   private
