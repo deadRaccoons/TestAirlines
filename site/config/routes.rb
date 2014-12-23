@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   get 'ciudades/index'
 
 
-  resources :promocions
-
   resources :tarjeta
 
   get 'logins/logout'
