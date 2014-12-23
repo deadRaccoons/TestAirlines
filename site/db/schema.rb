@@ -41,13 +41,14 @@ ActiveRecord::Schema.define(version: 20141112034059) do
     t.string  "disponible",       limit: 1
   end
 
-  create_table "ciudads", primary_key: "nombre", force: true do |t|
+  create_table "ciudades", primary_key: "nombre", force: true do |t|
     t.text    "pais",        null: false
     t.integer "distancia"
     t.text    "descripcion", null: false
     t.text    "zonahora",    null: false
     t.text    "aeropuerto",  null: false
     t.text    "IATA"
+    t.text    "slug"
   end
 
   create_table "horas", primary_key: "origen", force: true do |t|
@@ -64,19 +65,13 @@ ActiveRecord::Schema.define(version: 20141112034059) do
     t.string "activo",  limit: 1,  null: false
   end
 
-  create_table "promocion", primary_key: "idpromocion", force: true do |t|
-    t.float "porcentaje",   null: false
-    t.date  "fechaentrada", null: false
-    t.date  "vigencia",     null: false
-  end
-
-  add_index "promocion", ["porcentaje", "fechaentrada", "vigencia"], name: "promocion_porcentaje_fechaentrada_vigencia_key", unique: true, using: :btree
-
   create_table "promociones", primary_key: "idpromocion", force: true do |t|
     t.string "codigopromocion", limit: 10, null: false
-    t.float  "porcentaje",                 null: false
-    t.date   "fechaentrada",               null: false
-    t.date   "vigencia",                   null: false
+    t.date   "iniciopromo",                null: false
+    t.date   "finpromo",                   null: false
+    t.text   "ciudad",                     null: false
+    t.text   "descripcion",                null: false
+    t.text   "slug",                       null: false
   end
 
   create_table "tarjeta", primary_key: "notarjeta", force: true do |t|

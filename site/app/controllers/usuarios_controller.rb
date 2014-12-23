@@ -52,9 +52,10 @@ class UsuariosController < ApplicationController
     @login.activo = 'y'
     error = false;
 
-          @login.save && @usuario.save  
 
     begin
+      @login.save && @usuario.save  
+
      rescue Exception => e
       error = true
       flash[:notice] = e.to_s

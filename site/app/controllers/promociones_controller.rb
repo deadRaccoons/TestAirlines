@@ -5,12 +5,12 @@ class PromocionesController < ApplicationController
   # GET /promociones.json
   def index
     @promociones = Promocione.all
-    
   end
 
   # GET /promociones/1
   # GET /promociones/1.json
   def show
+    @promociones = Promocione.friendly.find(params[:id])
   end
 
   # GET /promociones/new
@@ -26,16 +26,8 @@ class PromocionesController < ApplicationController
   # POST /promociones.json
   def create
     @promocione = Promocione.new(promocione_params)
-
-    respond_to do |format|
-      if @promocione.save
-        format.html { redirect_to @promocione, notice: 'Promocione was successfully created.' }
-        format.json { render :show, status: :created, location: @promocione }
-      else
-        format.html { render :new }
-        format.json { render json: @promocione.errors, status: :unprocessable_entity }
-      end
-    end
+    @promocione.save
+    redirect_to @promocione
   end
 
   # PATCH/PUT /promociones/1
@@ -65,11 +57,11 @@ class PromocionesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_promocione
-      @promocione = Promocione.find(params[:id])
+      @promocione = Promocione.new
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def promocione_params
-      params[:promocione]
+      params.require(:promocione).permit(:descripcion ,:vigencia, :ciudad, :codigopromocion, :iniciopromo, :finpromo)
     end
 end

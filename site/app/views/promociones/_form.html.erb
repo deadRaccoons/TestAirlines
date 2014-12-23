@@ -12,6 +12,12 @@
   <% end %>
 
   <div class="actions">
+  <%= f.text_field :descripcion, :placeholder => "descripcion"%><br/>
+  <%= f.text_field :ciudad, :placeholder => "Ciudad de la promocion"%><br/>
+  <%= f.text_field :codigopromocion, :placeholder => "CodigoPromocion" %><br/>
+  <%= date_select :promocione, :iniciopromo   %><br/>
+  <%= date_select :promocione, :finpromo %><br/> 
+
     <%= f.submit %>
   </div>
 <% end %>
