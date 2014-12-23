@@ -6,7 +6,7 @@
 }
 div#menu{
     position:absolute;
-    width:65px;
+    width:80px;
     height:100%;
     background-color:#2f3030;
     overflow:hidden;
@@ -43,7 +43,7 @@ div.comprav{
 }
 
 p.compra{
-    margin-left:60px;
+    margin-left:80px;
    // line-height: 40px;
 }
     
@@ -56,7 +56,7 @@ div.Lugares{
 
 
 p.frecuentes{
-    margin-left:60px;
+    margin-left:80px;
    // line-height: 40px;
 }
     
@@ -68,7 +68,7 @@ div.Historial{
 }
 
 p.historial{
-    margin-left:60px;
+    margin-left:80px;
    line-height: 40px;
 }
     
@@ -80,7 +80,7 @@ div.configuraciones{
 }
 
 p.config{
-    margin-left:60px;
+    margin-left:80px;
     line-height: 40px;
 }
 div.Salir{
@@ -91,7 +91,7 @@ div.Salir{
 }
 
 p.salir{
-    margin-left:60px;
+    margin-left:80px;
     line-height: 40px;
 }
     
