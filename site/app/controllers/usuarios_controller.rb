@@ -6,7 +6,8 @@ class UsuariosController < ApplicationController
   # GET /usuarios.json
   def index
     if (session[:current_user_id] != nil)
-        redirect_to "/usuarios/" + session[:current_user_id].to_s
+        @usuario = Usuario.find(session[:current_user_id])
+        redirect_to @usuario
     else
       redirect_to "/logins"
     end
@@ -18,8 +19,8 @@ class UsuariosController < ApplicationController
   def show
     if (session[:current_user_id] != nil)
       @usuario = Usuario.find(session[:current_user_id])
-      if (@usuario == nil)
-        redirect_to "/logins"
+      if (@usuario != nil)
+        redirect_to @usuario
       end
     else
       redirect_to "/logins"
@@ -36,6 +37,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1/edit
   def edit
     @usuario = Usuario.find(session[:current_user_id])
+    redirect_to edit_usuario_path(@usuario)
 
   end
 
