@@ -97,7 +97,8 @@ class UsuariosController < ApplicationController
 
   def historial
     @usuario = Usuario.find(session[:current_user_id])
-    render json: @usuario
+    @historial = @usuario
+    render "show"
 
   end 
 

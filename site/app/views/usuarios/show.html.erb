@@ -49,6 +49,10 @@
       <%= render :partial => "edit" %>
     <% end %>
 
+    <% if !@historial.nil? %>
+      <%= render :partial => "edit" %>
+    <% end %>
+
     <%# Vista parcial para los destinos mas frecuentes del usuario %>
      <% if !@destinos.nil? %>
       <%= render :partial=> "destinos", destinos: @destinos %>

@@ -1,9 +1,4 @@
-*{
-    margin:0px;
-    padding:0px;
-    font-family: verdana;
-    color:#bcbcbc;
-}
+
 div#menu{
     z-index: 40;
     position:absolute;
