@@ -100,6 +100,8 @@ class UsuariosController < ApplicationController
     render xml: @usuario
   end
 
+  def promos
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
