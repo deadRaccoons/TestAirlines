@@ -1,6 +1,6 @@
 #Estas lineas de codigo sirven para que la aplicacion en cherrypy corra en apache.
 #Obviamente, esto aun no compila.
- import cherrypy
+import cherrypy
 
 class NombreClase:
 	@cherrypy.expose
@@ -10,9 +10,9 @@ class NombreClase:
  #hace que el metodo sea visible para cuando la pasemos a la URL 
 
  cherrypy.config.update(conf)
-    cherrypy.tree.mount(NombreClase(), script_name='/direcciondemame', config=app_conf)
-    cherrypy.engine.start()
-    cherrypy.engine.block()
+ cherrypy.tree.mount(NombreClase(), script_name='/direcciondemame', config=app_conf)
+ cherrypy.engine.start()
+ cherrypy.engine.block()
 
 #Definimos las variables
 conf = {

@@ -1,0 +1,90 @@
+Lo primero es para configurar el virtualhost de Apache
+
+# mkdir /var/www/mamelines.com
+# mkdri /var/ww/mamelines.com/public
+# echo Hello Web > /var/www/mamelines.com/public/index.html
+# chmod -R 755 /var/www/example.net
+# chown -R apache.apache /var/www/mamelines.com
+
+Al final del archivo /etc/httpd/conf/httpd.conf poner
+
+<VirtualHost *:80>
+DocumentRoot /var/www/mamelines.com/public
+ServerName www.mamelines.com
+</VirtualHost>
+
+Despues de eso poner el comando
+
+# httpd -S
+
+Reiniciamos el servidor con
+
+# service httpd restart
+
+Configuramos el host con:
+
+# echo 127.0.0.1 www.example.net example.net >> /etc/hosts
+
+Ya despues de eso chequen si sale algo que no es la configuracion inicial de apache.
+
+Si todo sale bien, ahora hay que ver lo de montar una aplicacion de cherrypy
+
+# mkdir /var/www/mamelines.com/admin 
+
+editamos de nuevo el archivo httpd.conf
+
+<VirtualHost *:80>
+DocumentRoot /var/www/mamelines.com/public
+
+<Directory /usr/local/www/mamelines.com/public>
+Order allow,deny
+Allow from all
+</Directory>
+
+ServerName www.mamelines.com
+ServerAdmin tabo.odricar@gmail.com
+
+WSGIScriptAlias /admin /var/www/mamelines.com/application/application.py
+<Directory /var/www/mamelines.com/admin>
+WSGIApplicationGroup %{GLOBAL}                                         
+</Directory>
+
+</VirtualHost>
+
+Escribimos esto en application.py:
+
+import sys
+sys.stdout = sys.stderr
+
+import atexit
+import threading
+import cherrypy
+
+cherrypy.config.update({'environment': 'embedded'})
+
+if cherrypy.__version__.startswith('3.0') and cherrypy.engine.state == 0:
+    cherrypy.engine.start(blocking=False)
+    atexit.register(cherrypy.engine.stop)
+
+class Root(object):
+    def index(self):
+        return 'Hello World!'
+    index.exposed = True
+
+application = cherrypy.Application(Root(), script_name=None, config=None)
+
+reiniciamos el servidor con el comando de atras y despues nos vamos en el navegador la direcion
+
+http://www.mamelines.com/admin
+
+si aparece algo y no nos manda errores
+
+y ya eso es todo lo que he avanzado, creo que lo demas es como configurar la applicacion en CherryPy
+si tienen dudas chequen la sig paginas:
+
+http://linuxconfig.org/configure-apache-virtualhost-on-fedora
+http://tools.cherrypy.org/wiki/ModWSGI
+http://stackoverflow.com/questions/4785228/cherrypy-tree-mount-and-mod-wsgi
+
+y si todavia tienen dudas preguntenme 
+
