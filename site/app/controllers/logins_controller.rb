@@ -45,8 +45,8 @@ class LoginsController < ApplicationController
 
       session[:current_user_id] = @usuario.id
       session[:current_user_mail] = @usuario.correo
-      
-      redirect_to "/usuarios/"
+      @usuario.friendly_id
+      redirect_to @usuario
     else
       flash[:alert] = "Usuario o contraseña incorrecta"
       redirect_to "/logins"

@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20141112034059) do
 
   add_index "promocion", ["porcentaje", "fechaentrada", "vigencia"], name: "promocion_porcentaje_fechaentrada_vigencia_key", unique: true, using: :btree
 
-  create_table "promocions", primary_key: "idpromocion", force: true do |t|
+  create_table "promociones", primary_key: "idpromocion", force: true do |t|
     t.string "codigopromocion", limit: 10, null: false
     t.float  "porcentaje",                 null: false
     t.date   "fechaentrada",               null: false
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20141112034059) do
     t.text "genero",          null: false
     t.date "fechanacimiento", null: false
     t.text "url_imagen"
+    t.text "slug"
   end
 
   create_table "valor", primary_key: "idvalor", force: true do |t|
