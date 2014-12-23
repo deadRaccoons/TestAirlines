@@ -37,6 +37,8 @@
                     <i class="icon-login"><% if (session[:current_user_id] != nil) %>
                     <% @usuario = Usuario.find(session[:current_user_id]) %>
                     <%= @usuario.nombres %> 
+                    <% else %>
+                    <%= "Ingresar" %>
                     <% end %>
                     </i>
                 </a></li>
