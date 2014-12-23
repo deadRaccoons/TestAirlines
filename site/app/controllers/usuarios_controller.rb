@@ -95,6 +95,11 @@ class UsuariosController < ApplicationController
 
   end 
 
+  def destinos
+    @usuario = Usuario.find(session[:current_user_id])
+    render xml: @usuario
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
