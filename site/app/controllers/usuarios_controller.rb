@@ -89,6 +89,8 @@ class UsuariosController < ApplicationController
     end
   end
 
+  def 
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
