@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   post 'logins/intento_login'
 
-  resources :usuarios, :path_names => { :new => 'registro', :edit => 'editar', :show => 'me' }
+  resources :usuarios, :path_names => { :new => 'registro', :edit => 'editar', :show => 'yo' }
   
 
   resources :logins, only: [:index, :create, :destroy], :path_names =>{:create => 'do'}
