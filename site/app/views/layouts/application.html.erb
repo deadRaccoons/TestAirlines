@@ -35,7 +35,7 @@
                 </a></li>
                 <li><a class="p-20" href="/logins">
                     <i class="icon-login"><% if (session[:current_user_id] != nil) %>
-                    <%=  @usuario = Usuario.find(session[:current_user_id]) %>
+                    <% @usuario = Usuario.find(session[:current_user_id]) %>
                     <%= @usuario.nombres %> 
                     <% end %>
                     </i>
