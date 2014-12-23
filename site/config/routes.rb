@@ -68,7 +68,7 @@ Rails.application.routes.draw do
 
   resources :vuelos, only: [:show, :index]
 
-  resources :ciudades, only: [:show, :index]
+  resources :ciudades, only: [:show, :index, :edit]
 
   namespace :nosotros do
     resources :aviones, only: [:show, :index]

@@ -15,7 +15,8 @@
 color: rgba(51, 51, 51, 0.61);
 
 } 
-#avions li img {
+
+#avions li img, #destinos li img {
 	width: 100%;
 	height: 200px;
 }
@@ -42,4 +43,9 @@ a.no-hover {
 .card {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 	border-radius: 2px;
+}
+
+#destinos a {
+	display: block;
+	height: auto;
 }

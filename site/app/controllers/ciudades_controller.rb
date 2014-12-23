@@ -4,12 +4,13 @@ class CiudadesController < ApplicationController
   # GET /ciudades
   # GET /ciudades.json
   def index
-    @destinos = Ciudade.all
+    @destinos = Ciudade.order(photo_updated_at: :asc)
   end
 
   # GET /ciudades/1
   # GET /ciudades/1.json
   def show
+    @ciudade = Ciudade.friendly.find(params[:id])
   end
 
   # GET /ciudades/new
@@ -25,6 +26,8 @@ class CiudadesController < ApplicationController
 
   # GET /ciudades/1/edit
   def edit
+    @ciudade = Ciudade.friendly.find(params[:id])
+
   end
 
   # POST /ciudades
@@ -46,15 +49,17 @@ class CiudadesController < ApplicationController
   # PATCH/PUT /ciudades/1
   # PATCH/PUT /ciudades/1.json
   def update
-    respond_to do |format|
-      if @ciudade.update(ciudade_params)
-        format.html { redirect_to @ciudade, notice: 'Ciudade was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ciudade }
+      @ciudade = Ciudade.new(ciudade_params)
+      @ciudade_tmp = Ciudade.find(@ciudade.nombre)
+      @ciudade_tmp.destroy
+
+      if @ciudade.save
+         redirect_to @ciudade 
       else
         format.html { render :edit }
         format.json { render json: @ciudade.errors, status: :unprocessable_entity }
       end
-    end
+    
   end
 
   # DELETE /ciudades/1
@@ -74,6 +79,6 @@ class CiudadesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ciudade_params
-      params.require(:ciudade).permit()
+      params.require(:ciudade).permit(:nombre, :pais, :IATA, :zonahora, :descripcion,  :aeropuerto, :photo,:id, :distancia)
     end
 end

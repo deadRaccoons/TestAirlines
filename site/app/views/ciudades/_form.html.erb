@@ -12,9 +12,14 @@
   <% end %>
 
   <div class="actions">
-     <%= f.text_field :descripcion, :placeholder => "descripcion"%><br/>
-    <%= f.text_field :ciudad, :placeholder => "Ciudad de la promocion"%><br/>
-    <%= f.text_field :codigopromocion, :placeholder => "CodigoPromocion" %><br/>
+     <%= f.text_field :nombre, :placeholder => "Nombre Ciudad"%><br/>
+    <%= f.text_field :pais, :placeholder => "pais"%><br/>
+    <%= f.text_field :IATA, :placeholder => "IATA" %><br/>
+    <%= f.text_field :zonahora, :placeholder => "zonahora" %><br/>
+    <%= f.text_area :descripcion, :placeholder => "zonahora" %><br/>
+    <% f.text_field :distancia %>
+    <%= f.text_field :aeropuerto, :placeholder => "aeropuerto" %><br/ >
+
     <%= f.file_field :photo  %>
     <%= f.submit %>
 
