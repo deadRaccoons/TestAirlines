@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get 'logins/intento_login'
 
-  get 'usuarios/historial'
+  get 'usuarios/:id/historial' => 'usuarios#historial'
 
   post 'logins/intento_login'
 
