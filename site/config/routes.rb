@@ -28,6 +28,12 @@ Rails.application.routes.draw do
 
   get 'usuarios/:id/destinos_frecuentes' => 'usuarios#destinos'
 
+  get 'viajes/:date/:id' => 'viajes#detalles_vuelo'
+
+  get 'viajes/:date' => 'viajes#detalles_dia'
+
+  get 'viajes/llegadas/:ciudad/:fecha' => 'viajes#llegadas'
+
   get 'usuarios/:id/promociones' => 'usuarios#promos'
 
   post 'logins/intento_login'
