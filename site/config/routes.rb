@@ -10,9 +10,13 @@ Rails.application.routes.draw do
     resources :ciudads
   end
 
-  resources :ciudads
+  resources :ciudades
+
+  get 'ciudades/:id/sugerencias' => 'ciudades#sugerencias'
+
 
   get 'ciudades/index'
+
 
   resources :promocions
 
@@ -30,7 +34,7 @@ Rails.application.routes.draw do
 
   post 'logins/intento_login'
 
-  resources :usuarios, :path_names => { :new => 'registro', :edit => 'editar', :show => 'yo' }
+  resources :usuarios, :path_names => { :new => 'registro', :edit => 'configuracion', :show => 'yo' }
   
 
   resources :logins, only: [:index, :create, :destroy], :path_names =>{:create => 'do'}

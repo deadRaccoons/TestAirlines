@@ -5,7 +5,7 @@ class LoginsController < ApplicationController
   # GET /logins.json
   def index
     if session[:current_user_id] != nil
-      @usuario = Usuario.find(session[:current_user_mail])
+      @usuario = Usuario.find(session[:current_user_id])
       redirect_to @usuario
     else
       @login = Login.new

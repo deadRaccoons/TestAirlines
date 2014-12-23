@@ -75,7 +75,7 @@ footer {
 	background-image: url(../images/earth.png);
 }
 
-#avions li {
+#avions li, #destinos li {
 	width:31%;
 	height: 300px;
 	background-color: #FFF;

@@ -23,7 +23,7 @@
         }
 
       if (receive_sugesstions) {
-        $.getJSON( "/ciudads", {
+        $.getJSON( "/ciudades/u/sugerencias", {
               q: $(this).val(),
             })
            .done(function( data ) {
@@ -61,7 +61,7 @@
         rs =  true;
       }
       if (rs) {
-        $.getJSON( "/ciudads", {
+        $.getJSON( "/ciudades/u/sugerencias", {
               q: $(this).val(),
             })
            .done(function( data ) {

@@ -5,6 +5,7 @@
     color:#bcbcbc;
 }
 div#menu{
+    z-index: 40;
     position:absolute;
     width:80px;
     height:100%;
@@ -96,3 +97,11 @@ p.salir{
 }
     
 
+.user-content {
+    left: 80px;
+position: absolute;
+width: 93%;
+height: 100%;
+overflow: hidden;
+
+}

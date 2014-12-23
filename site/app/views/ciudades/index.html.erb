@@ -1,0 +1,18 @@
+<h1>Listing ciudades</h1>
+<link rel="stylesheet" href="/assets/css/cards.css">
+<div class="full_contact">
+<ul id="destinos">
+     <% @destinos.each do |destino| %>
+
+      <li>
+        <%= image_tag("/assets/destinos/" + destino.slug + ".jpg") -%>
+        <div class="info_avion">
+          <span><%= destino.IATA %> </span><br/>        
+          <strong>Pais: </strong><span><%= destino.pais %> </span><br/> 
+          <strong>Distancia: </strong><span><%= destino.distancia %> </span><br/> 
+
+        </div>
+      </li>
+    <% end %>
+</ul>
+</div>

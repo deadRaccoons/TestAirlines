@@ -39,7 +39,21 @@
     </div>
     </div>
     <div class="user-content">
-    <%= yield %>
+
+    <%# Vista parcial para las promociones del usuario %>
+    <% if !@promos.nil? %>
+      <%= render :partial => "promos" %>
+    <% end %>
+
+     <% if @edit %>
+      <%= render :partial => "edit" %>
+    <% end %>
+
+    <%# Vista parcial para los destinos mas frecuentes del usuario %>
+     <% if !@destinos.nil? %>
+      <%= render :partial=> "destinos", destinos: @destinos %>
+    <% end %>
+
     </div>
   </body>
 </html>

@@ -36,7 +36,9 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/1/edit
   def edit
+    @edit = true
     @usuario = Usuario.find(session[:current_user_id])
+    render "show"
 
   end
 
@@ -100,11 +102,13 @@ class UsuariosController < ApplicationController
 
   def destinos
     @usuario = Usuario.find(session[:current_user_id])
-    render xml: @usuario
+    @destinos = Ciudade.all
+    render "show"
   end
 
   def promos
-    render layout: "promos"
+    @promos = "ok"
+    render "show"
   end
 
   private
