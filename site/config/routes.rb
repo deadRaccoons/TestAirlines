@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   resources :tarjetas , only: [:show]
 
-  resources :usuarios, only: [:show, :new]
+  resources :usuarios, only: [:show, :new, :edit]
 
   resources :login, only: [:show, :index, :destroy]
 
