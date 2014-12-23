@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'logins/intento_login'
 
+  get 'usuarios/historial'
+
   post 'logins/intento_login'
 
   resources :usuarios, :path_names => { :new => 'registro', :edit => 'editar', :show => 'yo' }
