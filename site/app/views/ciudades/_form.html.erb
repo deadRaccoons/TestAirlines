@@ -1,4 +1,4 @@
-<%= form_for(@ciudade) do |f| %>
+<%= form_for @ciudade,  :html => { :multipart => true } do |f| %>
   <% if @ciudade.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ciudade.errors.count, "error") %> prohibited this ciudade from being saved:</h2>
@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="actions">
+     <%= f.text_field :descripcion, :placeholder => "descripcion"%><br/>
+    <%= f.text_field :ciudad, :placeholder => "Ciudad de la promocion"%><br/>
+    <%= f.text_field :codigopromocion, :placeholder => "CodigoPromocion" %><br/>
+    <%= f.file_field :photo  %>
     <%= f.submit %>
+
   </div>
 <% end %>

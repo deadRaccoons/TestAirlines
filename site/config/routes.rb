@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
   get 'aviones/index'
 
-  resources :promociones , only: [:show, :index]
+  resources :promociones , only: [:show, :index, :edit]
 
   resources :tarjetas , only: [:show]
 

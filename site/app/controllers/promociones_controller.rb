@@ -10,7 +10,7 @@ class PromocionesController < ApplicationController
   # GET /promociones/1
   # GET /promociones/1.json
   def show
-    @promociones = Promocione.friendly.find(params[:id])
+    @promocione = Promocione.friendly.find(params[:id])
   end
 
   # GET /promociones/new
@@ -62,6 +62,6 @@ class PromocionesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def promocione_params
-      params.require(:promocione).permit(:descripcion ,:vigencia, :ciudad, :codigopromocion, :iniciopromo, :finpromo)
+      params.require(:promocione).permit(:descripcion ,:vigencia, :ciudad, :codigopromocion, :iniciopromo, :finpromo, :photo)
     end
 end

@@ -31,8 +31,10 @@ gem 'spring',        group: :development
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
+#Pretty urls
 gem 'friendly_id'
+#image uploader
+gem "paperclip", "~> 3.1"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

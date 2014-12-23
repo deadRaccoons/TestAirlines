@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112034059) do
+ActiveRecord::Schema.define(version: 20141223124723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20141112034059) do
     t.text    "descripcion", null: false
     t.text    "zonahora",    null: false
     t.text    "aeropuerto",  null: false
-    t.text    "IATA"
+    t.text    "iata"
     t.text    "slug"
   end
 
@@ -66,12 +66,16 @@ ActiveRecord::Schema.define(version: 20141112034059) do
   end
 
   create_table "promociones", primary_key: "idpromocion", force: true do |t|
-    t.string "codigopromocion", limit: 10, null: false
-    t.date   "iniciopromo",                null: false
-    t.date   "finpromo",                   null: false
-    t.text   "ciudad",                     null: false
-    t.text   "descripcion",                null: false
-    t.text   "slug",                       null: false
+    t.string   "codigopromocion",    null: false
+    t.date     "iniciopromo",        null: false
+    t.date     "finpromo",           null: false
+    t.text     "ciudad",             null: false
+    t.text     "descripcion",        null: false
+    t.text     "slug",               null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "tarjeta", primary_key: "notarjeta", force: true do |t|
