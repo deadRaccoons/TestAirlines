@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class LoginsController < ApplicationController
   before_action :set_login, only: [:show]
 

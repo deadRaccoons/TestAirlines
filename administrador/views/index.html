@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   </head>
   <body>
-    bienvenido {{admin}} </br>
-    <a href="creaviaje">Crea Viaje</a></br>
-    <a href="aviones">Aviones</a></br>
-    <a href="salir">Salir</a>
+    <div class="navbar col-md-2">
+      <ul class="nav nav-pills nav-stacked">
+	<li class="active"><a href="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ admin }}</a></li>
+	<li><a href="creaviaje">Crea Viaje</a></li>
+	<li><a href="aviones">Aviones</a></li>
+	<li><a href="salir">Salir</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      Aqui algun mensage
+    </div>
   </body>
 </html>

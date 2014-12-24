@@ -71,10 +71,6 @@ class Admin(object):
     @cherrypy.expose
     def registro(self):
         return file('views/registro.html')
-
-    @cherrypy.expose
-    def distancia(self):
-        return file('views/distancia.html')
         
     @cherrypy.expose
     def registrarse(self, nombres, apellidos, correo, secreto, secreto2):
@@ -100,10 +96,17 @@ class Admin(object):
 
     @cherrypy.expose
     def creaviaje(self, mesage=""):
-        ciudads = Ciudad.all_()
-        avions = Avion.all_()
-        html = env.get_template("nuevoviaje.html")
-        return html.render(ciudades = ciudads, aviones = avions, mensage = mesage)
+        try:
+            c = self.us[SESSION_KEY]
+        except:
+            self.us = None
+        if self.us is None:
+            return file('views/login.html')
+        else:
+            ciudads = Ciudad.all_()
+            avions = Avion.all_()
+            html = env.get_template("nuevoviaje.html")
+            return html.render(ciudades = ciudads, aviones = avions, mensage = mesage)
             
     @cherrypy.expose
     def viajecreado(self, origen, destino, anio, mes, dia, hora, minuto, distancia, idavion):
