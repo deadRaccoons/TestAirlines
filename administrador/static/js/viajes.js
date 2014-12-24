@@ -45,9 +45,9 @@ function dias(){
     var v = document.getElementById("mes").value;
     var d = document.getElementById("dia");
     var n = 32;
-    if(v == "02")
+    if(v == "01")
 	n = 29;
-    if(v == "04" || v == "06" || v == "09" || v == "11")
+    if(v == "03" || v == "04" || v == "05" || v == "08" || v == "10")
 	n = 31;
     for(i = 1; i < n; i++){
         var o = document.createElement("option");

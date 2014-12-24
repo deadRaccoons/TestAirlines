@@ -1,23 +1,23 @@
-﻿insert into ciudad values('Frankfur', 'Alemania', 5939, 'fssd', 'CET', 'Frankfurt Airport');
-insert into ciudad values('Berlin', 'Alemania', 6047, 'fssd', 'CET', 'dsf');
-insert into ciudad values('Munich', 'Alemania', 6089, 'fssd', 'CET', 'Munich Airport');
-INSERT INTO ciudad VALUES('Hamburgo', 'Alemania', 5867, 'jhiu', 'CET', 'Aeropuerto de Hamburgo-Fuhlsbüttel');
-insert into ciudad values('Buenos Aires', 'Argentina', 4545, 'fssd', 'America/Cordoba', 'Aeropuerto Internacional de Ezeiza');
-insert into ciudad values('São Paulo', 'Brasil', 4619, 'fssd', 'BRST', 'Aeropuerto Campo de Marte');
-insert into ciudad values('Rio de Janeiro', 'Brasil', 4589, 'fssd', 'America/Sao_Paulo', 'Aeropuerto de Rio de Janeiro Santos Dumont');
-insert into ciudad values('Porto Alegre', 'Brasil', 4498, 'fssd', 'AMT', 'Aeropuerto de Porto Alegre');
-insert into ciudad values('Vancouver', 'Canada', 2452, 'fssd', 'PST', 'Vancouver International Airport');
-insert into ciudad values('Santiago de Chile', 'Chile', 4113, 'fssd', 'America/Santiago', 'Aeropuerto Internacional Comodoro Arturo')
-insert into ciudad values('Pekin', 'China', 7746, 'fssd', 'CNT', 'Beijing Capital International Airport');
-insert into ciudad values('Shangai', 'China', 8012, 'fssd', 'CNT', 'Shanghai Hongqiao International Airport');
-insert into ciudad values('Hong Kong', 'China', 8790, 'fssd', 'HKT', 'Hong Kong International Airport');
-insert into ciudad values('Seul', 'Corea del Sur', 7492, 'fssd', 'KST', 'Gimpo International Airport');
-insert into ciudad values('Jeju Do', 'Corea del Sur', 7497, 'fssd', 'KST', 'Jeju International Airport');
-insert into ciudad values('Busan', 'Corea del Sur', 7516, 'fssd', 'KST', 'Gimhae International Airport');
-insert into ciudad values('Incheon', 'Corea del Sur', 7502, 'fssd', 'KST', 'Incheon International Airport');
-insert into ciudad values('Dubai', 'Emiratos Árabes Unidos', 8902, 'fssd', 'GST', 'Aeropuerto Internacional de Dubái');
-insert into ciudad values('Abu Dhabi', 'Emiratos Árabes Unidos', 8894, 'fssd', 'GST', 'Aeropuerto Internacional de Abu Dabi');
-insert into ciudad values('El Cairo', 'Egipto', 7583, 'fssd', 'EET', 'Cairo International Airport');
+﻿insert into ciudades values('Frankfur', 'Alemania', 5939, 'fssd', 'CET', 'Frankfurt Airport');
+insert into ciudades values('Berlin', 'Alemania', 6047, 'fssd', 'CET', 'dsf');
+insert into ciudades values('Munich', 'Alemania', 6089, 'fssd', 'CET', 'Munich Airport');
+INSERT INTO ciudades VALUES('Hamburgo', 'Alemania', 5867, 'jhiu', 'CET', 'Aeropuerto de Hamburgo-Fuhlsbüttel');
+insert into ciudades values('Buenos Aires', 'Argentina', 4545, 'fssd', 'America/Cordoba', 'Aeropuerto Internacional de Ezeiza');
+insert into ciudades values('São Paulo', 'Brasil', 4619, 'fssd', 'BRST', 'Aeropuerto Campo de Marte');
+insert into ciudades values('Rio de Janeiro', 'Brasil', 4589, 'fssd', 'America/Sao_Paulo', 'Aeropuerto de Rio de Janeiro Santos Dumont');
+insert into ciudades values('Porto Alegre', 'Brasil', 4498, 'fssd', 'AMT', 'Aeropuerto de Porto Alegre');
+insert into ciudades values('Vancouver', 'Canada', 2452, 'fssd', 'PST', 'Vancouver International Airport');
+insert into ciudades values('Santiago de Chile', 'Chile', 'fssd', 'America/Santiago', 'Aeropuerto Internacional Comodoro Arturo')
+insert into ciudades values('Pekin', 'China', 7746, 'fssd', 'CNT', 'Beijing Capital International Airport');
+insert into ciudades values('Shangai', 'China', 8012, 'fssd', 'CNT', 'Shanghai Hongqiao International Airport');
+insert into ciudades values('Hong Kong', 'China', 8790, 'fssd', 'HKT', 'Hong Kong International Airport');
+insert into ciudades values('Seul', 'Corea del Sur', 7492, 'fssd', 'KST', 'Gimpo International Airport');
+insert into ciudades values('Jeju Do', 'Corea del Sur', 7497, 'fssd', 'KST', 'Jeju International Airport');
+insert into ciudades values('Busan', 'Corea del Sur', 7516, 'fssd', 'KST', 'Gimhae International Airport');
+insert into ciudades values('Incheon', 'Corea del Sur', 7502, 'fssd', 'KST', 'Incheon International Airport');
+insert into ciudades values('Dubai', 'Emiratos Árabes Unidos', 8902, 'fssd', 'GST', 'Aeropuerto Internacional de Dubái');
+insert into ciudades values('Abu Dhabi', 'Emiratos Árabes Unidos', 8894, 'fssd', 'GST', 'Aeropuerto Internacional de Abu Dabi');
+insert into ciudades values('El Cairo', 'Egipto', 7583, 'fssd', 'EET', 'Cairo International Airport');
 insert into ciudad values('New York', 'Estados Unidos', 20886, 'fssd', 'EST', 'Aeropuerto Internacional John F. Kennedy');
 insert into ciudad values('Paris', 'Francia', 5645, 'fssd', 'CET', 'Aeropuerto de Parí­s-Charles de Gaulle');
 insert into ciudad values('Toulon', 'Francia', 5575, 'fssd', 'CET', 'Aeropuerto de Toulon–Hyères');
@@ -94,40 +94,3 @@ insert into ciudad values('', '', , 'fssd', '', '')
 insert into ciudad values('', '', , 'fssd', '', '')
 insert into ciudad values('', '', , 'fssd', '', '')
 insert into ciudad values('', '', , 'fssd', '', '')
-
-SELECT current_timestamp::TIMESTAMP WITH TIME ZONE AT TIME ZONE 'BRST';
-select '22:00:00'::TIME WITH TIME ZONE AT TIME ZONE 'BRST';
-
-create table horas(
-  origen text references ciudads(nombre),
-  destino text references ciudads(nombre),
-  fechasalida date,
-  horasalida time with time zone,
-  distancia int not null,
-  tiempo interval,
-  fechallegada date,
-  horallegada time with time zone
-);
-alter table horas
-add constraint horasc
-primary key (origen, destino, fechasalida, horasalida);
-create or replace function fhoras() returns trigger as $thoras$
-  begin
-    new.horasalida = cast(new.horasalida::time without time zone ||' '|| (select zonahora from ciudads where nombre = new.origen) as time with time zone);
-    new.tiempo = cast((new.distancia/180 * 60) ||' minutes' as interval);
-    new.horallegada = (new.horasalida + new.tiempo)::time with time zone at time zone (select zonahora from ciudads where nombre = new.destino);
-    new.fechallegada = cast(cast(((select current_date)+ new.horasalida + new.tiempo)::timestamp with time zone at time zone (select zonahora from ciudads where nombre = new.destino) as timestamp) as date);
-    return new;
-  end;
-$thoras$ language plpgsql;
-
-create trigger thoras
-before insert on horas
-for each row
-execute procedure fhoras()
-
-
-insert into horas values ('Ciudad de México', 'Berlin', (select current_date), (select current_time), 1360, null, null, null);
-insert into horas values ('Berlin', 'Ciudad de México', (select current_date), (select current_time), 1360, null, null, null);
-select '18:00:00 CST';
-select * from horas

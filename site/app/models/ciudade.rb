@@ -1,4 +1,5 @@
 class Ciudade < ActiveRecord::Base
+  self.table_name = "ciudad"
 	belongs_to :category
   
 	has_attached_file :photo, :styles => { :small => "250x250>" },

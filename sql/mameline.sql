@@ -59,7 +59,8 @@ execute procedure favion()
 
 create or replace view avions 
 as select modelo, marca, capacidadprimera, capacidadturista 
-from avion;
+from avion
+where idavion < 21;
 
 --como insertar en la tabla avion
 insert into avion(modelo, marca, capacidadPrimera, capacidadTurista, disponible)
@@ -67,18 +68,23 @@ values (/* 'string' */, /* 'string' */, /*int*/, /*int*/, /*'char'*/);
 
 
 --tabla ciudad
-drop table ciudads
-CREATE TABLE ciudads(
+CREATE TABLE ciudades(
   nombre text NOT NULL,
   pais text NOT NULL,
   distancia int NOT NULL check(distancia >= 0),
   descripcion text not null,
-  zonahoraria text not null
+  zonahoraria text not null,
+  aeropuerto text not null,
+  IATA text not null,
+  slug text not null,
+  photo_file_name varchar(255) not null,
+  photo_content_type varchar(255) not null,
+  photo_file_size int not null,
+  photo_updated_at timestamp not null
 );
-alter table ciudads
-add constraint ciudadsc
+alter table ciudades
+add constraint ciudadesc
 primary key (nombre);
-drop table ciudads
 
 
 --tabla login
@@ -90,7 +96,6 @@ CREATE TABLE logins(
 alter table logins
 add constraint loginc
 primary key (correo);
-
 
 --tabla usuario
 CREATE TABLE usuarios(
