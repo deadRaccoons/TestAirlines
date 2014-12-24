@@ -31,6 +31,7 @@ gem 'spring',        group: :development
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'therubyracer'
 #Pretty urls
 gem 'friendly_id'
 #image uploader
