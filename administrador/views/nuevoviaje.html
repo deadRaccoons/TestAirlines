@@ -2,15 +2,19 @@
 <html >
   <head lang="es">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap-theme.css">
+
      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
     <script src="static/js/viajes.js">
     </script>
   </head>
 
-  <body onload="mes()">
+  <body onload="mes()" class="body-indice">
 
-    <div class="navbar col-md-2">
+    <div class="navbar col-md-13">
       <ul class="nav nav-pills nav-stacked">
 	<li><a href="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ admin }}</a></li>
 	<li class="active"><a href="creaviaje">Crea Viaje</a></li>
@@ -20,14 +24,16 @@
     </div>
 
     <div class="container">
-      <div class="col-sm-6 col-md-4 col-md-offset-2">
+      <div class="col-sm-7 col-md-5 col-md-offset-2 form-viaje">
 	<h1 class="text-center login-title">Crea Viaje</h1>
+
 	<div {{ visibilidad }} class="alert alert-{{ tipo }}" role="alert">{{ mensage }}</div>
-	<form role="form" class="form-horizontal" name="navion" action="/viajecreado" onsubmit="return crear()">
+
+	<form text-align="right" role="form" class="form-horizontal" name="navion" action="/viajecreado" onsubmit="return crear()">
 
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label">Origen:</label>
-	    <div class="col-sm-10">
+	    <div class="col-sm-9">
 	      <select class="form-control" id="origen" name="origen" onchange="quita()">
 		<option value="nada">--Selecciona</option>
 		{% for ciudad in ciudades %}
@@ -39,7 +45,7 @@
 	  
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label">Destino:</label>
-	    <div class="col-sm-10">
+	    <div class="col-sm-9">
 	      <select class="form-control" id="destino" name="destino" onchange="initialize()">
 	      </select>
 	    </div>
@@ -47,53 +53,58 @@
 
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label">Fecha:</label>
-	    <div class="col-sm-4 col-md-offset-0">
+	    <div class="col-sm-3 col-sm-offset-0">
 	      <select type="date" class="form-control" id="anio" name="anio">
 		<option value="2015" selected="selected">2015</option>
 		<option value="2016">2016</option>
 	      </select>
 	    </div>
-	    <div class="col-sm-3 col-md-offset-0">
+	    <div class="col-sm-3 col-sm-offset-0">
 	      <select class="form-control" id="mes" name="mes" onchange="dias()"></select>
 	    </div>
-	    <div class="col-sm-3 col-md-offset-0">
+	    <div class="col-sm-3 col-sm-offset-0">
 	      <select class="form-control" id="dia" name="dia"></select>
 	    </div>
 	  </div>
-
+	  
 	  
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label">Hora Salida:</label>
-	    <div class="col-sm-3 col-md-offset-0">
+	    <div class="col-sm-3">
 	      <select class="form-control" id="hora" name="hora"></select>
 	    </div>
-	    <div class="col-sm-3 col-md-offset-0">
+	    <div class="col-sm-3">
 	      <select class="form-control" id="minuto" name="minuto">
 		<option value="00">00</option>
 	      </select>
 	    </div>
 	  </div>
-	   
-
+	  
+	  
 	  <div class="form-group">
 	    <label class="col-sm-2 control-label"> Distancia:</label>
-	    <div class="col-sm-8 col-md-offset-1">
-	      <input class="form-control" id="distancia" name="distancia" type="text">
+	    <div class="col-sm-9 col-md-offset-0">
+	      <input class="form-control" id="distancia" name="distancia" type="text" readonly>
 	    </div>
 	  </div>
-	    Avion:
-	  <select id="idavion" name="idavion" >
-	    {% for avion in aviones %}
-	    <option value="{{ avion.idavion }}">{{ avion.modelo + ", "+ avion.marca }}</option>
-	    {% endfor %}
-	  </select></br>
-	  <button type="submit">Crear</button>
+	  
+	  <div class="form-group">
+	    <label class="col-sm-2 control-label">Avion:</label>
+	    <div class="col-sm-9 col-md-offset-0">
+	      <select class="form-control" id="idavion" name="idavion" >
+		{% for avion in aviones %}
+		<option value="{{ avion.idavion }}">{{ avion.modelo + ", "+ avion.marca }}</option>
+		{% endfor %}
+	      </select></br>
+	    </div>
 	  </div>
+	  
+	  <div class="form-group">
+	      <button type="submit" class="boton-viaje">Crear</button>
+	  </div>
+	</form>
       </div>
-      </form>
-      <a href="index">Regresar</a>
       <div hidden id="googleMap" style="width:500px;height:380px;"></div>
-      {{yo}}
     </div>
   </body>
 </html>
