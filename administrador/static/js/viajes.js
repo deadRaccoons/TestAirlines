@@ -95,7 +95,7 @@ function crear(){
 	errores = errores + "\nDistancia muy grande";
 	r = "1";
     }
-    if(dif < 20){
+    if(dif < 0){
 	errores = errores + "\nLa fecha debe ser al menos 20 dias a partir del dia de hoy\nLa fecha dada son "+ dif +" dias despúes de hoy";
 	r = "1";
     }

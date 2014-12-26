@@ -14,14 +14,14 @@ body {
   margin: 0;
 }
 .body-indice {
-    min-height: 650px;
+    min-height: 675px;
     background: url(index.jpg);
     background-size: 100% 100%;
 }
 .body-login {
     min-height: 620px;
     background: url(login.jpg);
-    backgorund-size: 100% 100%;
+    background-size: 100% 100%;
 }
 article,
 aside,
@@ -4168,8 +4168,22 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-text {
     float: left;
-    margin-right: 15px;
+    margin-right: 10px;
     margin-left: 15px;
+  }
+}
+.navbar-title {
+  color: blue;
+  font-family: sans-serif;
+  font-size: 24px;
+  margin-top: 7px;
+  margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .navbar-title {
+    float: left;
+    margin-right: 15px;
+    margin-left: 5px;
   }
 }
 @media (min-width: 768px) {
