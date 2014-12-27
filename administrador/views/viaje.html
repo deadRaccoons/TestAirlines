@@ -11,7 +11,7 @@
     <script src="static/js/viajes.js"></script>
   </head>
 
-  <body onload="mes()" class="body-login">
+  <body class="body-login" onload="mes()">
 
   	<div class="navbar navbar-default1">
       <div class="container-fluid">
@@ -69,7 +69,7 @@
 	  		<div {{ crear }} class="form-group">
 	    		<label class="col-sm-2 control-label">Fecha:</label>
 	    		<div class="col-sm-3 col-sm-offset-0">
-	      			<select type="date" class="form-control" id="anio" name="anio">
+	      			<select type="date" class="form-control" id="anio" name="anio" onchange="otra()">
 	      				<option value="2014">2014</option>
 						<option value="2015" selected="selected">2015</option>
 						<option value="2016">2016</option>
@@ -79,14 +79,14 @@
 	      			<select class="form-control" id="mes" name="mes" onchange="dias()"></select>
 	    		</div>
 	    		<div class="col-sm-3 col-sm-offset-0">
-	      			<select class="form-control" id="dia" name="dia"></select>
+	      			<select class="form-control" id="dia" name="dia" onchange="otra()"></select>
 	    		</div>
 	  		</div>
 	  
 	  		<div {{ crear }} class="form-group">
 	    		<label class="col-sm-2 control-label">Hora Salida:</label>
 	    		<div class="col-sm-3">
-	      			<select class="form-control" id="hora" name="hora"></select>
+	      			<select class="form-control" id="hora" name="hora" onchange="otra()"></select>
 	    		</div>
 	    		<div class="col-sm-3">
 	      			<select class="form-control" id="minuto" name="minuto">
@@ -106,13 +106,22 @@
 	  		<div {{ crear }} class="form-group">
 	    		<label class="col-sm-2 control-label">Avion:</label>
 	    		<div class="col-sm-9 col-md-offset-0">
-	      			<select class="form-control" id="idavion" name="idavion" >
+	    			<select class="form-control" id="aviones" name="idavion">
+        			</select>
+	    		</div>
+	    		<div hidden>
+	    			<select id="idavion">
 						{% for avion in aviones %}
 						<option value="{{ avion.idavion }}">{{ avion.idavion }} {{ ",  "+ avion.modelo +", "+ avion.marca +", " }} {{ avion.capacidadprimera + avion.capacidadturista }}</option>
 						{% endfor %}
 	      			</select>
-	    		</div>
-	  		</div>
+	    			<select id="mys">
+	          			{% for algo in todos %}
+		            	<option id=" {{ algo[2] }} " value="{{ algo[1] }}">{{ algo[3] }}</option>
+        		    	{% endfor %}
+        			</select>
+        		</div>
+	    	</div>
 	  
 	  		<div {{ crear }} class="form-group">
 	      		<button type="submit" class="boton-viaje">Crear</button>
@@ -120,6 +129,8 @@
 		</form>
    	  </div>
       <div hidden id="googleMap" style="width:500px;height:380px;"></div>
+
+
       <div {{ cancelar }} class="col-md-offset-2">
       	<form {{ cancelar }} role="form" name="cancelaviaje" action="/viajecancelado" onsubmit="return cancelar()">
       		<table {{ cancelar }} class="table table-trans table-hover">

@@ -49,7 +49,12 @@ class Admin(object):
 
     @cherrypy.expose
     def index(self):
-        if cherrypy.session[SESSION_KEY] is None:
+        try:
+            c = cherrypy.session[SESSION_KEY]
+        except:
+            cherrypy.session[SESSION_KEY] = None
+            c = None
+        if c is None:
             raise cherrypy.HTTPRedirect("login")
         admin = Administrador.getAdministrador(cherrypy.session[SESSION_KEY])
         if admin is None:
@@ -59,7 +64,12 @@ class Admin(object):
                     
     @cherrypy.expose
     def salir(self):
-        if cherrypy.session[SESSION_KEY] is None:
+        try:
+            c = cherrypy.session[SESSION_KEY]
+        except:
+            cherrypy.session[SESSION_KEY] = None
+            c = None
+        if c is None:
             raise cherrypy.HTTPRedirect("login")
         else:
             username = cherrypy.session[SESSION_KEY]
@@ -104,9 +114,9 @@ class Admin(object):
         else:
             ciudads = Ciudad.all_()
             avions = Avion.all_()
-
+            todos = Avion.disponibles()
             html = env.get_template("viaje.html")
-            return html.render(ciudades=ciudads, aviones=avions, mensage=mesage, visibilidad=visibilidad, tipo=tipo, crea="active", cancelar="hidden")
+            return html.render(ciudades=ciudads, aviones=avions, mensage=mesage, visibilidad=visibilidad, tipo=tipo, crea="active", cancelar="hidden", todos=todos)
             
     @cherrypy.expose
     def viajecreado(self, origen, destino, anio, mes, dia, hora, minuto, distancia, idavion):
@@ -156,6 +166,11 @@ class Admin(object):
             cuerpo = cuerpo + " "+ str(sel)
         return cuerpo
         
+    @cherrypy.expose
+    def otro(self):
+        todos = Avion.disponibles()
+        html = env.get_template('index.html')
+        return html.render(todos=todos)
 
 if __name__ == '__main__':
     cherrypy.quickstart(Admin(), "" ,"app.conf")

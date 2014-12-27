@@ -53,12 +53,3 @@ class Viaje(object):
             r = list(resultado)
             todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
         return todos
-
-    @staticmethod
-    def ultimovuelo(idavion):
-        c = Conexion()
-        try:
-            resultado = c.consultar("select destino from viaje where idavion = "+ str(idavion) +" order by fechallegada desc limit 1")
-        except:
-            resultado = None
-        return resultado

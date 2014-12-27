@@ -5,8 +5,14 @@
     <link rel="stylesheet" href="static/css/bootstrap.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.css">
+    <script type="text/javascript">
+      function myfun(){
+        var s = document.getElementById("mys");
+        alert(s.options[s.selectedIndex].id);
+      }
+    </script>
   </head>
-  <body class="body-login">
+  <body class="body-login" onload="nada()">
     <div class="navbar navbar-default1">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -31,7 +37,14 @@
     </div>
     
     <div class="container">
-      Aqui algun mensage
+      <div id="eljson" class="col-md-offset-2 table-trans">
+        <select id="mys" onchange="myfun()">
+
+          {% for algo in todos %}
+            <option id=" {{ algo[2] }} " value="{{ algo[1] }}">{{ algo[3] }}</option>
+          {% endfor %}
+        </select>
+      </div>
     </div>
   </body>
 </html>

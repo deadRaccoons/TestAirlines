@@ -289,4 +289,4 @@ select * from viaje
 where idviaje not in (select idviaje from cancelados) and realizado = 'n'
 select nombre from ciudad where nombre not in (select destino from viaje) order by nombre asc
 */
-select idavion from avion where idavion in (select idavion from viaje where destino = 'Abu Dhabi')
+select idavion from avion where idavion in (select idavion from viaje where destino = 'Abu Dhabi' order by fechallegada+horasalida desc)

@@ -3,24 +3,30 @@ function quita(){
     var s = x.options[x.selectedIndex].value;
     var y = "Todos menos seleccionado "+ s;
     var n = document.getElementById("destino");
+    var a1 = document.getElementById("mys");
+    var a2 = document.getElementById("aviones");
     var i;
     var j;
     for(j = 0; j < x.length; j++){
         n.remove(0);
     }
+    for(j = 0; j < a1.length; j++){
+        a2.remove(0);
+    }
     if(s == "nada"){
-	var d = document.getElementById("distancia");
-	d.value = "0";
+	   var d = document.getElementById("distancia");
+	   d.value = "0";
     } else {
-	for(i = 1; i < x.length; i++){
-	    if(s != x.options[i].value){
-		var o = document.createElement("option");
-		o.text = x.options[i].text;
+	   for(i = 1; i < x.length; i++){
+	        if(s != x.options[i].value){
+		      var o = document.createElement("option");
+		      o.text = x.options[i].text;
               o.value = x.options[i].value;
               n.add(o);
 	    }
 	}
 	initialize();
+    aviones();
     }   
 };
 function mes(){
@@ -63,10 +69,11 @@ function dias(){
         }
         d.add(o);
     }
+    aviones();
 };
 function hora(){
     var h = document.getElementById("hora");
-    for(i = 1; i < 25; i++){
+    for(i = 0; i < 24; i++){
         var o = document.createElement("option");
         if(i < 10){
             o.text = "0"+ i;
@@ -97,6 +104,10 @@ function crear(){
     if(document.getElementById("distancia").value > 7000){
 	errores = errores + "\nDistancia muy grande";
 	r = "1";
+    }
+    if(dif < 7){
+        errores = errores + "\nLa Fecha debe ser mas de 7 dias apartir de este";
+        r = "1";
     }
     if(r == "1"){
 	alert(errores);
@@ -155,12 +166,34 @@ function geocoded(a) {
         }
     })
 }
-function cancelar(){
-    var s = document.getElementById("seleccionados").checked;
-    if (s == true) {
-        return true;
-    } else {
-        alert("No se ha seleccionado nada")
+function otra(){
+    var a1 = document.getElementById("mys");
+    var a2 = document.getElementById("aviones");
+    for(j = 0; j < a1.length; j++){
+        a2.remove(0);
     }
-    return false;
-};
+    aviones();
+}
+function aviones(){
+    var a = document.getElementById("idavion");
+    var a1 = document.getElementById("mys");
+    var a2 = document.getElementById("aviones");
+    var d = document.getElementById("origen").value;
+    var j;
+    var day = new Date(document.getElementById("anio").value, document.getElementById("mes").value, document.getElementById("dia").value, document.getElementById("hora").value, document.getElementById("minuto").value, 00, 00);
+    for(j = 0; j < a1.length; j++){
+        var o = document.createElement("option");
+        o.value = a.options[j].value;
+        o.text = a.options[j].text;
+        if(a1.options[j].value == d){
+            var fecha = new Date(a1.options[j].id +" "+ a1.options[j].text);
+            var dif = parseInt((day.getTime()-fecha.getTime())/(60*1000));
+            if(dif > 59){
+                a2.add(o);
+            }
+        }
+        if(a1.options[j].value == "Nada"){
+            a2.add(o);
+        }
+    }
+}

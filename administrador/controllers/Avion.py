@@ -25,15 +25,48 @@ class Avion(object):
         return todos
 
     @staticmethod
-    def disponibles(fecha, hora, lugar):
+    def disponibles():
         con = Conexion()
+        con2 = Conexion()
+        con3 = Conexion()
+        con4 = Conexion()
+        con5 = Conexion()
         disponibles = []
-        todos = con.consultar("select viaje.idavion from avion join viaje on avion.idavion = viaje.idavion where fechallegada <= '"+ fecha +"' and (select cast(horallegada as time) +'04:00:00') <= '"+ hora +"' and disponible = 'y' and destino = '"+ lugar +"' group by viaje.idavion having count(*) < 2")
+        todos = con.consultar("select ''||idavion, modelo, marca, ''||capacidadprimera, ''||capacidadturista, disponible from avion")
         if todos is not None:
             for disponible in todos:
                 a = list(disponible)
-                disponibles.append(Avion(a[0], a[1], a[2], a[3], a[4], a[5]))
-            return disponibles
+                disponibles.append(Avion(a[0], a[1], a[2], [3], a[4], a[5]))
+            todos = []
+            for dis in disponibles:
+                idavion = dis.idavion
+                print str(idavion)
+                try:
+                    idviaje = con2.consultar("select idviaje from viaje where idavion = "+ str(idavion) +" order by fechallegada desc")[0][0]
+                except:
+                    idviaje = None
+                if idviaje is None:
+                    idviaje = 0
+                try:
+                    lugar = con3.consultar("select destino from viaje where idviaje = "+ str(idviaje))[0][0]
+                except:
+                    lugar = None
+                if lugar is None:
+                    lugar = "Nada"
+                try:
+                    hora = con4.consultar("select ''||horallegada::time without time zone from viaje where idviaje = "+ str(idviaje))[0][0]
+                except:
+                    hora = None
+                if hora is None:
+                    hora = "00:00"
+                try:
+                    fecha = con5.consultar("select ''||fechallegada from viaje where idviaje="+ str(idviaje))[0][0]
+                except:
+                    fecha = None
+                if fecha is None:
+                    fecha = "2014-12-14"
+                todos.append((dis, lugar, fecha, hora))
+            return todos
         else:
             return None
 
@@ -49,3 +82,12 @@ class Avion(object):
             return disponibles
         else:
             return None
+
+    
+    def ultimovuelo(self, idavion):
+        c = Conexion()
+        try:
+            resultado = c.consultar("select idviaje from viaje where idavion = "+ str(idavion) +" order by fechallegada desc")[0][0]
+        except:
+            resultado = None
+        return resultado
