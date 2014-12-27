@@ -45,6 +45,9 @@ function dias(){
     var v = document.getElementById("mes").value;
     var d = document.getElementById("dia");
     var n = 32;
+    for (var i = 0; i <32; i++) {
+        d.remove(0);
+    };
     if(v == "01")
 	n = 29;
     if(v == "03" || v == "04" || v == "05" || v == "08" || v == "10")
@@ -93,10 +96,6 @@ function crear(){
     }
     if(document.getElementById("distancia").value > 7000){
 	errores = errores + "\nDistancia muy grande";
-	r = "1";
-    }
-    if(dif < 0){
-	errores = errores + "\nLa fecha debe ser al menos 20 dias a partir del dia de hoy\nLa fecha dada son "+ dif +" dias despúes de hoy";
 	r = "1";
     }
     if(r == "1"){

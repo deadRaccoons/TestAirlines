@@ -222,7 +222,7 @@ to viaje where old.realizado = 'y'
 do instead nothing
 
 insert into valor values (null, .12, null, 'dollar', 'milla');
-insert into viaje values (null, 'Ciudad de Mexico', 'Berlin', '22-12-2014', '14:00:00', null, null, 6050, null, null, 'n', 1);
+insert into viaje values (null, 'Berlin', 'Ciudad de Mexico', '25-12-2014', '14:00:00', null, null, 6050, null, null, 'n', 1);
 update viaje set costoViaje = 2.3 where idViaje = 1
 
 /*
@@ -284,5 +284,9 @@ create table cancelados(
   primary key (idviaje)
 );
 
+/*
 select * from viaje
 where idviaje not in (select idviaje from cancelados) and realizado = 'n'
+select nombre from ciudad where nombre not in (select destino from viaje) order by nombre asc
+*/
+select idavion from avion where idavion in (select idavion from viaje where destino = 'Abu Dhabi')

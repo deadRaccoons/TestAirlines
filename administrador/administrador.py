@@ -104,6 +104,7 @@ class Admin(object):
         else:
             ciudads = Ciudad.all_()
             avions = Avion.all_()
+
             html = env.get_template("viaje.html")
             return html.render(ciudades=ciudads, aviones=avions, mensage=mesage, visibilidad=visibilidad, tipo=tipo, crea="active", cancelar="hidden")
             

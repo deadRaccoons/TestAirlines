@@ -31,7 +31,20 @@ class Avion(object):
         todos = con.consultar("select viaje.idavion from avion join viaje on avion.idavion = viaje.idavion where fechallegada <= '"+ fecha +"' and (select cast(horallegada as time) +'04:00:00') <= '"+ hora +"' and disponible = 'y' and destino = '"+ lugar +"' group by viaje.idavion having count(*) < 2")
         if todos is not None:
             for disponible in todos:
-                a = lis(disponible)
+                a = list(disponible)
+                disponibles.append(Avion(a[0], a[1], a[2], a[3], a[4], a[5]))
+            return disponibles
+        else:
+            return None
+
+    @staticmethod
+    def nousados():
+        con = Conexion()
+        disponibles = []
+        todos = con.consultar("select * from avion where idavion not in (select idavion from viaje)")
+        if todos is not None:
+            for disponible in todos:
+                a = list(disponible)
                 disponibles.append(Avion(a[0], a[1], a[2], a[3], a[4], a[5]))
             return disponibles
         else:

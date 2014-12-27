@@ -70,6 +70,7 @@
 	    		<label class="col-sm-2 control-label">Fecha:</label>
 	    		<div class="col-sm-3 col-sm-offset-0">
 	      			<select type="date" class="form-control" id="anio" name="anio">
+	      				<option value="2014">2014</option>
 						<option value="2015" selected="selected">2015</option>
 						<option value="2016">2016</option>
 	      			</select>
@@ -107,7 +108,7 @@
 	    		<div class="col-sm-9 col-md-offset-0">
 	      			<select class="form-control" id="idavion" name="idavion" >
 						{% for avion in aviones %}
-						<option value="{{ avion.idavion }}">{{ avion.modelo +", "+ avion.marca +", " }}{{ avion.capacidadprimera + avion.capacidadturista }}</option>
+						<option value="{{ avion.idavion }}">{{ avion.idavion }} {{ ",  "+ avion.modelo +", "+ avion.marca +", " }} {{ avion.capacidadprimera + avion.capacidadturista }}</option>
 						{% endfor %}
 	      			</select>
 	    		</div>
