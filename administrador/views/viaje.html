@@ -13,17 +13,16 @@
 
   <body onload="mes()" class="body-login">
 
-  	<div class="navbar navbar-default">
+  	<div class="navbar navbar-default1">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <img alt="Brand" src="...">
-          </a>
+          <img class="glyphicon navbar-logo" src="/static/glyphicon/logo.png">
           <p class="navbar-title">MameAirlines</p>
         </div>
         <p class="navbar-text">Esta sesion es usada por un administrador</p>
       </div>
     </div>
+
     <div class="navbar col-md-13">
       <ul class="nav nav-pills nav-stacked">
         <li><a href="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Inicio</a></li>
@@ -120,8 +119,34 @@
 		</form>
    	  </div>
       <div hidden id="googleMap" style="width:500px;height:380px;"></div>
-      <div {{ cancelar }} class="col-md-5 col-md-offset-2">
-    	aqui muestro algo
+      <div {{ cancelar }} class="col-md-offset-2">
+      	<form {{ cancelar }} role="form" name="cancelaviaje" action="/viajecancelado" onsubmit="return cancelar()">
+      		<table {{ cancelar }} class="table table-trans table-hover">
+	      		<tr>
+      				<th>Id Viaje</th>
+      				<th>Ciudad Origen</th>
+      				<th>Ciudad Destino</th>
+      				<th>Fecha y Hora de Salida</th>
+      				<th>Fecha y Hora de Llegada</th>
+      				<th>Costo</th>
+      				<th>Cancelar</th>
+      			</tr>
+      			{% for viaje in viajes %}
+	      			<tr>
+      					<td> {{ viaje.idviaje }} </td>
+      					<td> {{ viaje.origen }} </td>
+	      				<td> {{ viaje.destino }} </td>
+      					<td> {{ viaje.fechasalida +", "+ viaje.horasalida }} </td>
+      					<td> {{ viaje.fechallegada +", "+ viaje.horallegada }} </td>
+      					<td> {{ viaje.costoviaje }} {{ " " }} USD </td>
+      					<td> <input type="checkbox" id="seleccionados" name="seleccionados" value="{{ viaje.idviaje }}"></input></td>
+      				</tr>
+      			{% endfor %}
+			</table>
+			<div {{ cancelar }} class="form-group">
+	      		<button type="submit" class="boton-viaje">Cancelar</button>
+	  		</div>
+		</form>
       </div>
     </div>
   </body>

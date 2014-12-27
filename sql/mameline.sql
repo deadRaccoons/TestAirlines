@@ -278,3 +278,11 @@ create table administrador (
 alter table administrador
 add constraint adiministradorc
 primary key (correo)
+
+create table cancelados(
+  idviaje int references viaje(idviaje) not null,
+  primary key (idviaje)
+);
+
+select * from viaje
+where idviaje not in (select idviaje from cancelados) and realizado = 'n'

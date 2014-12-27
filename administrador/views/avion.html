@@ -6,13 +6,28 @@
     <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.css">
   </head>
-  <body class="body-indice">
+  <body class="body-login">
+    
+    <div class="navbar navbar-default1">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img class="glyphicon navbar-logo" src="/static/glyphicon/logo.png">
+          <p class="navbar-title">MameAirlines</p>
+        </div>
+        <p class="navbar-text">Esta sesion es usada por un administrador</p>
+      </div>
+    </div>
+
     <div class="navbar col-md-13">
       <ul class="nav nav-pills nav-stacked">
         <li><a href="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Inicio</a></li>
-        <li><a href="creaviaje">Crea Viaje</a></li>
-        <li><a href="cancelaviaje">Cancelar Viaje</a></li>
+        <li><a href="">Actualizar Valores</a></li>
+        <li class="{{ crea }}"><a href="creaviaje">Crear Viajes</a></li>
+        <li class="{{ cancela }}"><a href="cancelaviaje">Cancelar Viajes</a></li>
         <li class="active"><a href="aviones">Aviones</a></li>
+        <li><a href="">Promociones</a></li>
+        <li><a href="">Ciudades</a></li>
+        <li><a href="">Usuarios</a></li>
         <li><a href="salir">Salir</a></li>
       </ul>
     </div>

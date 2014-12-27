@@ -104,8 +104,8 @@ class Admin(object):
         else:
             ciudads = Ciudad.all_()
             avions = Avion.all_()
-            html = env.get_template("nuevoviaje.html")
-            return html.render(ciudades=ciudads, aviones=avions, mensage=mesage, visibilidad=visibilidad, tipo=tipo, crea="active")
+            html = env.get_template("viaje.html")
+            return html.render(ciudades=ciudads, aviones=avions, mensage=mesage, visibilidad=visibilidad, tipo=tipo, crea="active", cancelar="hidden")
             
     @cherrypy.expose
     def viajecreado(self, origen, destino, anio, mes, dia, hora, minuto, distancia, idavion):
@@ -133,6 +133,27 @@ class Admin(object):
             avions = Avion.all_()
             html = env.get_template('avion.html')
             return html.render(aviones = avions)
+
+    @cherrypy.expose
+    def cancelaviaje(self):
+        try:
+            c = cherrypy.session[SESSION_KEY]
+        except:
+            cherrypy.session[SESSION_KEY] = None
+            c = None
+        if c is None:
+            return file('views/login.html')
+        else:
+            viajesc = Viaje.cancelables()
+            html = env.get_template('viaje.html')
+            return html.render(cancela="active", crear="hidden", visibilidad="hidden", viajes=viajesc)
+
+    @cherrypy.expose
+    def viajecancelado(self, seleccionados):
+        cuerpo = "los viajes a cancelar son "
+        for sel in seleccionados:
+            cuerpo = cuerpo + " "+ str(sel)
+        return cuerpo
         
 
 if __name__ == '__main__':

@@ -156,3 +156,12 @@ function geocoded(a) {
         }
     })
 }
+function cancelar(){
+    var s = document.getElementById("seleccionados").checked;
+    if (s == true) {
+        return true;
+    } else {
+        alert("No se ha seleccionado nada")
+    }
+    return false;
+};
