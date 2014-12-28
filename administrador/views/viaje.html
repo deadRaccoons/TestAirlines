@@ -26,9 +26,10 @@
     <div class="navbar col-md-13">
       <ul class="nav nav-pills nav-stacked">
         <li><a href="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Inicio</a></li>
-        <li><a href="">Actualizar Valores</a></li>
-        <li class="{{ crea }}"><a href="creaviaje">Crear Viajes</a></li>
-        <li class="{{ cancela }}"><a href="cancelaviaje">Cancelar Viajes</a></li>
+        <li><a href="valores">Actualizar Valores</a></li>
+        <li><a href="vuelos">Vuelos</a></li>
+        <li class="{{ crea }}"><a href="creaviaje">Crear Vuelos</a></li>
+        <li class="{{ cancela }}"><a href="cancelaviaje">Cancelar Vuelos</a></li>
         <li><a href="aviones">Aviones</a></li>
         <li><a href="">Promociones</a></li>
         <li><a href="">Ciudades</a></li>
@@ -40,11 +41,11 @@
     <div class="container">
    
       <div {{ crear }}class="col-md-5 col-md-offset-2 form-viaje">
-		<h1 {{ crear }} class="text-center login-title">Crea Viaje</h1>
+		<h1 {{ crear }} class="text-center login-title">Crea Vuelo</h1>
 
 		<div {{ visibilidad }} class="alert alert-{{ tipo }}" role="alert">{{ mensage }}</div>
 
-		<form {{ crear }} text-align="right" role="form" class="form-horizontal" name="navion" action="/viajecreado" onsubmit="return crear()">
+		<form {{ crear }} text-align="left" role="form" class="form-horizontal" name="navion" action="/viajecreado" onsubmit="return crear()">
 
 	  		<div {{ crear }} class="form-group">
 	    		<label class="col-sm-2 control-label">Origen:</label>
@@ -132,6 +133,7 @@
 
 
       <div {{ cancelar }} class="col-md-offset-2">
+      	<div {{ canc }} class="alert alert-{{tipocan}} " role="alert"> {{ mensaje }} </div>
       	<form {{ cancelar }} role="form" name="cancelaviaje" action="/viajecancelado" onsubmit="return cancelar()">
       		<table {{ cancelar }} class="table table-trans table-hover">
 	      		<tr>
@@ -144,15 +146,15 @@
       				<th>Cancelar</th>
       			</tr>
       			{% for viaje in viajes %}
-	      			<tr>
-      					<td> {{ viaje.idviaje }} </td>
-      					<td> {{ viaje.origen }} </td>
-	      				<td> {{ viaje.destino }} </td>
-      					<td> {{ viaje.fechasalida +", "+ viaje.horasalida }} </td>
-      					<td> {{ viaje.fechallegada +", "+ viaje.horallegada }} </td>
-      					<td> {{ viaje.costoviaje }} {{ " " }} USD </td>
-      					<td> <input type="checkbox" id="seleccionados" name="seleccionados" value="{{ viaje.idviaje }}"></input></td>
-      				</tr>
+	      		<tr>
+      				<td> {{ viaje.idviaje }} </td>
+      				<td> {{ viaje.origen }} </td>
+	      			<td> {{ viaje.destino }} </td>
+      				<td> {{ viaje.fechasalida +", "+ viaje.horasalida }} </td>
+      				<td> {{ viaje.fechallegada +", "+ viaje.horallegada }} </td>
+      				<td> {{ viaje.costoviaje }} {{ " " }} USD </td>
+      				<td> <input type="checkbox" id="seleccionados" name="seleccionados" value="{{ viaje.idviaje }}"></input></td>
+      			</tr>
       			{% endfor %}
 			</table>
 			<div {{ cancelar }} class="form-group">

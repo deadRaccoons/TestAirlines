@@ -37,3 +37,21 @@ class Administrador(object):
             r = list(resultado)
             todos.append(Administrador(r[0], r[1], r[2]))
         return todos
+
+    @staticmethod
+    def cambiovalor(valor):
+        c = Conexion()
+        try:
+            r = c.actualizar("insert into valor values(null, "+ valor +", null, 'Dolar', 'Milla')")
+        except:
+            r = -1
+        return r
+
+    @staticmethod
+    def valores():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select * from valor"):
+            todos.append((resultado[0], resultado[1], resultado[2], resultado[3], resultado[4]))
+        return todos
+            

@@ -6,9 +6,15 @@
     <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.css">
     <script type="text/javascript">
-      function myfun(){
-        var s = document.getElementById("mys");
-        alert(s.options[s.selectedIndex].id);
+      function validar(){
+        var v = document.getElementById("costo").value;
+        if(v > 0 && v < 100){
+          return true;
+        }
+        else{
+          alert("El valor debe ser mayor a 0 y menor a 100");
+          return false;
+        }
       }
     </script>
   </head>
@@ -24,10 +30,11 @@
     </div>
     <div class="navbar col-md-13">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active "><a href="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ admin }}</a></li>
-        <li><a href="">Actualizar Valores</a></li>
-        <li><a href="creaviaje">Crear Viajes</a></li>
-        <li><a href="cancelaviaje">Cancelar Viajes</a></li>
+        <li class="{{ adm }}"><a href="index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ admin }}</a></li>
+        <li class="{{ valo }}"><a href="valores">Actualizar Valores</a></li>
+        <li><a href="vuelos">Vuelos</a></li>
+        <li><a href="creaviaje">Crear Vuelos</a></li>
+        <li><a href="cancelaviaje">Cancelar Vuelos</a></li>
         <li><a href="aviones">Aviones</a></li>
         <li><a href="">Promociones</a></li>
         <li><a href="">Ciudades</a></li>
@@ -37,13 +44,48 @@
     </div>
     
     <div class="container">
-      <div id="eljson" class="col-md-offset-2 table-trans">
-        <select id="mys" onchange="myfun()">
+      <div {{ graf }} id="graficas" class="col-md-offset-2 table-trans">
+      </div>
 
-          {% for algo in todos %}
-            <option id=" {{ algo[2] }} " value="{{ algo[1] }}">{{ algo[3] }}</option>
+      <div {{ val }} id="valores" class="col-md-offset-3 col-sm-13 table-valor">
+        <div {{ val }} class="alert alert-info" role="alert">El nuevo valor sera aplicado a lo vuelos creados posteriormente a este cambio</div>
+        <div {{ msg }} class="alert alert-{{tipo}} " role="alert"> {{ mensaje }} </div>
+        <form {{ val }} text-align="left" role="form" class="form-inline" name="valors" action="/cambiavalor" onsubmit="return validar()">
+          <div {{ val }} class="form-group">
+            <label>Costo Milla</label>
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+              <div class="input-group-addon" cols>$ 0.</div>
+              <input class="form-control" name="costomilla" id="costo"></input>
+              <div class="input-group-addon" cols>USD</div>
+            </div>
+          </div>
+
+          <div {{ val }} class="form-group">
+            <button type="submit" class="btn btn-primary">Cambiar Valor</button>
+          </div>
+        </form>
+      </div>
+      <div {{ val }} id="historial" class="table-valores">
+        <table {{ val }} class="table table-hover">
+          <tr>
+            <th>Id Valor</th>
+            <th>Costo Milla</th>
+            <th>Fecha de Cambio</th>
+            <th>Moneda</th>
+            <th>Medida</th>
+          </tr>
+          <tr>
+          {% for valor in valores %}
+          <tr>
+            <td> {{ valor[0] }} </td>
+            <td> {{ valor[1] }} </td>
+            <td> {{ valor[2] }} </td>
+            <td> {{ valor[3] }} </td>
+            <td> {{ valor[4] }} </td>
+          </tr>
           {% endfor %}
-        </select>
+        </table>
       </div>
     </div>
   </body>

@@ -6,12 +6,20 @@ o si queremos que haya (aparte de la llave primaria) una tupla que no se repita
 */
 
 create table valor(
-  idvalor int primary key check(idvalor > 0 and idvalor < 2),
+  idvalor int primary key ,
   costomilla double precision not null,
   fecha date not null,
   tipomoneda text not null,
   tipomedida text not null 
 );
+alter table valor
+add constraint valorc
+unique (costomilla, fecha);
+
+alter table valor
+add constraint valorc2
+check (costomilla > 0);
+
 create or replace function fvalor() returns trigger as $tvalor$
   begin 
     new.fecha = (select current_date);

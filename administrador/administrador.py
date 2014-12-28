@@ -60,7 +60,7 @@ class Admin(object):
         if admin is None:
             raise cherrypy.HTTPRedirect("salir")
         html = env.get_template('index.html')
-        return html.render(admin = admin.nombres)
+        return html.render(admin = admin.nombres, val="hidden", adm="active")
                     
     @cherrypy.expose
     def salir(self):
@@ -146,7 +146,7 @@ class Admin(object):
             return html.render(aviones = avions)
 
     @cherrypy.expose
-    def cancelaviaje(self):
+    def cancelaviaje(self, canc="hidden", tipocan="", mensaje=""):
         try:
             c = cherrypy.session[SESSION_KEY]
         except:
@@ -157,20 +157,42 @@ class Admin(object):
         else:
             viajesc = Viaje.cancelables()
             html = env.get_template('viaje.html')
-            return html.render(cancela="active", crear="hidden", visibilidad="hidden", viajes=viajesc)
+            return html.render(cancela="active", crear="hidden", visibilidad="hidden", viajes=viajesc, canc=canc, tipocan=tipocan, mensaje=mensaje)
 
     @cherrypy.expose
     def viajecancelado(self, seleccionados):
         cuerpo = "los viajes a cancelar son "
         for sel in seleccionados:
-            cuerpo = cuerpo + " "+ str(sel)
-        return cuerpo
+            r = Viaje.cancelar(sel)
+        return self.cancelaviaje("", "info","Se cancelaron los viajes")
         
     @cherrypy.expose
-    def otro(self):
-        todos = Avion.disponibles()
+    def valores(self):
+        try:
+            c = cherrypy.session[SESSION_KEY]
+        except:
+            cherrypy.session[SESSION_KEY] = None
+            c = None
+        if c is None:
+            raise cherrypy.HTTPRedirect("login")
+        valors = Administrador.valores()
         html = env.get_template('index.html')
-        return html.render(todos=todos)
+        return html.render(admin = "Inicio", valo="active", graf="hidden", msg="hidden", valores=valors)
+
+    @cherrypy.expose
+    def cambiavalor(self, costomilla):
+        r = Administrador.cambiovalor("0."+ str(costomilla))
+        html = env.get_template('index.html')
+        valors = Administrador.valores()
+        if (r == 1):
+            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="success", mensaje="Se actualizaron los datos")
+        else:
+            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="warning", mensaje="No se actualizaron los datos")
+
+    @cherrypy.expose
+    def vuelos(self):
+        html = env.get_template('vuelos.html')
+        return html.render()
 
 if __name__ == '__main__':
     cherrypy.quickstart(Admin(), "" ,"app.conf")

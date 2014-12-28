@@ -22,12 +22,12 @@ class Viaje(object):
         return self.c.actualizar("insert into viaje values(null,'"+ self.origen +"', '"+ self.destino +"', '"+ self.fechasalida +"', '"+ self.horasalida +"', null, null, "+ str(self.distancia) +", null, null, null, "+ str(self.idavion) +")")
 
     @staticmethod
-    def getViajes(fecha, hora):
+    def getViajes(fecha):
         if fecha is None:
             return None
         else:
             c = Conexion()
-            viajes = c.consultar("select * from viaje where fechasalida = '"+ fecha +"' and horasalida  = '"+ hora +"' and realizado = 'n'")
+            viajes = c.consultar("select * from viaje where fechasalida = '"+ fecha +"' and realizado = 'y'")
             if viajes is not None:
                 lv = []
                 for viaje in viajes:
@@ -53,3 +53,11 @@ class Viaje(object):
             r = list(resultado)
             todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
         return todos
+
+    @staticmethod
+    def cancelar(idviaje):
+        c = Conexion()
+        con = Conexion()
+        con.actualizar("update viaje set realizado = 'y' where idviaje = "+ str(idviaje))
+        r = c.actualizar("ninsert into cancelados values("+ str(idviaje) +")")
+        return r

@@ -1602,8 +1602,11 @@ pre code {
   margin-left: 0;
 }
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-13 {
     float: left;
+  }
+  .col-sm-13 {
+    width: 380px;
   }
   .col-sm-12 {
     width: 100%;
@@ -2707,10 +2710,10 @@ select[multiple].form-group-lg .form-control {
   .form-inline .input-group .input-group-addon,
   .form-inline .input-group .input-group-btn,
   .form-inline .input-group .form-control {
-    width: auto;
+    width: 40px;
   }
   .form-inline .input-group > .form-control {
-    width: 100%;
+    width: 70px;
   }
   .form-inline .control-label {
     margin-bottom: 0;
@@ -3525,7 +3528,7 @@ tbody.collapse.in {
   width: 100%;
   margin-bottom: 0;
 }
-.input-group-lg > .form-control,
+.lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
   height: 46px;
@@ -6428,4 +6431,23 @@ button.close {
   border-style: outset;
   opacity: 0.8;
   filter: alpha(opacity=80);
+}
+.table-valor {
+  background-color: #ffffff;
+  border: 2px solid white;
+  border-style: outset;
+  border-radius: 6px;
+  opacity: 0.85;
+  filter: alpha(opacity=85);
+}
+.table-valores {
+  margin-top: 210px;
+  margin-left: 210px;
+  width: 780px;
+  background-color: #ffffff;
+  border: 2px solid white;
+  border-style: outset;
+  border-radius: 6px;
+  opacity: 0.85;
+  filter: alpha(opacity=85);
 }
