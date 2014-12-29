@@ -40,7 +40,6 @@ class Avion(object):
             todos = []
             for dis in disponibles:
                 idavion = dis.idavion
-                print str(idavion)
                 try:
                     idviaje = con2.consultar("select idviaje from viaje where idavion = "+ str(idavion) +" order by fechallegada desc")[0][0]
                 except:

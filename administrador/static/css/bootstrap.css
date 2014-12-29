@@ -1406,17 +1406,17 @@ pre code {
 }
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    min-width: 750px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    min-width: 970px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    min-width: 1170px;
   }
 }
 .container-fluid {
@@ -1602,10 +1602,11 @@ pre code {
   margin-left: 0;
 }
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-13 {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left;
   }
   .col-sm-13 {
+    float: left;
     width: 380px;
   }
   .col-sm-12 {
@@ -6441,9 +6442,10 @@ button.close {
   filter: alpha(opacity=85);
 }
 .table-valores {
+  position: relative;
   margin-top: 210px;
-  margin-left: 210px;
-  width: 780px;
+  margin-left: 180px;
+  min-width: 1000px;
   background-color: #ffffff;
   border: 2px solid white;
   border-style: outset;

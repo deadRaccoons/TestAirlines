@@ -52,6 +52,6 @@ class Administrador(object):
         c = Conexion()
         todos = []
         for resultado in c.consultar("select * from valor"):
-            todos.append((resultado[0], resultado[1], resultado[2], resultado[3], resultado[4]))
+            todos.append((resultado[0], resultado[1], str(resultado[2]), resultado[3], resultado[4]))
         return todos
             

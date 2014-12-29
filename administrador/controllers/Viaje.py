@@ -42,7 +42,7 @@ class Viaje(object):
         todos = []
         for resultado in c.consultar("select * from viaje"):
             r = list(resultado)
-            todos.append(Viaje(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[10], r[11]))
+            todos.append(Viaje(str(r[0]), r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), str(r[7]), str(r[8]), str(r[9]), r[10], str(r[11])))
         return todos
 
     @staticmethod

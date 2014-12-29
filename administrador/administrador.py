@@ -177,7 +177,7 @@ class Admin(object):
             raise cherrypy.HTTPRedirect("login")
         valors = Administrador.valores()
         html = env.get_template('index.html')
-        return html.render(admin = "Inicio", valo="active", graf="hidden", msg="hidden", valores=valors)
+        return html.render(admin = "Inicio", valo="active", graf="hidden", msg="hidden", valores=valors, valors=valors)
 
     @cherrypy.expose
     def cambiavalor(self, costomilla):
@@ -185,9 +185,9 @@ class Admin(object):
         html = env.get_template('index.html')
         valors = Administrador.valores()
         if (r == 1):
-            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="success", mensaje="Se actualizaron los datos")
+            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="success", mensaje="Se actualizaron los datos", valors=valors)
         else:
-            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="warning", mensaje="No se actualizaron los datos")
+            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="warning", mensaje="No se actualizaron los datos", valors=valors)
 
     @cherrypy.expose
     def vuelos(self):

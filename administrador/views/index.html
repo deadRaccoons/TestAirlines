@@ -5,6 +5,33 @@
     <link rel="stylesheet" href="static/css/bootstrap.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.css">
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Line');
+        data.addColumn('number', 'Under 13');
+        data.addColumn('number', 'Over 13');
+        data.addRow(['0',  0, 0, null]);
+        var info = document.getElementById("vals");
+        var i;
+        for (i = 0; i < info.length; i++){
+          data.addRow([info.options[i].text, info.options[i].value*100, info.options[i].value*100, null]);
+        }
+        var options = {
+          title: 'Line Chart',
+          pointSize : 5,
+          series: [{color: 'black', pointSize: 0}, {color: 'red', lineWidth: 0}, {color: 'blue', lineWidth: 0}]
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
     <script type="text/javascript">
       function validar(){
         var v = document.getElementById("costo").value;
@@ -45,6 +72,7 @@
     
     <div class="container">
       <div {{ graf }} id="graficas" class="col-md-offset-2 table-trans">
+        
       </div>
 
       <div {{ val }} id="valores" class="col-md-offset-3 col-sm-13 table-valor">
@@ -66,7 +94,15 @@
           </div>
         </form>
       </div>
+      <div>
+        <select id="vals">
+          {% for val in valors %}
+          <option value="{{ val[1] }}">{{ val[2] }}</option>
+          {% endfor %}
+        </select>
+      </div>
       <div {{ val }} id="historial" class="table-valores">
+        <div {{ Val }} id="chart_div" style="width: auto; height: 300px;"></div>
         <table {{ val }} class="table table-hover">
           <tr>
             <th>Id Valor</th>
