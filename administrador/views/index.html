@@ -11,13 +11,63 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
+
+        var pieinfo = [];
+        var columninfo = [];
+        
+        var tipos = document.getElementById("pievals");
+        var cant = document.getElementById("columnvals");
+
+        var i;
+        var j;
+
+        pieinfo.push(['Estado', 'Cantidad']);
+        columninfo.push(['Ciudad', 'Cantidad']);
+
+        for(i = 0; i < tipos.length; i++){
+          var estado = tipos.options[i].text;
+          if(estado == "y")
+            estado = "Realizados";
+          if(estado == "c")
+            estado = "Cancelados";
+          if(estado == "n")
+            estado = "Por realizar";
+          pieinfo.push([estado, parseInt(tipos.options[i].value)]);
+        }
+        for(j = 0; j < cant.length; j++){
+          columninfo.push([cant.options[j].text, parseInt(cant.options[j].value)]);
+        }
+
+        var piedata = google.visualization.arrayToDataTable(pieinfo);
+        var columndata = google.visualization.arrayToDataTable(columninfo);
+
+        var pieoptions = {
+          title: 'Estado de los viajes',
+          is3D: true
+        };
+        var columnoptions = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+        };
+
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        var columnchart = new google.visualization.ColumnChart(document.getElementById('columnchart_div'));
+
+        piechart.draw(piedata, pieoptions);
+        columnchart.draw(columndata, columnoptions);
+      }
+    </script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Date');
         data.addColumn('number', 'Line');
         data.addColumn('number', 'Under 13');
         data.addColumn('number', 'Over 13');
         data.addRow(['0',  0, 0, null]);
-        var info = document.getElementById("vals");
+        var info = document.getElementById("linevals");
         var i;
         for (i = 0; i < info.length; i++){
           data.addRow([info.options[i].text, info.options[i].value*100, info.options[i].value*100, null]);
@@ -71,9 +121,28 @@
     </div>
     
     <div class="container">
-      <div {{ graf }} id="graficas" class="col-md-offset-2 table-trans">
-        
+
+      <div {{ graf }} id="graficas" class="graphs">
+        <div hidden>
+          <select id="pievals">
+            {% for res in evuelos %}
+            <option value="{{res[1]}}">{{res[0]}}</option>
+            {% endfor %}
+          </select>
+          <select id="columnvals">
+            {% for res in cvuelos %}
+            <option value="{{res[1]}}">{{res[0]}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div {{ graf }} class="row">
+          <div {{ graf }} id="piechart_3d" class="col-md-14 grafica"></div>
+        </div>
+        <div {{ graf}} class="row">
+          <div {{ graf }} id="columnchart_div" class="grafica"></div>
+        </div>
       </div>
+
 
       <div {{ val }} id="valores" class="col-md-offset-3 col-sm-13 table-valor">
         <div {{ val }} class="alert alert-info" role="alert">El nuevo valor sera aplicado a lo vuelos creados posteriormente a este cambio</div>
@@ -87,15 +156,15 @@
               <input class="form-control" name="costomilla" id="costo"></input>
               <div class="input-group-addon" cols>USD</div>
             </div>
-          </div>
+          </div >
 
           <div {{ val }} class="form-group">
             <button type="submit" class="btn btn-primary">Cambiar Valor</button>
           </div>
         </form>
       </div>
-      <div>
-        <select id="vals">
+      <div hidden>
+        <select id="linevals">
           {% for val in valors %}
           <option value="{{ val[1] }}">{{ val[2] }}</option>
           {% endfor %}

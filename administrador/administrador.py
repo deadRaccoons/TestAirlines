@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 import cherrypy
 import hashlib
 from models import *
@@ -60,7 +60,9 @@ class Admin(object):
         if admin is None:
             raise cherrypy.HTTPRedirect("salir")
         html = env.get_template('index.html')
-        return html.render(admin = admin.nombres, val="hidden", adm="active")
+        evuelos = Administrador.estadoviajes()
+        cvuelos = Administrador.cantidadvuelos()
+        return html.render(admin = admin.nombres, val="hidden", adm="active", evuelos=evuelos, cvuelos=cvuelos)
                     
     @cherrypy.expose
     def salir(self):
@@ -187,7 +189,7 @@ class Admin(object):
         if (r == 1):
             return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="success", mensaje="Se actualizaron los datos", valors=valors)
         else:
-            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="warning", mensaje="No se actualizaron los datos", valors=valors)
+            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="warning", mensaje="Los datos ya se han actualizado el dia de hoy", valors=valors)
 
     @cherrypy.expose
     def vuelos(self):
