@@ -62,7 +62,8 @@ class Admin(object):
         html = env.get_template('index.html')
         evuelos = Administrador.estadoviajes()
         cvuelos = Administrador.cantidadvuelos()
-        return html.render(admin = admin.nombres, val="hidden", adm="active", evuelos=evuelos, cvuelos=cvuelos)
+        tam = len(cvuelos)
+        return html.render(admin = admin.nombres, val="hidden", adm="active", evuelos=evuelos, cvuelos=cvuelos, tam=tam)
                     
     @cherrypy.expose
     def salir(self):
@@ -178,8 +179,9 @@ class Admin(object):
         if c is None:
             raise cherrypy.HTTPRedirect("login")
         valors = Administrador.valores()
+        tam = 0
         html = env.get_template('index.html')
-        return html.render(admin = "Inicio", valo="active", graf="hidden", msg="hidden", valores=valors, valors=valors)
+        return html.render(admin = "Inicio", valo="active", graf="hidden", msg="hidden", valores=valors, valors=valors, tam=tam)
 
     @cherrypy.expose
     def cambiavalor(self, costomilla):

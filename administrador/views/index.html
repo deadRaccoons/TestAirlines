@@ -31,7 +31,7 @@
           if(estado == "c")
             estado = "Cancelados";
           if(estado == "n")
-            estado = "Por realizar";
+            estado = "Proximos";
           pieinfo.push([estado, parseInt(tipos.options[i].value)]);
         }
         for(j = 0; j < cant.length; j++){
@@ -46,8 +46,8 @@
           is3D: true
         };
         var columnoptions = {
-          title: 'Company Performance',
-          hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+          title: 'CAntidad de vuelos con destino a:',
+          hAxis: {title: 'Ciudad', titleTextStyle: {color: 'red'}}
         };
 
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -136,10 +136,12 @@
           </select>
         </div>
         <div {{ graf }} class="row">
-          <div {{ graf }} id="piechart_3d" class="col-md-14 grafica"></div>
+          <div {{ graf }} id="piechart_3d" class="col-md-14 graficapie"></div>
         </div>
         <div {{ graf}} class="row">
-          <div {{ graf }} id="columnchart_div" class="grafica"></div>
+          <div class="graficacolumn">
+            <div {{ graf }} id="columnchart_div" class="grafica2" style="width: {{ tam * 65 }}px; height: 560px;"></div>
+          </div>
         </div>
       </div>
 

@@ -6468,17 +6468,30 @@ button.close {
   position: absolute;
   margin-left: 160px;
   width: auto;
+  min-width: 900px;
+  min-height: auto;
   background-color: #ffffff;
-  border: 0px solid white;
-  border-style: outset;
   border-radius: 6px;
-  opacity: 0.7;
-  filter: alpha(opacity=7);
 }
-.grafica {
-  margin-left: 50%;
+.graficapie {
+  margin-left: 180px;
   border-radius: 6px;
-  min-height: 360px;
+  height: 480px;
+  width: 670px;
+  opacity: 1.5;
+  filter: alpha(opacity=1.5);
+}
+.graficacolumn {
+  margin-left: 15px;
+  border-radius: 6px;
+  height: 600px;
+  width: 835px;
+  overflow: auto;
+}
+.grafica2 {
+  border-radius: 6px;
+  height: 560px;
+  min-width: 960px;
   opacity: 1.5;
   filter: alpha(opacity=1.5);
 }
