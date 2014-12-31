@@ -19,7 +19,7 @@ div#logo{
     margin-left:140px;
     margin-top: 14px;
     float: left;
-    background-image: url(iconosPerfil/logo2.png);
+    background-image: url(/assets/images/logo2.png);
 
 }
 p.nomlog{
@@ -44,7 +44,7 @@ div#logotarj{
     margin-right:285px;
     margin-top: -20px;
     float: right;
-    background-image: url(iconosPerfil/creditcard.png);
+    background-image: url(/assets/images/creditcard.png);
 }
 
 p.tarj {
