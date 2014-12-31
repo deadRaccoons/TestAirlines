@@ -14,7 +14,7 @@ create table valor(
 );
 alter table valor
 add constraint valorc
-unique (costomilla, fecha);
+unique (fecha);
 
 alter table valor
 add constraint valorc2
@@ -44,9 +44,7 @@ create table avion(
   marca text not null,
   capacidadPrimera int NOT NULL check(capacidadPrimera > 0),
   capacidadTurista int NOT NULL check(capacidadTurista > 0),
-  disponible varchar(1) not null check(disponible in ('y', 'n')),
-  fecha date,
-  velocidad integer not null
+  disponible varchar(1) not null check(disponible in ('y', 'n'))
 );
 
 create or replace function favion() returns trigger as $tavion$
@@ -64,15 +62,10 @@ before insert on avion
 for each row
 execute procedure favion()
 
-
 create or replace view avions 
 as select modelo, marca, capacidadprimera, capacidadturista 
 from avion
 where idavion < 21;
-
---como insertar en la tabla avion
-insert into avion(modelo, marca, capacidadPrimera, capacidadTurista, disponible)
-values (/* 'string' */, /* 'string' */, /*int*/, /*int*/, /*'char'*/);
 
 
 --tabla ciudad
@@ -117,9 +110,9 @@ CREATE TABLE usuarios(
   fechaNacimiento date NOT NULL,
   url_imagen text
 );
-ALTER TABLE usuario
+ALTER TABLE usuarios
 ADD CONSTRAINT usuarioc
-PRIMARY KEY (idusuario);
+unique (correo);
 
 create or replace function fusuarios() returns trigger as $tusuarios$
   begin 
@@ -141,7 +134,7 @@ insert into usuario
 values (/*'string'*/, /*(select max(dni) from usuario) + 1*/, /*'string'*/, /*'string'*/, /*'string'*/, /*'string'*/, /*'char'*/);
 
 
-create table tarjeta(
+create table tarjetas(
   noTarjeta varchar(16) not null primary key,
   valor int not null,
   idusuario int not null references usuarios(idusuario),
@@ -184,9 +177,9 @@ execute procedure fpromocion()
 
 --tabla viaje
 CREATE TABLE viaje(
-  idViaje int not null,
-  origen text not null references ciudads(nombre),
-  destino text not null references ciudads(nombre) check(destino <> origen),  
+  idViaje int not null primary key,
+  origen text not null references ciudad(nombre),
+  destino text not null references ciudad(nombre) check(destino <> origen),  
   fechasalida date not null,
   horasalida time with time zone not null,
   fechallegada date not null,
@@ -194,14 +187,13 @@ CREATE TABLE viaje(
   distancia int not null,
   tiempo interval not null,
   costoViaje double precision not null,
-  realizado char(1) not null check (realizado in ('y', 'n')),
+  realizado char(1) not null,
   idavion int references avion(idavion) not null,
   unique(origen, destino, fechasalida, horasalida)
 );
-
 alter table viaje
-add constraint viajec
-primary key (idViaje);
+add constraint viajesc
+check (realizado in ('y', 'n', 'c'))
 
 create or replace function fviaje() returns trigger as $tviaje$
   begin 
@@ -226,12 +218,8 @@ for each row
 execute procedure fviaje();
 
 create or replace rule rviaje as on update
-to viaje where old.realizado = 'y'
+to viaje where old.realizado = 'y' or old.realizado = 'c'
 do instead nothing
-
-insert into valor values (null, .12, null, 'dollar', 'milla');
-insert into viaje values (null, 'Berlin', 'Ciudad de Mexico', '25-12-2014', '14:00:00', null, null, 6050, null, null, 'n', 1);
-update viaje set costoViaje = 2.3 where idViaje = 1
 
 /*
 --tabla asignado
@@ -255,29 +243,29 @@ CREATE TABLE promocionespecial(
 
 --tabla pasajero (los usuarios que han viajado y los que viajes han tomado)
 CREATE TABLE boleto(
-  idboleto integer primary key,
+  idboleto integer,
   idusuario serial not null references usuarios(idusuario),
   idViaje serial not null,
   clase text not null check (clase in ('Primera', 'Turista')),
   asiento integer not null,
-  fechasalida date,
-  horasalida time,
-  fechallegada date,
-  horallegada time,
-  costototal double precision,
-  unique (idViaje, clase, asiento)
+  costototal double precision
 );
 alter table boleto
 add constraint boletoc
-primary key (idboleto),
+primary key (idboleto, idviaje),
 unique (idViaje, clase, asiento);
 
+--tabla donde los usuarios aplican promocion
 create table aplica(
   idviaje integer references viaje(idviaje),
   codigopromocion integer references promocions(codigopromocion),
   idusuario integer references usuarios(idusuario)
 );
+alter table aplica
+add constraint aplicac
+primary key (idusuario, promocion);
 
+--tabla administrador
 create table administrador (
   correo text not null references logins(correo),
   nombres text not null,
@@ -287,14 +275,20 @@ alter table administrador
 add constraint adiministradorc
 primary key (correo)
 
+--tabla cancelados
 create table cancelados(
-  idviaje int references viaje(idviaje) not null,
+  idviaje int references viajes(idviaje) not null,
   primary key (idviaje)
 );
+create or replace function fcancelado() returns trigger as $tcancelado$
+  begin 
+    update viajes set realizado = 'c' where idviaje = new.idviaje;
+    return new;
+  end;
+$tcancelado$ language plpgsql;
 
-/*
-select * from viaje
-where idviaje not in (select idviaje from cancelados) and realizado = 'n'
-select nombre from ciudad where nombre not in (select destino from viaje) order by nombre asc
-*/
-select idavion from avion where idavion in (select idavion from viaje where destino = 'Abu Dhabi' order by fechallegada+horasalida desc)
+create trigger tcancelado
+before insert on cancelado
+for each row
+execute procedure fcancelado();
+

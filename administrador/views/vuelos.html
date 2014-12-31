@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="static/css/bootstrap.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </head>
 
   <body class="body-login">
@@ -36,7 +39,112 @@
     </div>
 
     <div class="container">
-    	    	
+      <div class="row">
+        <div class="content table-vuelos">
+          <div class="panel-group " id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#divrealizados">Realizados</a>
+                </h4>
+              </div>
+              <div id="divrealizados" class="panel-collapse collapse in">
+                <div>
+                  <table class="table table-hover">
+                  <tr>
+                    <th>Id Viaje</th>
+                    <th>Ciudad Origen</th>
+                    <th>Ciudad Destino</th>
+                    <th>Fecha y Hora de Salida</th>
+                    <th>Fecha y Hora de Llegada</th>
+                    <th>Costo</th>
+                    <th>Tipo</th>
+                    <th>Id Avion</th>
+                  </tr>
+                  {% for realizado in realizados %}
+                  <tr>
+                    <td> {{ realizado.idviaje }} </td>
+                    <td> {{ realizado.origen }} </td>
+                    <td> {{ realizado.destino }} </td>
+                    <td> {{ realizado.fechasalida +",  " }} {{ realizado.horasalida }} </td>
+                    <td> {{ realizado.fechallegada +",  " }} {{ realizado.horallegada }} </td>
+                    <td>$ {{ realizado.costoviaje }} USD</td>
+                    <td> {{ realizado.realizado }} </td>
+                    <td> {{ realizado.idavion }} </td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                 <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#divproximos">Proximos</a>
+                </h4>
+              </div>
+              <div id="divproximos" class="panel-collapse collapse">
+                <table class="table table-hover">
+                  <tr>
+                    <th>Id Viaje</th>
+                    <th>Ciudad Origen</th>
+                    <th>Ciudad Destino</th>
+                    <th>Fecha y Hora de Salida</th>
+                    <th>Fecha y Hora de Llegada</th>
+                    <th>Costo</th>
+                    <th>Tipo</th>
+                    <th>Id Avion</th>
+                  </tr>
+                  {% for proximo in proximos %}
+                  <tr>
+                    <td> {{ proximo.idviaje }} </td>
+                    <td> {{ proximo.origen }} </td>
+                    <td> {{ proximo.destino }} </td>
+                    <td> {{ proximo.fechasalida +",  " }} {{ proximo.horasalida }} </td>
+                    <td> {{ proximo.fechallegada +",  " }} {{ proximo.horallegada }} </td>
+                    <td>$ {{ proximo.costoviaje }} USD </td>
+                    <td> {{ proximo.realizado }} </td>
+                    <td> {{ proximo.idavion }} </td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#divcancelados">Cancelados</a>
+                  </h4>
+                </div>
+                <div id="divcancelados" class="panel-collapse collapse">
+                  <table class="table table-hover">
+                  <tr>
+                    <th>Id Viaje</th>
+                    <th>Ciudad Origen</th>
+                    <th>Ciudad Destino</th>
+                    <th>Fecha y Hora de Salida</th>
+                    <th>Fecha y Hora de Llegada</th>
+                    <th>Costo</th>
+                    <th>Tipo</th>
+                    <th>Id Avion</th>
+                  </tr>
+                  {% for cancelado in cancelados %}
+                  <tr>
+                    <td> {{ cancelado.idviaje }} </td>
+                    <td> {{ cancelado.origen }} </td>
+                    <td> {{ cancelado.destino }} </td>
+                    <td> {{ cancelado.fechasalida +",  " }} {{ cancelado.horasalida }} </td>
+                    <td> {{ cancelado.fechallegada +",  " }} {{ cancelado.horallegada }} </td>
+                    <td>$ {{ cancelado.costoviaje }} USD</td>
+                    <td> {{ cancelado.realizado }} </td>
+                    <td> {{ cancelado.idavion }} </td>
+                  </tr>
+                  {% endfor %}
+                </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

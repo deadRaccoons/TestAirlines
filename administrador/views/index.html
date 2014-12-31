@@ -11,13 +11,89 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
+
+        var pieinfo = [];
+        var oriinfo = [];
+        var desinfo = [];
+        var columninfo = [];
+        
+        var tipos = document.getElementById("pievals");
+        var cant = document.getElementById("columnvals");
+        var origens = document.getElementById("pieorigen");
+        var destins = document.getElementById("piedestino");
+
+        var i;
+        var j;
+
+        pieinfo.push(['Estado', 'Cantidad']);
+        oriinfo.push(['Ciudad', 'Cantidad']);
+        desinfo.push(['Ciudad', 'Cantidad']);
+        columninfo.push(['Ciudad', 'Cantidad']);
+
+        for(i = 0; i < tipos.length; i++){
+          var estado = tipos.options[i].text;
+          if(estado == "y")
+            estado = "Realizados";
+          if(estado == "c")
+            estado = "Cancelados";
+          if(estado == "n")
+            estado = "Proximos";
+          pieinfo.push([estado, parseInt(tipos.options[i].value)]);
+        }
+        for(j = 0; j < cant.length; j++){
+          columninfo.push([cant.options[j].text, parseInt(cant.options[j].value)]);
+        }
+        for(i = 0; i < origens.length; i++){
+          oriinfo.push([origens.options[i].text, parseInt(origens.options[i].value)]);
+        }
+        for(j = 0; j < destins.length; j++){
+          desinfo.push([destins.options[j].text, parseInt(destins.options[j].value)]);
+        }
+
+        var piedata = google.visualization.arrayToDataTable(pieinfo);
+        var oridata = google.visualization.arrayToDataTable(oriinfo);
+        var desdata = google.visualization.arrayToDataTable(desinfo);
+        var columndata = google.visualization.arrayToDataTable(columninfo);
+
+        var pieoptions = {
+          title: 'Estado de los viajes',
+          is3D: true
+        };
+        var orioptions = {
+          title: 'Porcentaje de vuelos con destino a',
+          is3D: true
+        };
+        var desoptions = {
+          title: 'Porcentaje de vuelos con destino a',
+          is3D: true
+        };
+        var columnoptions = {
+          title: 'CAntidad de vuelos con destino a:',
+          hAxis: {title: 'Ciudad', titleTextStyle: {color: 'red'}}
+        };
+
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        var orichart = new google.visualization.PieChart(document.getElementById('orichart_3d'));
+        var deschart = new google.visualization.PieChart(document.getElementById('deschart_3d'));
+        var columnchart = new google.visualization.ColumnChart(document.getElementById('columnchart_div'));
+
+        piechart.draw(piedata, pieoptions);
+        orichart.draw(oridata, orioptions);
+        deschart.draw(desdata, desoptions);
+        columnchart.draw(columndata, columnoptions);
+      }
+    </script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Date');
         data.addColumn('number', 'Line');
         data.addColumn('number', 'Under 13');
         data.addColumn('number', 'Over 13');
         data.addRow(['0',  0, 0, null]);
-        var info = document.getElementById("vals");
+        var info = document.getElementById("linevals");
         var i;
         for (i = 0; i < info.length; i++){
           data.addRow([info.options[i].text, info.options[i].value*100, info.options[i].value*100, null]);
@@ -71,9 +147,46 @@
     </div>
     
     <div class="container">
-      <div {{ graf }} id="graficas" class="col-md-offset-2 table-trans">
-        
+
+      <div {{ graf }} id="graficas" class="graphs">
+        <div hidden>
+          <select id="pievals">
+            {% for res in evuelos %}
+            <option value="{{res[1]}}">{{res[0]}}</option>
+            {% endfor %}
+          </select>
+          <select id="columnvals">
+            {% for res in cvuelos %}
+            <option value="{{res[1]}}">{{res[0]}}</option>
+            {% endfor %}
+          </select>
+          <select id="pieorigen">
+            {% for origen in origenes %}
+            <option value="{{ origen[1] }}">{{ origen[0] }}</option>
+            {% endfor %}
+          </select>
+          <select id="piedestino">
+            {% for destino in destinos %}
+            <option value="{{ destino[1] }}">{{ destino[0] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div {{ graf }} class="row">
+          <div {{ graf }} id="piechart_3d" class="col-md-14 graficapie"></div>
+        </div>
+        <div {{ graf}} class="row">
+          <div class="graficacolumn">
+            <div {{ graf }} id="columnchart_div" class="grafica2" style="width: {{ tam * 65 }}px; height: 560px;"></div>
+          </div>
+        </div>
+        <div {{ graf }} class="row">
+          <div {{ graf }} id="orichart_3d" class="col-md-14 graficapie"></div>
+        </div>
+        <div {{ graf }} class="row">
+          <div {{ graf }} id="deschart_3d" class="col-md-14 graficapie"></div>
+        </div>
       </div>
+
 
       <div {{ val }} id="valores" class="col-md-offset-3 col-sm-13 table-valor">
         <div {{ val }} class="alert alert-info" role="alert">El nuevo valor sera aplicado a lo vuelos creados posteriormente a este cambio</div>
@@ -87,15 +200,15 @@
               <input class="form-control" name="costomilla" id="costo"></input>
               <div class="input-group-addon" cols>USD</div>
             </div>
-          </div>
+          </div >
 
           <div {{ val }} class="form-group">
             <button type="submit" class="btn btn-primary">Cambiar Valor</button>
           </div>
         </form>
       </div>
-      <div>
-        <select id="vals">
+      <div hidden>
+        <select id="linevals">
           {% for val in valors %}
           <option value="{{ val[1] }}">{{ val[2] }}</option>
           {% endfor %}

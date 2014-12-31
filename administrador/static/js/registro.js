@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 function adminR(){
     s1 = document.getElementByName("secreto").value;
     s2 = document.getElementByName("secreto2").value;
