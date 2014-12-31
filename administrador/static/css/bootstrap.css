@@ -6468,16 +6468,15 @@ button.close {
   position: absolute;
   margin-left: 160px;
   width: auto;
-  min-width: 900px;
-  min-height: auto;
+  min-width: 950px;
   background-color: #ffffff;
   border-radius: 6px;
 }
 .graficapie {
   margin-left: 180px;
   border-radius: 6px;
-  height: 480px;
-  width: 670px;
+  height: 520px;
+  width: 750px;
   opacity: 1.5;
   filter: alpha(opacity=1.5);
 }
@@ -6494,4 +6493,13 @@ button.close {
   min-width: 960px;
   opacity: 1.5;
   filter: alpha(opacity=1.5);
+}
+.table-vuelos {
+  position: relative;
+  margin-left: 180px;
+  min-width: 1000px;
+  background-color: #ffffff;
+  border: 2px solid white;
+  border-style: outset;
+  border-radius: 6px;
 }

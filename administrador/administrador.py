@@ -62,8 +62,10 @@ class Admin(object):
         html = env.get_template('index.html')
         evuelos = Administrador.estadoviajes()
         cvuelos = Administrador.cantidadvuelos()
+        origenes = Administrador.vuelosorigen()
+        destinos = Administrador.vuelosdestino()
         tam = len(cvuelos)
-        return html.render(admin = admin.nombres, val="hidden", adm="active", evuelos=evuelos, cvuelos=cvuelos, tam=tam)
+        return html.render(admin = admin.nombres, val="hidden", adm="active", evuelos=evuelos, cvuelos=cvuelos, tam=tam, origenes=origenes, destinos=destinos)
                     
     @cherrypy.expose
     def salir(self):
@@ -195,8 +197,11 @@ class Admin(object):
 
     @cherrypy.expose
     def vuelos(self):
+        cancelados = Viaje.cancelados()
+        proximos = Viaje.proximos()
+        realizados = Viaje.realizados()
         html = env.get_template('vuelos.html')
-        return html.render()
+        return html.render(realizados=realizados, proximos=proximos, cancelados=cancelados)
 
 if __name__ == '__main__':
     cherrypy.quickstart(Admin(), "" ,"app.conf")

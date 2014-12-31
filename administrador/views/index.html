@@ -13,15 +13,21 @@
       function drawChart() {
 
         var pieinfo = [];
+        var oriinfo = [];
+        var desinfo = [];
         var columninfo = [];
         
         var tipos = document.getElementById("pievals");
         var cant = document.getElementById("columnvals");
+        var origens = document.getElementById("pieorigen");
+        var destins = document.getElementById("piedestino");
 
         var i;
         var j;
 
         pieinfo.push(['Estado', 'Cantidad']);
+        oriinfo.push(['Ciudad', 'Cantidad']);
+        desinfo.push(['Ciudad', 'Cantidad']);
         columninfo.push(['Ciudad', 'Cantidad']);
 
         for(i = 0; i < tipos.length; i++){
@@ -37,12 +43,28 @@
         for(j = 0; j < cant.length; j++){
           columninfo.push([cant.options[j].text, parseInt(cant.options[j].value)]);
         }
+        for(i = 0; i < origens.length; i++){
+          oriinfo.push([origens.options[i].text, parseInt(origens.options[i].value)]);
+        }
+        for(j = 0; j < destins.length; j++){
+          desinfo.push([destins.options[j].text, parseInt(destins.options[j].value)]);
+        }
 
         var piedata = google.visualization.arrayToDataTable(pieinfo);
+        var oridata = google.visualization.arrayToDataTable(oriinfo);
+        var desdata = google.visualization.arrayToDataTable(desinfo);
         var columndata = google.visualization.arrayToDataTable(columninfo);
 
         var pieoptions = {
           title: 'Estado de los viajes',
+          is3D: true
+        };
+        var orioptions = {
+          title: 'Porcentaje de vuelos con destino a',
+          is3D: true
+        };
+        var desoptions = {
+          title: 'Porcentaje de vuelos con destino a',
           is3D: true
         };
         var columnoptions = {
@@ -51,9 +73,13 @@
         };
 
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        var orichart = new google.visualization.PieChart(document.getElementById('orichart_3d'));
+        var deschart = new google.visualization.PieChart(document.getElementById('deschart_3d'));
         var columnchart = new google.visualization.ColumnChart(document.getElementById('columnchart_div'));
 
         piechart.draw(piedata, pieoptions);
+        orichart.draw(oridata, orioptions);
+        deschart.draw(desdata, desoptions);
         columnchart.draw(columndata, columnoptions);
       }
     </script>
@@ -134,6 +160,16 @@
             <option value="{{res[1]}}">{{res[0]}}</option>
             {% endfor %}
           </select>
+          <select id="pieorigen">
+            {% for origen in origenes %}
+            <option value="{{ origen[1] }}">{{ origen[0] }}</option>
+            {% endfor %}
+          </select>
+          <select id="piedestino">
+            {% for destino in destinos %}
+            <option value="{{ destino[1] }}">{{ destino[0] }}</option>
+            {% endfor %}
+          </select>
         </div>
         <div {{ graf }} class="row">
           <div {{ graf }} id="piechart_3d" class="col-md-14 graficapie"></div>
@@ -142,6 +178,12 @@
           <div class="graficacolumn">
             <div {{ graf }} id="columnchart_div" class="grafica2" style="width: {{ tam * 65 }}px; height: 560px;"></div>
           </div>
+        </div>
+        <div {{ graf }} class="row">
+          <div {{ graf }} id="orichart_3d" class="col-md-14 graficapie"></div>
+        </div>
+        <div {{ graf }} class="row">
+          <div {{ graf }} id="deschart_3d" class="col-md-14 graficapie"></div>
         </div>
       </div>
 

@@ -61,3 +61,30 @@ class Viaje(object):
         con.actualizar("update viaje set realizado = 'y' where idviaje = "+ str(idviaje))
         r = c.actualizar("ninsert into cancelados values("+ str(idviaje) +")")
         return r
+
+    @staticmethod
+    def cancelados():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select * from viaje where realizado = 'c' order by idviaje asc"):
+            r = list(resultado)
+            todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
+        return todos
+        
+    @staticmethod
+    def proximos():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select * from viaje where realizado = 'n' order by idviaje asc"):
+            r = list(resultado)
+            todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
+        return todos
+
+    @staticmethod
+    def realizados():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select * from viaje where realizado = 'y' order by idviaje asc"):
+            r = list(resultado)
+            todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
+        return todos
