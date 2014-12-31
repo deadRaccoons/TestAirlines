@@ -20,7 +20,7 @@ class Ciudad(object):
     def all_():
         con = Conexion()
         todos = []
-        for resultado in con.consultar("select * from ciudad order by nombre asc"):
+        for resultado in con.consultar("select * from ciudades order by nombre asc"):
             c = list(resultado)
             todos.append(Ciudad(c[0], c[1], c[2], c[3], c[4], c[5], c[6]))
         return todos

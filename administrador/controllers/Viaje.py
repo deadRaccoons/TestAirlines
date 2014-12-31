@@ -19,7 +19,7 @@ class Viaje(object):
         self.c = Conexion()
 
     def crea(self):
-        return self.c.actualizar("insert into viaje values(null,'"+ self.origen +"', '"+ self.destino +"', '"+ self.fechasalida +"', '"+ self.horasalida +"', null, null, "+ str(self.distancia) +", null, null, null, "+ str(self.idavion) +")")
+        return self.c.actualizar("insert into viajes values(null,'"+ self.origen +"', '"+ self.destino +"', '"+ self.fechasalida +"', '"+ self.horasalida +"', null, null, "+ str(self.distancia) +", null, null, null, "+ str(self.idavion) +")")
 
     @staticmethod
     def getViajes(fecha):
@@ -27,7 +27,7 @@ class Viaje(object):
             return None
         else:
             c = Conexion()
-            viajes = c.consultar("select * from viaje where fechasalida = '"+ fecha +"' and realizado = 'y'")
+            viajes = c.consultar("select * from viajes where fechasalida = '"+ fecha +"' and realizado = 'y'")
             if viajes is not None:
                 lv = []
                 for viaje in viajes:
@@ -40,7 +40,7 @@ class Viaje(object):
     def all_():
         c = Conexion()
         todos = []
-        for resultado in c.consultar("select * from viaje"):
+        for resultado in c.consultar("select * from viajes"):
             r = list(resultado)
             todos.append(Viaje(str(r[0]), r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), str(r[7]), str(r[8]), str(r[9]), r[10], str(r[11])))
         return todos
@@ -49,7 +49,7 @@ class Viaje(object):
     def cancelables():
         c = Conexion()
         todos = []
-        for resultado in c.consultar("select * from viaje where idviaje not in (select idviaje from cancelados) and realizado = 'n';"):
+        for resultado in c.consultar("select * from viajes where realizado = 'n';"):
             r = list(resultado)
             todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
         return todos
@@ -57,16 +57,14 @@ class Viaje(object):
     @staticmethod
     def cancelar(idviaje):
         c = Conexion()
-        con = Conexion()
-        con.actualizar("update viaje set realizado = 'y' where idviaje = "+ str(idviaje))
-        r = c.actualizar("ninsert into cancelados values("+ str(idviaje) +")")
+        r = c.actualizar("insert into cancelados values("+ str(idviaje) +")")
         return r
 
     @staticmethod
     def cancelados():
         c = Conexion()
         todos = []
-        for resultado in c.consultar("select * from viaje where realizado = 'c' order by idviaje asc"):
+        for resultado in c.consultar("select * from viajes where realizado = 'c' order by idviaje asc"):
             r = list(resultado)
             todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
         return todos
@@ -75,7 +73,7 @@ class Viaje(object):
     def proximos():
         c = Conexion()
         todos = []
-        for resultado in c.consultar("select * from viaje where realizado = 'n' order by idviaje asc"):
+        for resultado in c.consultar("select * from viajes where realizado = 'n' order by idviaje asc"):
             r = list(resultado)
             todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
         return todos
@@ -84,7 +82,7 @@ class Viaje(object):
     def realizados():
         c = Conexion()
         todos = []
-        for resultado in c.consultar("select * from viaje where realizado = 'y' order by idviaje asc"):
+        for resultado in c.consultar("select * from viajes where realizado = 'y' order by idviaje asc"):
             r = list(resultado)
             todos.append(Viaje(r[0], r[1], r[2], str(r[3]), str(r[4]), str(r[5]), str(r[6]), r[7], r[8], r[9], r[10], r[11]))
         return todos

@@ -124,8 +124,8 @@ create or replace function fusuarios() returns trigger as $tusuarios$
   end;
 $tusuarios$ language plpgsql;
 
-create or replace trigger tusuarios
-before insert on usuarioss
+create trigger tusuarios
+before insert on usuarios
 for each row
 execute procedure fusuarios()
 
@@ -142,29 +142,28 @@ create table tarjetas(
 );
 
 --tabla promocion
-CREATE TABLE promocion(
-  idPromocion integer not null,
-  porcentaje double precision not null check(porcentaje > 0 and porcentaje < 1),
-  fechaEntrada date not null,
-  vigencia date not null check(vigencia >= fechaEntrada),
-  descripcion text not null,
-  activo varchar(1) not null,
-  unique (porcentaje, fechaEntrada, vigencia)
+REATE TABLE promocion(
+  idpromocion integer NOT NULL PRIMARY KEY,
+  codigopromocion character varying(255) NOT NULL,
+  iniciopromo date NOT NULL,
+  finpromo date NOT NULL,
+  ciudad text NOT NULL,
+  descripcion text NOT NULL,
+  slug text NOT NULL,
+  photo_file_name character varying(255) not null,
+  photo_content_type character varying(255) not null,
+  photo_file_size integer not null,
+  photo_updated_at timestamp without time zone not null,
+  porcentaje double precision,
 );
-
-alter table promocion
-add constraint proomocionc
-primary key (idPromocion);
 
 create or replace function fpromocion() returns trigger as $tpromocion$
   begin 
     new.porcentaje = 1 - (new.porcentaje / 100);
-    if new.fechaentrada < (select current_date) then return new;
-    end if;
-    if (select max(idpromocion) from promocion) is null then new.idpromocion = 1;
+    if (select max(idpromocion) from promociones) is null then new.idpromocion = 1;
     return new;
     end if;
-    new.idpromocion = (select max(idpromocion) from promocion) + 1;
+    new.idpromocion = (select max(idpromocion) from promociones) + 1;
     return new;
   end;
 $tpromocion$ language plpgsql;
@@ -248,12 +247,10 @@ CREATE TABLE boleto(
   idViaje serial not null,
   clase text not null check (clase in ('Primera', 'Turista')),
   asiento integer not null,
-  costototal double precision
+  costototal double precision,
+  unique (idViaje, clase, asiento),
+  primary key (idboleto, idviaje)
 );
-alter table boleto
-add constraint boletoc
-primary key (idboleto, idviaje),
-unique (idViaje, clase, asiento);
 
 --tabla donde los usuarios aplican promocion
 create table aplica(
