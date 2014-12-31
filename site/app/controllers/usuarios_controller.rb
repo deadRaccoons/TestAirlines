@@ -66,6 +66,7 @@ class UsuariosController < ApplicationController
       flash[:alert] = "Bienvenido a bordo!"
       redirect_to @usuario
     else
+      @login.destroy
       render "new"
     end
   

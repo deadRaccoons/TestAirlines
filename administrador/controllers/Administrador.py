@@ -55,3 +55,35 @@ class Administrador(object):
             todos.append((resultado[0], resultado[1], str(resultado[2]), resultado[3], resultado[4]))
         return todos
             
+
+    @staticmethod
+    def estadoviajes():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select realizado, count(*) from viaje group by realizado"):
+            todos.append((resultado[0], resultado[1]))
+        return todos
+
+    @staticmethod
+    def cantidadvuelos():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select destino, count(*) from viaje group by destino order by destino asc"):
+            todos.append((resultado[0], resultado[1]))
+        return todos
+
+    @staticmethod
+    def vuelosdestino():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select destino, count(*) from viaje group by destino order by destino asc"):
+            todos.append((resultado[0], resultado[1]))
+        return todos
+
+    @staticmethod
+    def vuelosorigen():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select origen, count(*) from viaje group by origen order by origen asc"):
+            todos.append((resultado[0], resultado[1]))
+        return todos

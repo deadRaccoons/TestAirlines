@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 import cherrypy
 import hashlib
 from models import *
@@ -60,7 +60,12 @@ class Admin(object):
         if admin is None:
             raise cherrypy.HTTPRedirect("salir")
         html = env.get_template('index.html')
-        return html.render(admin = admin.nombres, val="hidden", adm="active")
+        evuelos = Administrador.estadoviajes()
+        cvuelos = Administrador.cantidadvuelos()
+        origenes = Administrador.vuelosorigen()
+        destinos = Administrador.vuelosdestino()
+        tam = len(cvuelos)
+        return html.render(admin = admin.nombres, val="hidden", adm="active", evuelos=evuelos, cvuelos=cvuelos, tam=tam, origenes=origenes, destinos=destinos)
                     
     @cherrypy.expose
     def salir(self):
@@ -176,8 +181,9 @@ class Admin(object):
         if c is None:
             raise cherrypy.HTTPRedirect("login")
         valors = Administrador.valores()
+        tam = 0
         html = env.get_template('index.html')
-        return html.render(admin = "Inicio", valo="active", graf="hidden", msg="hidden", valores=valors, valors=valors)
+        return html.render(admin = "Inicio", valo="active", graf="hidden", msg="hidden", valores=valors, valors=valors, tam=tam)
 
     @cherrypy.expose
     def cambiavalor(self, costomilla):
@@ -187,12 +193,15 @@ class Admin(object):
         if (r == 1):
             return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="success", mensaje="Se actualizaron los datos", valors=valors)
         else:
-            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="warning", mensaje="No se actualizaron los datos", valors=valors)
+            return html.render(admin="Inicio", valores=valors, valo="active", graf="hidden", tipo="warning", mensaje="Los datos ya se han actualizado el dia de hoy", valors=valors)
 
     @cherrypy.expose
     def vuelos(self):
+        cancelados = Viaje.cancelados()
+        proximos = Viaje.proximos()
+        realizados = Viaje.realizados()
         html = env.get_template('vuelos.html')
-        return html.render()
+        return html.render(realizados=realizados, proximos=proximos, cancelados=cancelados)
 
 if __name__ == '__main__':
     cherrypy.quickstart(Admin(), "" ,"app.conf")
