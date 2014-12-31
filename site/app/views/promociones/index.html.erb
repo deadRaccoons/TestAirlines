@@ -1,23 +1,36 @@
-<h1>Listing promociones</h1>
+<script type="text/javascript">
+<% @promociones.to_json %>
+</script>
+</pre>
+<div class="full-contact">
+    <% if @gallery %>
+      <%= render :partial => "gallery" %>
+    <% else %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<link rel="stylesheet" href="/assets/css/cards.css">
+<div class="full_contact">
+  
 
-  <tbody>
-    <% @promociones.each do |promocione| %>
-      <tr>
-        <td><%= link_to 'Show', promocione %></td>
-        <td><%= link_to 'Edit', edit_promocione_path(promocione) %></td>
-        <td><%= link_to 'Destroy', promocione, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <h1>Promociones del mes </h1>
+  <ul id="avions">
+    <% @promociones.each do |promo| %>
+      <li>
+        <%= image_tag promo.photo.url(:small) %>
+        <div class="info_avion">
+          <span><%= promo.codigopromocion %> </span><br/>        
+          <strong>vence</strong><span><%= promo.finpromo %> </span><br/> 
+             <%= link_to "Detalles", promo %>
+
+  </strong>
+
+        </div>
+      </li>
     <% end %>
-  </tbody>
-</table>
+  
+  </ul>
 
-<br>
+  </div>
 
-<%= link_to 'New Promocione', new_promocione_path %>
+    <% end %>
+
+</div>

@@ -14,7 +14,7 @@ class LoginsController < ApplicationController
     end
   end
 
-  # GET /logins/1
+  # GET /logins/1 
   # GET /logins/1.json
   def show
     @login = Login.find(login_params)
@@ -44,11 +44,15 @@ class LoginsController < ApplicationController
 
     if @login && @login.secreto == secreto
       @usuario = Usuario.find_by_correo(@login.correo)
-
-      session[:current_user_id] = @usuario.id
-      session[:current_user_mail] = @usuario.correo
-      @usuario.friendly_id
-      redirect_to @usuario
+      if @usuario.nil?
+        flash[:alert] = "Usuario no encontrado"
+        redirect_to "/logins"
+      else
+        session[:current_user_id] = @usuario.id
+        session[:current_user_mail] = @usuario.correo
+        @usuario.friendly_id
+        redirect_to @usuario
+      end
     else
       flash[:alert] = "Usuario o contraseña incorrecta"
       redirect_to "/logins"

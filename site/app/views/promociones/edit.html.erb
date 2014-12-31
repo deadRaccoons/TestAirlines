@@ -1,6 +1,23 @@
-<h1>Editing promocione</h1>
 
-<%= render 'form' %>
+<link rel="stylesheet" href="/assets/css/cards.css">
+<div class="full_contact">
+  
 
-<%= link_to 'Show', @promocione %> |
-<%= link_to 'Back', promociones_path %>
+  <h1>Conoce nuestros aviones </h1>
+  <ul id="avions">
+    <% @nosotros_aviones.each do |nosotros_avione| %>
+      <li>
+        <%= image_tag("/assets/aviones/" + nosotros_avione.modelo + ".jpg") -%>
+        <div class="info_avion">
+          <strong>marca: </strong><span><%= nosotros_avione.marca %> </span><br/>        
+          <strong>modelo: </strong><span><%= nosotros_avione.modelo %> </span><br/> 
+          <strong>capacidad: </strong><span><%= nosotros_avione.capacidadprimera + nosotros_avione.capacidadturista %> </span><br/> 
+  </strong>
+
+        </div>
+      </li>
+    <% end %>
+  
+  </ul>
+
+  </div>

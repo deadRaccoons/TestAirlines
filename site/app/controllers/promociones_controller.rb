@@ -7,10 +7,24 @@ class PromocionesController < ApplicationController
     @promociones = Promocione.all
   end
 
+  def gallery
+    @gallery =  true 
+    @promociones = Promocione.all
+    render "index" 
+  end
+
+  def json
+    @promocione = Promocione.all
+    json.array!(@promociones) do |promocione|
+    json.extract! promocione, :id
+end
+
+  end
+
   # GET /promociones/1
   # GET /promociones/1.json
   def show
-    @promocione = Promocione.friendly.find(params[:id])
+    @promociones = Promocione.friendly.find(params[:id])
   end
 
   # GET /promociones/new
@@ -20,6 +34,8 @@ class PromocionesController < ApplicationController
 
   # GET /promociones/1/edit
   def edit
+    @promocione = Promocione.friendly.find(params[:id])
+    render json: @promocione
   end
 
   # POST /promociones
