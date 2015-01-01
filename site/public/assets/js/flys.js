@@ -60,7 +60,7 @@ var flySearch = flySearch || {
 			flySearch.solidState = false;
 		}
 
-			
+
 		flySearch.solidState = (origin != null && destiny != origin && destiny != null);
 
 		
@@ -77,6 +77,8 @@ var flySearch = flySearch || {
 
 	/* render the json data to the container */
 	_showResults : function (json) {
+		if(json.length == 0)
+			return "<h1>No existen vuelos en esta tiempo espacio</h1>"
 		console.log(json);
 		var html = "<ul id='flights-results'>";
 
