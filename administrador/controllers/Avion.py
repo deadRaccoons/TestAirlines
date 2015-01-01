@@ -41,25 +41,25 @@ class Avion(object):
             for dis in disponibles:
                 idavion = dis.idavion
                 try:
-                    idviaje = con2.consultar("select idviaje from viaje where idavion = "+ str(idavion) +" order by fechallegada desc")[0][0]
+                    idviaje = con2.consultar("select idviaje from viajes where idavion = "+ str(idavion) +" order by fechallegada desc")[0][0]
                 except:
                     idviaje = None
                 if idviaje is None:
                     idviaje = 0
                 try:
-                    lugar = con3.consultar("select destino from viaje where idviaje = "+ str(idviaje))[0][0]
+                    lugar = con3.consultar("select destino from viajes where idviaje = "+ str(idviaje))[0][0]
                 except:
                     lugar = None
                 if lugar is None:
                     lugar = "Nada"
                 try:
-                    hora = con4.consultar("select ''||horallegada::time without time zone from viaje where idviaje = "+ str(idviaje))[0][0]
+                    hora = con4.consultar("select ''||horallegada::time without time zone from viajes where idviaje = "+ str(idviaje))[0][0]
                 except:
                     hora = None
                 if hora is None:
                     hora = "00:00"
                 try:
-                    fecha = con5.consultar("select ''||fechallegada from viaje where idviaje="+ str(idviaje))[0][0]
+                    fecha = con5.consultar("select ''||fechallegada from viajes where idviaje="+ str(idviaje))[0][0]
                 except:
                     fecha = None
                 if fecha is None:
@@ -73,7 +73,7 @@ class Avion(object):
     def nousados():
         con = Conexion()
         disponibles = []
-        todos = con.consultar("select * from avion where idavion not in (select idavion from viaje)")
+        todos = con.consultar("select * from avion where idavion not in (select idavion from viajes)")
         if todos is not None:
             for disponible in todos:
                 a = list(disponible)
@@ -86,7 +86,7 @@ class Avion(object):
     def ultimovuelo(self, idavion):
         c = Conexion()
         try:
-            resultado = c.consultar("select idviaje from viaje where idavion = "+ str(idavion) +" order by fechallegada desc")[0][0]
+            resultado = c.consultar("select idviaje from viajes where idavion = "+ str(idavion) +" order by fechallegada desc")[0][0]
         except:
             resultado = None
         return resultado
