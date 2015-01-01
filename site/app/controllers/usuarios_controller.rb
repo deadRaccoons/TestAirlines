@@ -50,15 +50,16 @@ class UsuariosController < ApplicationController
     @login.correo = params[:usuario][:correo]
     @login.secreto = Digest::SHA1.hexdigest(params[:usuario][:secreto])
     @login.activo = 'y'
-    error = false;
-
+    
+    error = false
 
     begin
       @login.save && @usuario.save  
 
      rescue Exception => e
       error = true
-      flash[:notice] = e.to_s
+      @login.destroy
+      flash[:alert] = e.to_s
     end 
 
     if !error
@@ -122,7 +123,7 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:correo, :nombres, :apellidopaterno, :apellidomaterno, :nacionalidad, :genero, :fechanacimiento)
+      params.require(:usuario).permit(:correo, :nombres, :apellidopaterno, :apellidomaterno, :nacionalidad, :genero, :fechanacimiento, :d)
 
     end
 end

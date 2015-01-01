@@ -1,5 +1,4 @@
-<h1>New promocione</h1>
+<% if @gallery %>
+      <%= render :partial => "gallery" %>
+    <% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', promociones_path %>

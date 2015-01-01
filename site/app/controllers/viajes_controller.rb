@@ -20,7 +20,7 @@ class ViajesController < ApplicationController
 
   def llegadas
     @viajes = Viaje.where("destino  LIKE ?", "%" + params[:ciudad]+ "%")
-    render json: @viajes
+    render "new"
 
   end
 

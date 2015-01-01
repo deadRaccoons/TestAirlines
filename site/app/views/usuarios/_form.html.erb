@@ -18,9 +18,13 @@
     <%= f.text_field :nombres, :placeholder => "Nombre(s)"%> </p>
     <%= f.text_field :apellidopaterno, :placeholder => "Apellido Paterno"%> </p>
     <%= f.text_field :apellidomaterno, :placeholder => "Apellido Materno"%> </p>
-    <%= f.text_field :nacionalidad ,:placeholder => "Nacionalidad"%> </p>
-    <%= f.text_field :genero ,:placeholder => "Genero"%> </p>
-    <%= date_select :usuario, :fechanacimiento %></p>
+    <%= f.text_field :nacionalidad ,:placeholder => "Lugar de Nacimiento"%> </p>
+    <select name="usuario[genero]">
+      <option> Seleccione su genero</option>
+      <option value="H">Hombre</option>
+      <option  value="M">Mujer</option>
+    </select>
+   <p id="fecha_nac"> <%= date_select(:usuario,:fechanacimiento) %></p>
     <%= f.text_field :correo,:placeholder => "Correo Electronico"%> </p>
     <%= f.password_field :secreto,:placeholder => "Contraseña" %></p>
     <%= f.password_field :secreto_confirmado,:placeholder => "Confirme contraseña"%> </p>

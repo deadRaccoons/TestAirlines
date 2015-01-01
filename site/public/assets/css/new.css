@@ -515,13 +515,24 @@ height: 80%;
 	padding-top: 41px;
 }
 
-.Sign_Form input {
+
+.user-icon {
+	background-image: url("/assets/images/uss.jpg");
+background-size: 35px;
+background-position: 20px 13px;
+background-repeat: no-repeat;
+}
+.Sign_Form input, #new_usuario select {
 	width: 100%;
 	height: 40px;
 	border: none;
 	font-size: 15px;
 	font-weight: bold;
 	padding-left: 15px;
+}
+
+#fecha_nac select {
+	width: 32%;
 }
 
 .submit:hover {
@@ -672,4 +683,9 @@ li#results-header:hover {
 #results-header {
 	background: rgb(51, 51, 51);
 	color: rgb(186, 183, 182);
+}
+
+#new_usuario select {
+	border: none;
+	background: white;
 }
