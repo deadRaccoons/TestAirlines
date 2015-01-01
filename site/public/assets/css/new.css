@@ -695,6 +695,12 @@ font-size: 12px;
 	width: 12%;
 }
 
+.motivo p {
+	line-height: 20px;
+top: 52px;
+position: relative;
+}
+
 .week .day {
 	display: block;
 	width: 10%;
