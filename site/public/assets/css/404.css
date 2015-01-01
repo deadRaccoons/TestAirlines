@@ -1,15 +1,17 @@
-.left {
+.left_ {
 	position: relative;
 	float: left;
 	left: 0px;
 	background-image: url("../images/m1.jpg");
+	background-repeat: no-repeat;
 }
 
-.rigth {
+.rigth_ {
 	position: relative;
 	float: right;
 	right: 0px;
 	background-image: url("../images/m2.jpg");
+	background-repeat: no-repeat;
 
 }
 
@@ -36,6 +38,7 @@ top: 0;
 body {
 	 font-family: 'RobotoDraft';
 	 font-size: 1em;
+	 background-color: white;
 }
 
 a {

@@ -1,7 +1,7 @@
 /* search for FLY */
 var flySearch = flySearch || {
 
-
+	solidState : false ,
 	/* parameters for the query */
 	parameters : {
 		seats : 1,
@@ -13,6 +13,7 @@ var flySearch = flySearch || {
 		returnDate : null,
 	},
 
+
 	apiURI : "/viajes",
 	method: "get",
 
@@ -23,6 +24,8 @@ var flySearch = flySearch || {
 		var	$trigger = $("#search");
 		var $container = $("#flys");
 
+		if (!flySearch.solidState)
+					return;
 
 		$.ajax({
 			url: flySearch.apiURI,
@@ -33,6 +36,7 @@ var flySearch = flySearch || {
 				$container.show("slow")
 			},
 			success: function(json){
+
 				var html  = flySearch._showResults(json);
 				$("#flyss").html(html);
 			},
@@ -40,6 +44,25 @@ var flySearch = flySearch || {
 
 			}
 		});
+	},
+
+	init : function() {
+		var origin = $("#destiny-query").val();
+		flySearch.parameters.destinyIATA   = origin;
+		var destiny = $("#origin-query").val();
+		flySearch.parameters.originIATA = destiny;
+		
+		if (origin == destiny){
+			alert("Escoge un destino diferente, o un metodo distinto de transporte");
+			flySearch.solidState = false;
+		}
+
+		if (origin == null || destino == null){
+			alert("Verifica los datos de tu consulta")
+		}
+
+		flySearch.parameters.seats
+
 	},
 
 	/* render the json data to the container */
@@ -85,6 +108,7 @@ var flySearch = flySearch || {
 
 $(function(){
 	$("#search").on("click", function(e){
+		flySearch.init();
 		flySearch.search();
 	});
 

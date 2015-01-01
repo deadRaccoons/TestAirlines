@@ -39,6 +39,11 @@
     </div>
     </div>
     <div class="user-content">
+     <% if @muse %>
+      <%= render :partial => "bienvenido" %>
+    <% end %>
+  
+
 
     <%# Vista parcial para las promociones del usuario %>
     <% if !@promos.nil? %>

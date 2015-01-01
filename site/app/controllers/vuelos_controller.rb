@@ -5,7 +5,7 @@ class VuelosController < ApplicationController
   # GET /vuelos.json
   def index
     @vuelos = Vuelo.all
-    render json: @vuelos
+    render "new"
   end
 
   # GET /vuelos/1

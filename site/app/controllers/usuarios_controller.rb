@@ -18,6 +18,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1.json
   def show
     if (session[:current_user_id] != nil)
+      @muse = true;
       @usuario = Usuario.find(session[:current_user_id])
       if (@usuario == nil)
         redirect_to "/logins"
@@ -52,9 +53,9 @@ class UsuariosController < ApplicationController
     @login.activo = 'y'
     
     error = false
+      @login.save && @usuario.save  
 
     begin
-      @login.save && @usuario.save  
 
      rescue Exception => e
       error = true

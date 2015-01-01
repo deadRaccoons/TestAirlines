@@ -1,12 +1,15 @@
 
 div#menu{
     z-index: 40;
-    position:absolute;
-    width:80px;
-    height:100%;
-    background-color:#2f3030;
-    overflow:hidden;
-    moz-transition: width 0.5s;
+position: absolute;
+width: 80px;
+height: 100%;
+background-color: rgb(255, 255, 255);
+overflow: hidden;
+outline: 1px solid rgba(245, 245, 245, 0.99);
+moz-transition: width 0.5s;
+-webkit-transition: width 0.5s;
+transition: width 0.5s;
 }
 div#menu:hover{
     width:220px;

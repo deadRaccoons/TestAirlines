@@ -7,9 +7,20 @@
   clear: both;
   }
 
+  .o_d a {
+	padding: 6px;
+margin-left: 4%;
+margin-top: 1%;
+width: 38%;
+  }
+
+  .o_d {
+  	text-align: center;
+  }
+
 body {
 	 font-family: 'RobotoDraft';
-	 font-size: 0.9+++em;
+	 font-size: 0.9em;
 	 background-color: #fDfDfD;
 	color: #232323;
 	height: 100%;
@@ -41,7 +52,7 @@ header,nav {
 	background-image: url(/assets/images/logo.png);
 	width: 64px;
 	height: 60px;
-	background-size: 82px;
+	background-size: 58px;
 	position: absolute;
 	left: -67px;
 	top: -14px;
@@ -71,9 +82,10 @@ header,nav {
 	height: 100%;
 	width: 80px;
 	vertical-align: middle;
-	background-color:rgb(211, 44, 39);
+	background-color:dodgerblue;
 	overflow: hidden;
 	color: rgb(255, 255, 255);
+	background-repeat: no-repeat;
 }
 
 
@@ -214,7 +226,7 @@ ul li a {
 }
 
 ul li a:hover{
-	background-color: rgb(211, 44, 39);
+	background-color: dodgerblue;
 	color: white;
 	cursor: pointer;
 }
@@ -235,7 +247,7 @@ background-color: rgb(186, 183, 182);
 
 .full_contact {
 	overflow-y:scroll;
-	height: 100%;
+	height: 92%;
 }
 
 .no-scroll {
@@ -273,7 +285,7 @@ padding: 2%;
 }
 
 .active {
-	background-color: rgb(211, 44, 39);
+	background-color: dodgerblue;
 	color: white;
 }
 
@@ -489,7 +501,6 @@ height: 80%;
 	position: absolute;
 	top: 9px;
 	left: 37px;
-	opacity: 0.5;
 
 }
 
@@ -536,7 +547,7 @@ background-repeat: no-repeat;
 }
 
 .submit:hover {
-	background-color: rgb(211, 44, 39);
+	background-color: dodgerblue;
 	color: white;
 }
 
@@ -545,7 +556,7 @@ background-repeat: no-repeat;
 margin: 0 auto;
 text-align: left;
 padding: 20px;
-background: rgb(211, 44, 39);
+background: dodgerblue;
 }
 
 .Sign_Form h1 {
@@ -613,7 +624,7 @@ display: none;
 
 #flights-results li:hover {
 	cursor: pointer;
-	background: rgb(211, 44, 39);
+	background: dodgerblue;
 	color: white;
 }
 
@@ -624,9 +635,11 @@ display: none;
 
 li div {
 	float: left;
-	text-align: left;
-	height: 100%;
-	position: relative;
+text-align: left;
+height: auto;
+position: relative;
+width: 99%;
+font-size: 1.2em;
 }
 
 .class-details {

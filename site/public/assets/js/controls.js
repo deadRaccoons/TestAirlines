@@ -1,8 +1,11 @@
   var receive_sugesstions = true; 
+  var origenDestino = 1;
 
  $(function() {
 
   updateDate();
+
+
 
   $("nav").find("a").each(function(k,v){ 
       loc = $(v).attr("href");
@@ -12,14 +15,27 @@
         $(v).addClass("active")
     });
 
+  $("#destinos").delegate(".city_as_origin", "click", function(e){
+    showSideBar();
+    var IATA = $(this).attr("data-IATA");
+    $("#origin-query").val(IATA);
+  });
+
+   $("#destinos").delegate(".city_as_destiny", "click", function(e){
+  showSideBar();
+    var IATA = $(this).attr("data-IATA");
+    $("#destiny-query").val(IATA);
+
+  });
+
+
+
+
   $logo = $("#ll");
 
   $("#origin-query").focus(function() {
     console.log("focus");
-    $("#ll4").html($logo);
-
-    $( ".logo-head" ).hide('slow');
-    $("#fly-details").show('slow');
+    showSideBar();
   });
   
   var destino = $("#destiny-query").val();
@@ -221,3 +237,21 @@ var blrr =  function() {
  */
 }
 
+
+
+var updateDestiny =  function () {
+   origenDestino = location.toString().split("/").pop().split("?").pop("&").split("&")
+   
+   if (origenDestino.length  == 1) {
+      return;
+   }
+
+
+}
+
+
+var showSideBar =  function() {
+      $("#ll4").html($logo);
+      $( ".logo-head" ).hide('slow');
+      $("#fly-details").show('slow');
+}
