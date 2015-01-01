@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
   post 'logins/intento_login'
 
+  get '/nosotros' => 'welcome#index'
+
   resources :usuarios, :path_names => { :new => 'registro', :edit => 'configuracion', :show => 'yo' }
   
 

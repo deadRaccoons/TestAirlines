@@ -4,6 +4,14 @@
 
   updateDate();
 
+  $("nav").find("a").each(function(k,v){ 
+      loc = $(v).attr("href");
+      $(v).removeClass("active")
+
+      if(loc === location.pathname)
+        $(v).addClass("active")
+    });
+
   $logo = $("#ll");
 
   $("#origin-query").focus(function() {

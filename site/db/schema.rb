@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223162830) do
+ActiveRecord::Schema.define(version: 20141231235735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,22 +32,10 @@ ActiveRecord::Schema.define(version: 20141223162830) do
     t.string  "disponible",       limit: 1
   end
 
-  create_table "boleto", primary_key: "idboleto", force: true do |t|
-    t.integer "idusuario",    default: "nextval('boleto_idusuario_seq'::regclass)", null: false
-    t.integer "idviaje",      default: "nextval('boleto_idviaje_seq'::regclass)",   null: false
-    t.text    "clase",                                                              null: false
-    t.integer "asiento",                                                            null: false
-    t.date    "fechasalida"
-    t.time    "horasalida"
-    t.date    "fechallegada"
-    t.time    "horallegada"
-    t.float   "costototal"
+  create_table "cancelados", primary_key: "idviaje", force: true do |t|
   end
 
-  add_index "boleto", ["idviaje", "clase", "asiento"], name: "boleto_idviaje_clase_asiento_key", unique: true, using: :btree
-
-  create_table "ciudad", id: false, force: true do |t|
-    t.text     "nombre",             null: false
+  create_table "ciudades", primary_key: "nombre", force: true do |t|
     t.text     "pais",               null: false
     t.integer  "distancia"
     t.text     "descripcion",        null: false
@@ -61,18 +49,14 @@ ActiveRecord::Schema.define(version: 20141223162830) do
     t.datetime "photo_updated_at"
   end
 
-  create_table "ciudades", primary_key: "nombre", force: true do |t|
-    t.text    "pais",        null: false
-    t.integer "distancia"
-    t.text    "descripcion", null: false
-    t.text    "zonahora",    null: false
-    t.text    "aeropuerto",  null: false
-    t.text    "IATA"
-  end
-
   create_table "logins", primary_key: "correo", force: true do |t|
     t.string "secreto", limit: 50, null: false
     t.string "activo",  limit: 1,  null: false
+  end
+
+  create_table "nosotros_infos", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "promocion", primary_key: "idpromocion", force: true do |t|
@@ -86,6 +70,7 @@ ActiveRecord::Schema.define(version: 20141223162830) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.float    "porcentaje"
   end
 
   create_table "promociones", id: false, force: true do |t|
@@ -117,7 +102,10 @@ ActiveRecord::Schema.define(version: 20141223162830) do
     t.text "genero",          null: false
     t.date "fechanacimiento", null: false
     t.text "url_imagen"
+    t.text "slug"
   end
+
+  add_index "usuarios", ["correo"], name: "usuarioc", unique: true, using: :btree
 
   create_table "valor", primary_key: "idvalor", force: true do |t|
     t.float "costomilla", null: false
@@ -126,7 +114,9 @@ ActiveRecord::Schema.define(version: 20141223162830) do
     t.text  "tipomedida", null: false
   end
 
-  create_table "viaje", primary_key: "idviaje", force: true do |t|
+  add_index "valor", ["fecha"], name: "valorc", unique: true, using: :btree
+
+  create_table "viajes", primary_key: "idviaje", force: true do |t|
     t.text    "origen",                   null: false
     t.text    "destino",                  null: false
     t.date    "fechasalida",              null: false
@@ -140,7 +130,7 @@ ActiveRecord::Schema.define(version: 20141223162830) do
     t.integer "idavion"
   end
 
-  add_index "viaje", ["origen", "destino", "fechasalida", "horasalida"], name: "viaje_origen_destino_fechasalida_horasalida_key", unique: true, using: :btree
+  add_index "viajes", ["origen", "destino", "fechasalida", "horasalida"], name: "viaje_origen_destino_fechasalida_horasalida_key", unique: true, using: :btree
 
   create_table "vuelos", force: true do |t|
     t.datetime "created_at"

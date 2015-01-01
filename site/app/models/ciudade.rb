@@ -2,6 +2,7 @@ class Ciudade < ActiveRecord::Base
 	belongs_to :category
   
 	has_attached_file :photo, :styles => { :small => "250x250>" },
+						:default_url => "/assets/images/hp.jpg",
 	                    :url  => "/assets/promociones/:id/:style/:basename.:extension",
 	                    :path => ":rails_root/public/assets/promociones/:id/:style/:basename.:extension"
 	  

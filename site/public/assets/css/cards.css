@@ -45,7 +45,7 @@ a.no-hover {
 	border-radius: 2px;
 }
 
-#destinos a {
+#destinos a, #avions a {
 	display: block;
 	height: auto;
 }
