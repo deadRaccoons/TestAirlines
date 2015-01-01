@@ -7,8 +7,66 @@
     <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="static/css/bootstrap-theme.css">
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["calendar"]});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var calvals = document.getElementById("calendarvals");
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn({ type: 'date', id: 'Date' });
+        dataTable.addColumn({ type: 'number', id: 'Won/Loss' });
+        var info = [new Date(2014, 12, 20), 0];
+        var i;
+        for(i = 0; i < calvals.length; i++){
+          var dat = new Date(calvals.options[i].text);
+          alert(dat.toString());
+          info.push([new Date(calvals.options[i].text), parseInt(calvals.options[i].value)]);
+        }
+        dataTable.addRows(info);
+
+        var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+
+        var options = {
+          title: "Red Sox Attendance",
+          heigth: 380
+        };
+
+        chart.draw(dataTable, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawCharts);
+      function drawCharts() {
+
+        var pieinfo = [];
+        
+        var tipos = document.getElementById("pievals");
+
+        pieinfo.push(['Estado', 'Cantidad', { role: 'style' }]);
+
+        
+        pieinfo.push(["Distancia Recorrida", parseInt(tipos.options[0].value), 'color: blue']);
+        pieinfo.push(["Distancia no Recorrida (cancelados)", parseInt(tipos.options[1].value), 'color: red']);
+
+        var piedata = google.visualization.arrayToDataTable(pieinfo);
+
+        var pieoptions = {
+          title: 'Distancias',
+          vAxis: {title: '',  titleTextStyle: {color: 'red'}}
+        };
+
+        var piechart = new google.visualization.BarChart(document.getElementById('piechart_3d'));
+
+        piechart.draw(piedata, pieoptions);
+        
+      }
+    </script>
   </head>
 
   <body class="body-login">
@@ -39,8 +97,26 @@
     </div>
 
     <div class="container">
+      <div >
+        <select id="pievals">
+          {% for dist in disvuelos %}
+          <option value="{{dist[1]}}"> {{dist[0]}} {{dist[1]}} </option>
+          {% endfor %}
+        </select>
+        <select id="calendarvals">
+          {% for fecha in fechas %}
+          <option value="{{fecha[1]}}"> {{fecha[0]}} </option>
+          {% endfor %}
+        </select>
+      </div>
       <div class="row">
         <div class="content table-vuelos">
+          <div class="graficas2">
+            <div id="piechart_3d" class="graficabar"></div>
+          </div>
+          <div class="graficas3">
+            <div id="calendar_basic" class="graficacalendar"></div>
+          </div>
           <div class="panel-group " id="accordion">
             <div class="panel panel-default">
               <div class="panel-heading">

@@ -76,7 +76,7 @@ class Administrador(object):
     def vuelosdestino():
         c = Conexion()
         todos = []
-        for resultado in c.consultar("select destino, count(*) from viajes group by destino order by destino asc"):
+        for resultado in c.consultar("select viajes.destino, count(*) from viajes join (select idviaje from viajes where realizado = 'y') as v on viajes.idviaje = v.idviaje group by destino order by destino asc"):
             todos.append((resultado[0], resultado[1]))
         return todos
 
@@ -84,6 +84,22 @@ class Administrador(object):
     def vuelosorigen():
         c = Conexion()
         todos = []
-        for resultado in c.consultar("select origen, count(*) from viajes group by origen order by origen asc"):
+        for resultado in c.consultar("select origen, count(*) from viajes join (select idviaje from viajes where realizado = 'y') as v on viajes.idviaje = v.idviaje group by origen order by origen asc"):
+            todos.append((resultado[0], resultado[1]))
+        return todos
+
+    @staticmethod
+    def distanciavuelos():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select realizado, sum(distancia) from viajes group by realizado"):
+            todos.append((resultado[0], resultado[1]))
+        return todos
+
+    @staticmethod
+    def fechavuelos():
+        c = Conexion()
+        todos = []
+        for resultado in c.consultar("select fechasalida, count(*) from viajes group by fechasalida order by fechasalida"):
             todos.append((resultado[0], resultado[1]))
         return todos

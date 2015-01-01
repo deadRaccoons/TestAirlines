@@ -197,11 +197,13 @@ class Admin(object):
 
     @cherrypy.expose
     def vuelos(self):
+        disvuelos = Administrador.distanciavuelos()
+        fechas = Administrador.fechavuelos()
         cancelados = Viaje.cancelados()
         proximos = Viaje.proximos()
         realizados = Viaje.realizados()
         html = env.get_template('vuelos.html')
-        return html.render(realizados=realizados, proximos=proximos, cancelados=cancelados)
+        return html.render(realizados=realizados, proximos=proximos, cancelados=cancelados, disvuelos=disvuelos, fechas=fechas)
 
 if __name__ == '__main__':
     cherrypy.quickstart(Admin(), "" ,"app.conf")

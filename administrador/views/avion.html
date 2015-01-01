@@ -34,11 +34,31 @@
     </div>
     
     <div class="container">
-      <select id="idavion" name="idavion" >
-        {% for avion in aviones %}
-        <option value="{{ avion.idavion }}">{{ avion.modelo + ", "+ avion.marca }}</option>
-        {% endfor %}
-      </select>
+      <div>
+        <select id="idavion" name="idavion" >
+          {% for avion in aviones %}
+          <option value="{{ avion.idavion }}">{{ avion.modelo + ", "+ avion.marca }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div {{ val }} id="valores" class="col-md-offset-3 col-sm-13 table-valor">
+        <form {{ val }} text-align="left" role="form" class="form-inline" name="valors" action="">
+          <table {{ cancelar }} class="table table-trans table-hover">
+            <tr>
+              <th>Id Avion</th>
+              <th>Modelo</th>
+              <th>Marca</th>
+              <th>Capacidad Primera</th>
+              <th>Capacidad Turista</th>
+              <th>Disponible</th>
+              <th>Millas Recorridas</th>
+            </tr>
+            <tr>
+            </tr>
+          </table>
+        </form>
+      </div>
     </div>
   </body>
 </html>
