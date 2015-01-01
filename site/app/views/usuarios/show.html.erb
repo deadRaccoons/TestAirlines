@@ -9,8 +9,14 @@
   <body>
   <div class="user-menu">
     <div id= "menu">
-      <div id= "logo-principal">
-      </div>
+          <%= image_tag @usuario.avatar.url(:small) %>
+
+      <a href="/usuarios" >
+
+      <% @usuario = Usuario.find(session[:current_user_id]) %>
+
+      <span><%= @usuario.nombres %> </span>
+      </a>
       <div id = "espacio"  class ="contenedor1">
 	<div class = "comprav">
 	</div>

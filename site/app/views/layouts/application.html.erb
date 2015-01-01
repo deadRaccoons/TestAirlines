@@ -30,16 +30,17 @@
          </div> 
          <div class="controls right">
             <ul id="controls">
+            <% if (session[:current_user_id] != nil) %>
+                <% @usuario = Usuario.find(session[:current_user_id]) %>
                 <li><a class="p-10 user-icon" href="#">
-                    <i class="icon-lang"></i>
+                 <%= image_tag @usuario.avatar.url(:small) %>
                 </a></li>
                 <li><a class="p-20" href="/logins">
-                    <i class="icon-login"><% if (session[:current_user_id] != nil) %>
-                    <% @usuario = Usuario.find(session[:current_user_id]) %>
+                    <i class="icon-login">
                     <%= @usuario.nombres %> 
                     <% else %>
                     <%= "Ingresar" %>
-                    <% end %>
+                <% end %>
                     </i>
                 </a></li>
                 <li><a class="p-20" href="/usuarios/registro">

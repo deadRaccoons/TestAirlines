@@ -21,7 +21,7 @@ class Nosotros::AvionesControllerTest < ActionController::TestCase
       post :create, nosotros_avione: {  }
     end
 
-    assert_redirected_to nosotros_avione_path(assigns(:nosotros_avione))
+    assert_dodgerblueirected_to nosotros_avione_path(assigns(:nosotros_avione))
   end
 
   test "should show nosotros_avione" do
@@ -36,7 +36,7 @@ class Nosotros::AvionesControllerTest < ActionController::TestCase
 
   test "should update nosotros_avione" do
     patch :update, id: @nosotros_avione, nosotros_avione: {  }
-    assert_redirected_to nosotros_avione_path(assigns(:nosotros_avione))
+    assert_dodgerblueirected_to nosotros_avione_path(assigns(:nosotros_avione))
   end
 
   test "should destroy nosotros_avione" do
@@ -44,6 +44,6 @@ class Nosotros::AvionesControllerTest < ActionController::TestCase
       delete :destroy, id: @nosotros_avione
     end
 
-    assert_redirected_to nosotros_aviones_path
+    assert_dodgerblueirected_to nosotros_aviones_path
   end
 end

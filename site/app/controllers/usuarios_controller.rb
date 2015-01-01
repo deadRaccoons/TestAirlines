@@ -77,15 +77,13 @@ class UsuariosController < ApplicationController
   # PATCH/PUT /usuarios/1
   # PATCH/PUT /usuarios/1.json
   def update
-    respond_to do |format|
-      if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully updated.' }
-        format.json { render :show, status: :ok, location: @usuario }
-      else
-        format.html { render :edit }
-        format.json { render json: @usuario.errors, status: :unprocessable_entity }
+      @usuario = Usuario.new(usuario_params)
+      @old_user = Usuario.find(session[:current_user_id])
+      @old_user.avatar = @usuario.avatar
+      if @old_user.save
+        redirect_to @old_user
       end
-    end
+
   end
 
   # DELETE /usuarios/1
@@ -124,7 +122,7 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:correo, :nombres, :apellidopaterno, :apellidomaterno, :nacionalidad, :genero, :fechanacimiento, :d)
+      params.require(:usuario).permit(:correo, :nombres, :apellidopaterno, :apellidomaterno, :nacionalidad, :genero, :fechanacimiento, :avatar)
 
     end
 end

@@ -9,7 +9,7 @@ var flySearch = flySearch || {
 		seatsClass : 0,
 		originIATA : null,
 		destinyIATA : null,
-		departureDate : null,
+		departudodgerblueate : null,
 		returnDate : null,
 	},
 
