@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/gallery.css">
+<script type="text/javascript" src="/assets/js/gallery.js"></script>
+<div class="full-contact">
+<article class="gallery">
+
+  <% @promociones.each do |promocione| %>
+
+  <section id="promotions" class="promotion ">
+
+      <div class="img" style="background-image: url('<%=  promocione.photo.url %>')">
+            <%= link_to 'Info', promocione %>
+            <% promocione.descripcion.split("|").each do |des| %>
+              <h2><%= des %></h2>
+            <% end %>
+      </div>
+
+  </section>
+
+  <div id="controls_b">
+     <% @promociones.each do |promocione| %>
+     <div class="circle" id=<%= promocione.id =%>></div>
+     <%end%>
+  </div>
+
+  <% end %>
+
+</article>
+  
+</div>
