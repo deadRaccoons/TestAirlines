@@ -9,8 +9,9 @@
   <body>
   <div class="user-menu">
     <div id= "menu">
+    <div class="usss">
           <%= image_tag @usuario.avatar.url(:small) %>
-
+</div>
       <a href="/usuarios" >
 
       <% @usuario = Usuario.find(session[:current_user_id]) %>
@@ -61,7 +62,7 @@
     <% end %>
 
     <% if !@historial.nil? %>
-      <%= render :partial => "edit" %>
+      <%= render :partial => "historial" %>
     <% end %>
 
     <%# Vista parcial para los destinos mas frecuentes del usuario %>

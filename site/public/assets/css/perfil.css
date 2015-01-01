@@ -112,6 +112,9 @@ height: 100px;
 
 }
 
+div {
+    background-size: contain;       
+}
 #menu img 
 {
     width: 80%;
@@ -119,3 +122,19 @@ margin: 9%;
 border-radius: 50%;
 }
 
+
+.usss {
+width: 100%;
+max-height: 36%;
+overflow: hidden;    
+
+
+}
+
+#bgvid{
+position: fixed; right: 0; bottom: 0;
+min-width: 100%; min-height: 100%;
+width: auto; height: auto; z-index: -100;
+background: url(polina.jpg) no-repeat;
+background-size: cover;
+}

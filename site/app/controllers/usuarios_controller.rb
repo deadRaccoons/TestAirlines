@@ -109,7 +109,10 @@ class UsuariosController < ApplicationController
     render "show"
   end
 
+
   def promos
+        @usuario = Usuario.find(session[:current_user_id])
+
     @promos = "ok"
     render "show"
   end
@@ -117,7 +120,7 @@ class UsuariosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_usuario
-      @usuario = Usuario.find_by_correo(params[:correo])
+      @usuario = Usuario.find(session[:current_user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
