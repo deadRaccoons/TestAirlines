@@ -87,14 +87,15 @@ header,nav {
 }
 
 .upper {
-	background-size: 65px;
-	height: 100%;
-	width: 80px;
-	vertical-align: middle;
-	background-color:dodgerblue;
-	overflow: hidden;
-	color: rgb(255, 255, 255);
-	background-repeat: no-repeat;
+	background-size: 51px;
+height: 100%;
+width: 80px;
+vertical-align: middle;
+background-color: rgb(30, 144, 255);
+overflow: hidden;
+color: rgb(255, 255, 255);
+background-repeat: no-repeat;
+background-position: 10px;
 }
 
 
@@ -222,6 +223,10 @@ section#main {
 	height: 87%;
 }
 
+h1 {
+	font-size: 30px;
+margin: 20px;
+}
 ul li a {
 	display: block;
 	height: 100%;
@@ -710,4 +715,80 @@ li#results-header:hover {
 #new_usuario select {
 	border: none;
 	background: white;
+}
+
+.vatos-locos {
+	width: 100%;
+height: 250px;
+text-align: center;
+
+}
+
+.vato {
+	height: 160px;
+float: left;
+width: 160px;
+background: rgb(51, 51, 51);
+margin: 1%;
+border-radius: 50%;
+border: 10px solid rgb(186, 183, 182);
+}
+
+#vt .vato span {
+position: relative;
+top: 180px;
+}
+
+.vato span {
+	position: relative;
+	top: 20px;
+}
+
+.vato {
+	background-size: cover;
+}
+.motivo {
+display: block;
+height: 160px;
+width: 160px;
+top: 0px !important;
+border-radius: 50%;
+color: rgba(0, 0, 0, 0);
+background: rgba(0, 0, 0, 0);
+vertical-align: middle;
+line-height: 150px;
+
+}
+
+.motivo:hover {
+	color: rgb(255, 255, 255);
+background-color: rgba(30, 144, 255, 0.47);
+}
+
+.magdiux {
+	background-image: url(https://scontent-b-atl.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10906199_743416815736668_5820132883052699793_n.jpg?oh=7b122c323a29b9552ff00cee28367def&oe=5547E04D)
+}
+.nancy {
+background-image: url(https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p160x160/10881532_806037399443420_1340575989106687534_n.jpg?oh=94b774df68bb9ad6cd8ba0ad8612331a&oe=55358215&__gda__=1429285648_8cc92ad528df3dfd5568ae296e5d98bb);
+}
+
+.colega {
+background-image: url(https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xfa1/v/t1.0-9/10624663_796590300383007_2682948703653741094_n.jpg?oh=51308c4c129bcc467074b8e906722191&oe=5541695E&__gda__=1425803624_d4c981630ae2a7426987a3a3858fae33);
+}
+
+.andrade {
+	background-image: url(https://scontent-b-atl.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10805619_10200319097216286_2888045818219644596_n.jpg?oh=608022a4732f2bd94b06ba7207663d54&oe=5526BC9A)
+}
+
+.yorch {
+	background-image: url(https://fbcdn-photos-c-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-0/302722_2348823888681_4988393_n.jpg?efg=eyJpIjoidCJ9&oh=75c73e7dd1bf6da21ed07f92eed79038&oe=552CC461&__gda__=1425739080_0f1334eb191f9ecc8859e20dd2346acc)
+}
+.dani {
+	background-image: url(https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/p160x160/1613872_552725921507966_8955025983861008307_n.jpg?oh=12598075e110bb5560a794653262fe9c&oe=553644B9&__gda__=1430353727_d586b7978f99259e6a5ceb0b500972eb)
+}
+.tabo {
+	background-image: url(https://scontent-a-atl.xx.fbcdn.net/hphotos-xaf1/t31.0-8/10338609_781506975242028_8744501665830318220_o.jpg?efg=eyJpIjoidCJ9)
+}
+.oscar {
+	background-image: url(https://fbcdn-photos-a-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-0/10888420_10203378417084496_839477024580984890_n.jpg?efg=eyJpIjoidCJ9&oh=6df78f8888de2763ee5e41030b1f6127&oe=55325AE1&__gda__=1430781835_04c52d2441b0dd4e38d4931b74ce743d)
 }

@@ -57,7 +57,7 @@ var flySearch = flySearch || {
 			flySearch.solidState = false;
 		}
 
-		if (origin == null || destino == null){
+		if (origin == null || destiny == null){
 			alert("Verifica los datos de tu consulta")
 		}
 
