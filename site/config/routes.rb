@@ -30,7 +30,8 @@ Rails.application.routes.draw do
 
   get 'viajes/:date/:id' => 'viajes#detalles_vuelo'
 
-  get 'viajes/:date' => 'viajes#detalles_dia'
+  get 'viajes/:date/:id/search' => 'viajes#search'
+
 
   get 'viajes/llegadas/:ciudad/:fecha' => 'viajes#llegadas'
 

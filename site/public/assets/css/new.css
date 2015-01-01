@@ -701,6 +701,21 @@ top: 52px;
 position: relative;
 }
 
+#back-2-search {
+	color: rgb(255, 255, 255);
+content: 'x';
+left: -13px;
+position: relative;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+background: rgb(30, 144, 255);
+font-size: 20px;
+line-height: 20px;
+text-align: center;
+cursor: pointer;
+}
+
 .week .day {
 	display: block;
 	width: 10%;

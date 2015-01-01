@@ -149,14 +149,23 @@
       $("#"+prefix + "month").text(prettyDate.month);
       $("#"+prefix + "year").text(prettyDate.year);
 
+        
+      var d  = new Date(date[2], date[1], date[0])
+
       if (prefix === "dep-") {
+        flySearch.parameters.departureDate = d.toISOString();
+
         prefix = "land-"
-        var d  = new Date(date[2], date[1], date[0])
+        console.log(d.toISOString())
         var day =  d.setDate(d.getDate() + 7);
         $("#"+prefix + "day").text(d.getDate());
         $("#"+prefix + "month").text(calendar.date.getMonth(d.getMonth()).substr(0,3));
         $("#"+prefix + "year").text(d.getFullYear());
+        flySearch.parameters.returnDate = d.toISOString();
+
       }
+
+   
 
       $container.hide("slow")
 
@@ -172,7 +181,7 @@ var show_destiny_suggestions =  function(json, container) {
   container.empty();
   var html  = "<ul>";
     $.each(json, function( index, ciudad ) {
-       html += "<li><a class='ss' data-IATA='"+ ciudad.IATA +"' data-city_name='"+ "[" + ciudad.IATA+"]" +  " " + ciudad.nombre  +"'><i>"+ ciudad.IATA +"</i><o>" + ciudad.nombre + "</o></a><li>"
+       html += "<li><a class='ss' data-IATA='"+ ciudad.iata +"' data-city_name='"+ "[" + ciudad.iata+"]" +  " " + ciudad.nombre  +"'><i>"+ ciudad.IATA +"</i><o>" + ciudad.nombre + "</o></a><li>"
 
     });
     html  += "</ul>";
