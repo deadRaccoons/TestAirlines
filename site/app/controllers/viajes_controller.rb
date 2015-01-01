@@ -26,12 +26,12 @@ class ViajesController < ApplicationController
 
   def search
     sql = "(select nombre from ciudades where iata = ?)".to_s
-    sql = sql + " = origen and (select nombre from ciudades where iata = ?) = ".to_s +
+    sql = sql + " = origen and (select nombre from ciudades where iata = ?) = ".to_s 
     sql = sql + " destino and fechasalida >= ? and realizado <> 'y'".to_s
-    render json: sql
+    #render json: sql
 
-    @viajes = Viaje.where(sql, params[:originIATA],params[:desinyIATA], params[:departureDate])
-    #render json: @viajes
+    @viajes = Viaje.where(sql, params[:originIATA],params[:destinyIATA], params[:departureDate])
+    render json: @viajes
   end 
 
   def sugerencias 

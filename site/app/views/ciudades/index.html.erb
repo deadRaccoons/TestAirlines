@@ -1,6 +1,7 @@
-<h1>Estos son nuestros destinos </h1>
 <link rel="stylesheet" href="/assets/css/cards.css">
 <div class="full_contact">
+<h1>Estos son nuestros destinos </h1>
+
 <ul id="destinos">
      <% @destinos.each do |destino| %>
 
@@ -9,8 +10,13 @@
         <div class="info_avion">
           <span><%= destino.nombre %> </span><br/>        
           <strong>Pais: </strong><span><%= destino.pais %> </span><br/> 
-          <strong>Distancia: </strong><span><%= destino.iata %> </span><br/> 
-          <p>   </p><br/>
+          <strong>Distancia: </strong><span><%= destino.distancia %> </span><br/>
+          <p class="o_d">
+          <a class=" card city_as_origin" data-IATA="<%= '[' + destino.iata + ']' + ' '+ destino.nombre %>">Origen</a>
+          <a class="card city_as_destiny" data-IATA="<%= '[' + destino.iata + ']' + ' '+ destino.nombre %>">Destino</a>
+
+          </p>
+
         </div>
       </li>
     <% end %>
